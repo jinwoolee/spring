@@ -10,5 +10,8 @@ public interface BoardService {
 
 	public void setBoardDao(BoardDao boardDao);
 	
+	public void methodInjection(BoardDao boardDao);
+	
 	public List<BoardVo> getBoardList(String boardGb);
+		
 }

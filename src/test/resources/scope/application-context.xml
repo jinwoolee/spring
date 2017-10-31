@@ -5,12 +5,11 @@
 	
 	<bean id="boardDao" class="board.dao.BoardDao"/>
 	
-	<bean id="boardService" class="board.service.impl.BoardServiceImpl">
-		<property name="boardDao" ref="boardDao"/>
-	</bean>
-	
-	<!-- socpe-signleton -->
+	<!-- socpe : default signleton -->
 	<bean id="boardDaoSingleton1" class="board.dao.BoardDao"/>
 	<bean id="boardDaoSingleton2" class="board.dao.BoardDao"/>
+	
+	<!-- socpe : prototype -->
+	<bean id="boardDaoPrototype" class="board.dao.BoardDao" scope="prototype"/>
 	
 </beans>	

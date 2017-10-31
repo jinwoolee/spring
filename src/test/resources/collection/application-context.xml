@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="boardDao" class="board.dao.BoardDao"/>
+	
+	<bean id="collectionBean" class="collection.CollectionBean">
+		<property name="lists">	<!-- java.util.List -->
+			<list>
+				<value>1</value>
+				<value>10</value>
+				<value>100</value>
+			</list>
+		</property>
+		
+		<property name="sets">	<!-- java.util.Set -->
+			<set>
+				<value>set1</value>
+				<value>set10</value>
+				<value>set100</value>
+			</set>
+		</property>
+		
+		<property name="maps" >	<!-- java.util.Map -->
+			<map>
+				<entry key="Key 1" value="1" />
+				<entry key="Key 3" value-ref="boardDao"/>
+			</map>
+		</property>
+		
+		<property name="maps" ref="map"/>
+		
+		<property name="pros">	<!-- java.util.Properties -->
+			<props>
+				<prop key="admin">admin@ddit.com</prop>
+				<prop key="support">support@ddit.com</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="map" class="java.util.HashMap">
+		<constructor-arg>
+			<map>
+				<entry key="name" value="ddit"/>
+				<entry key="tel" value="042-2228-200"/>
+			</map>
+		</constructor-arg>
+	</bean>
+</beans>	

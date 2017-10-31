@@ -15,6 +15,11 @@ public class BoardServiceOracleImpl implements BoardService{
 
 	public void setBoardDao(BoardDao boardDao) {
 		this.boardDao	=	boardDao;
+	}
+	
+	@Override
+	public void methodInjection(BoardDao boardDao) {
+		this.boardDao	=	boardDao;
 		
 	}
 
@@ -22,5 +27,4 @@ public class BoardServiceOracleImpl implements BoardService{
 		//boardServiceImpl과는 다른 로직이 일부 추가.
 		return boardDao.getBoardList(boardGb);
 	}
-
 }
