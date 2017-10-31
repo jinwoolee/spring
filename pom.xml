@@ -15,18 +15,18 @@
 		<version.hamcrest>1.3</version.hamcrest>
 
 		<!-- Logging -->
-		<version.logback>1.2.1</version.logback>
+		<version.logback>1.1.2</version.logback>
 
 		<!-- Spring -->
 		<version.spring>3.2.5.RELEASE</version.spring>
-		
+
 
 
 		<!-- Jackson -->
 		<version.jackson>2.8.4</version.jackson>
 
 		<version.servlet>3.0.1</version.servlet>
-	
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,10 +34,16 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${version.spring}</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
+			<artifactId>logback-classic</artifactId>
 			<version>${version.logback}</version>
 		</dependency>
 	</dependencies>
