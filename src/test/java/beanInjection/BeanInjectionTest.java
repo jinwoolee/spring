@@ -1,6 +1,6 @@
 package beanInjection;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import board.dao.BoardDao;
 import board.service.BoardService;
+import board.service.impl.BoardAbstractService;
 import board.service.impl.BoardServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,9 +28,9 @@ public class BeanInjectionTest {
 		logger.debug("start injectionTest");
 		
 		//given
-		BoardService boardServiceSetter				= applicationContext.getBean("boardServiceSetter", BoardServiceImpl.class);
-		BoardService boardServiceConstructor		= applicationContext.getBean("boardServiceConstructor", BoardServiceImpl.class);
-		BoardService boardServiceMethodInjection	= applicationContext.getBean("boardServiceMethodInjection", BoardServiceImpl.class);
+		BoardService boardServiceSetter					= applicationContext.getBean("boardServiceSetter", BoardServiceImpl.class);
+		BoardService boardServiceConstructor			= applicationContext.getBean("boardServiceConstructor", BoardServiceImpl.class);
+		BoardAbstractService boardServiceLookupMethod	= applicationContext.getBean("boardServiceLookupMethod", BoardAbstractService.class);
 		
 		//when
 		
@@ -43,12 +44,12 @@ public class BeanInjectionTest {
 		assertTrue(boardServiceConstructor.getBoardDao() != null);
 		assertNotNull(boardServiceConstructor.getBoardDao());
 		
-		//method injection
-		assertTrue(boardServiceMethodInjection.getBoardDao() != null);
-		assertNotNull(boardServiceMethodInjection.getBoardDao());
+		//method lookup
+		assertTrue(boardServiceLookupMethod.getBoardDaoLookupMethod() != null);
+		assertNotNull(boardServiceLookupMethod.getBoardDaoLookupMethod());
 		
 		assertEquals(boardServiceSetter.getBoardDao(), boardServiceConstructor.getBoardDao());
-		assertEquals(boardServiceConstructor.getBoardDao(), boardServiceMethodInjection.getBoardDao());
+		assertEquals(boardServiceConstructor.getBoardDao(), boardServiceLookupMethod.getBoardDaoLookupMethod());
 		
 		logger.debug("end injectionTest");
 	}		

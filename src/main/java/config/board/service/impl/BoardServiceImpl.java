@@ -1,19 +1,17 @@
-package board.service.impl;
+package config.board.service.impl;
 
 import java.util.List; 
 
-import board.dao.BoardDao;
 import board.model.BoardVo;
-import board.service.BoardService;
+import config.board.dao.BoardDao;
+import config.board.service.BoardService;
 
 public class BoardServiceImpl implements BoardService{
+	
 	private	BoardDao boardDao;
 	
 	public BoardServiceImpl() {
 		
-	}
-	public BoardServiceImpl(BoardDao boardDao) {
-		this.boardDao	=	boardDao;
 	}
 	
 	public BoardDao getBoardDao() {
@@ -26,10 +24,5 @@ public class BoardServiceImpl implements BoardService{
 
 	public List<BoardVo> getBoardList(String boardGb) {
 		return boardDao.getBoardList(boardGb);
-	}
-	
-	/*@Override
-	public BoardDao getBoardDaoLookupMethod() {
-		return null;
-	}*/	
+	}	
 }

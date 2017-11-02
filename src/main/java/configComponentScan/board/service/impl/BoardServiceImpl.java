@@ -1,19 +1,23 @@
-package board.service.impl;
+package configComponentScan.board.service.impl;
 
-import java.util.List; 
+import java.util.List;
 
-import board.dao.BoardDao;
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
 import board.model.BoardVo;
-import board.service.BoardService;
+import configComponentScan.board.dao.BoardDao;
+import configComponentScan.board.service.BoardService;
 
+@Service("boardService")
 public class BoardServiceImpl implements BoardService{
+	
+	@Resource(name="boardDao")
 	private	BoardDao boardDao;
 	
 	public BoardServiceImpl() {
 		
-	}
-	public BoardServiceImpl(BoardDao boardDao) {
-		this.boardDao	=	boardDao;
 	}
 	
 	public BoardDao getBoardDao() {
@@ -26,10 +30,5 @@ public class BoardServiceImpl implements BoardService{
 
 	public List<BoardVo> getBoardList(String boardGb) {
 		return boardDao.getBoardList(boardGb);
-	}
-	
-	/*@Override
-	public BoardDao getBoardDaoLookupMethod() {
-		return null;
-	}*/	
+	}	
 }

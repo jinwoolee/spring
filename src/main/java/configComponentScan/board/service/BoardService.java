@@ -1,13 +1,13 @@
-package board.service;
+package configComponentScan.board.service;
 
-import java.util.List;
+import java.util.List;   
 
-import board.dao.BoardDao;
+import configComponentScan.board.dao.BoardDao;
 import board.model.BoardVo;
 
 public interface BoardService {
 	public BoardDao getBoardDao();
-
+	
 	public void setBoardDao(BoardDao boardDao);
 	
 	public List<BoardVo> getBoardList(String boardGb);

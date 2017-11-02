@@ -29,7 +29,7 @@
 			</map>
 		</property>
 		
-		<property name="maps" ref="map"/>
+		<!-- <property name="maps" ref="map"/> -->
 		
 		<property name="pros">	<!-- java.util.Properties -->
 			<props>
