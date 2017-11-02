@@ -1,14 +1,27 @@
-package aop;
+package aop.annotation;
 
-import org.aspectj.lang.JoinPoint; 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Advice {
-	Logger logger = LoggerFactory.getLogger(Advice.class);
+@Aspect
+public class AnnotationAdvice {
+	private Logger logger = LoggerFactory.getLogger(AnnotationAdvice.class);
 
+	//pointcut 등록을 위한 dummy
+	@Pointcut("bean(annotationTarget)")
+	public void dummy() {};
+	
 	// 타겟 메소드 실행전 수행
+	@Before("dummy()")
 	public void beforeMethod(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
@@ -16,6 +29,7 @@ public class Advice {
 	}
 
 	// 정상적으로 동작이 된 경우 실행됨
+	@AfterReturning(pointcut="dummy()", returning="retVal")
 	public void afterReturningMethod(JoinPoint joinPoint, Object retVal) {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
@@ -23,6 +37,7 @@ public class Advice {
 	}
 
 	// 예외가 발생하고, 종료하는 경우 수행됨
+	@AfterThrowing(pointcut="dummy()", throwing="ex")
 	public void afterThrowingMethod(JoinPoint joinPoint, Exception ex) throws Throwable {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
@@ -31,6 +46,7 @@ public class Advice {
 	}
 
 	// 타켓 메소드 수행후 무조건 수행됨
+	@After("dummy()")
 	public void afterMethod(JoinPoint joinPoint) throws Exception {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
@@ -38,6 +54,7 @@ public class Advice {
 	}
 
 	// 실행전 처리, 타겟 메소드 직접호출, 예외처리 가능
+	@Around("dummy()")
 	public Object aroundMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
