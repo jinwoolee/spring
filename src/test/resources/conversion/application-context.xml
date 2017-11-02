@@ -25,6 +25,7 @@
 <bean id="formattVo" class="conversion.model.FormattVo">
 	<property name="reg_dt" value="2017-10-13"/>
 	<property name="mod_dt" value="10-2017-13"/>
+	<property name="amount" value="6,000,000" />
 </bean>		
 
 </beans>	
