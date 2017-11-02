@@ -19,20 +19,12 @@
  -->
  
  
-<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-	<property name="converters">
-		<list>
-			<bean class="conversion.DateStringConverter">
-				<property name="datePattern" value="yyyy-MM-dd"/>
-			</bean>
-		</list>
-	</property>
-</bean>
+<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 									
 									
-
-<bean id="boardVo" class="conversion.model.BoardVo">
+<bean id="formattVo" class="conversion.model.FormattVo">
 	<property name="reg_dt" value="2017-10-13"/>
+	<property name="mod_dt" value="10-2017-13"/>
 </bean>		
 
 </beans>	

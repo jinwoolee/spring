@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import conversion.model.BoardVo;
+import conversion.model.FormattVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"application-context.xml"})
@@ -27,7 +27,7 @@ public class ConversionServiceTest {
 		/***When***/
 
 		/***Then***/
-		BoardVo boardVo = applicationContext.getBean("boardVo", BoardVo.class);
-		logger.debug(boardVo.getReg_dt().toString());
+		FormattVo formattVo = applicationContext.getBean("formattVo", FormattVo.class);
+		logger.debug(formattVo.toString());
 	}	
 }
