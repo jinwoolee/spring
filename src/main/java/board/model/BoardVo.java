@@ -15,6 +15,7 @@ public class BoardVo {
 		this.content	=	content;
 		this.reg_id	=	reg_id;
 	}
+	
 	public String getTitle() {
 		return title;
 	}

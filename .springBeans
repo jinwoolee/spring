@@ -9,6 +9,9 @@
 	<configs>
 		<config>src/test/resources/annotation/application-context.xml</config>
 		<config>src/main/resources/servlet-context.xml</config>
+		<config>src/main/resources/config/spring/root-context.xml</config>
+		<config>src/main/resources/config/spring/context-datasource.xml</config>
+		<config>src/main/resources/config/spring/context-transaction.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

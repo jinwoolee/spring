@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+<select id="boardList" parameterType="map" resultType="BoardVo">
+	select *
+	from board
+	where seq between #{start} and #{end}
+</select>
+
+<select id="boardTotalCnt" resultType="int">
+	select count(*) totalCnt 
+	from board
+</select>
+
+<insert id="insertBoard" parameterType="BoardVo">
+	insert into board  values (#{seq}, #{title}, #{cont}, #{reg_id}, sysdate)
+</insert>
+
+<update id="updateBoard" parameterType="BoardVo">
+	update board set title = #{title}, cont = #{cont}, reg_id = #{reg_id}, reg_dt = sysdate
+	where seq = #{seq}
+</update>
+</mapper>
