@@ -10,7 +10,6 @@
 	<typeAliases>
 		<!--board VO -->
 		<typeAlias type="kr.or.ddit.jdbc.model.BoardVo" alias="BoardVo"/>  
-		
     </typeAliases>
     
     <mappers>
