@@ -7,12 +7,9 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 	<!-- controller bean scan -->
-	<context:component-scan base-package="kr.or.ddit"
-		use-default-filters="false">
-		<context:include-filter type="annotation"
-			expression="org.springframework.stereotype.Controller" />
-		<context:include-filter type="annotation"
-			expression="org.springframework.web.bind.annotation.ControllerAdvice" />	
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />	
 	</context:component-scan>
 
 	<!-- mvc 패턴 구현에 필요한 기본 전략 -->
@@ -22,6 +19,27 @@
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 	<mvc:default-servlet-handler />
 
+	<!-- interceptors -->
+	<!-- 
+		? matches one character
+		* matches zero or more characters within a path segment
+		** match zero or more path segments
+	-->
+	<mvc:interceptors>
+		<mvc:interceptor>			
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/hello.do"/>
+			<bean class="kr.or.ddit.interceptors.PerformanceCheckInterceptor"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>			
+			<mvc:mapping path="/**"/>
+			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+				<property name="paramName" value="language"/>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
 	<!-- property -->
 	<context:property-placeholder location="classpath:config/spring/db.properties" />
 
@@ -30,19 +48,35 @@
 		<property name="basenames">
 			<list> <!-- 메세지 파일의 위치를 지정합니다. message_언어.properties 파일을 찾습니다. -->
 				<value>classpath:/config/msg/error/error</value>
+				<value>classpath:/config/msg/label/label</value>
 			</list>
 		</property>
 		<property name="cacheSeconds" value="60" /><!-- properties 파일이 변경확인 주기 -->
 	</bean>
+	
+	<bean id="msAccessor" class="org.springframework.context.support.MessageSourceAccessor">
+		<constructor-arg>
+			<ref local="messageSource" />
+		</constructor-arg>
+	</bean>
+	
 	<!-- 언어 정보를 세션에 저장하여 사용합니다. -->
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
 
 	<!-- view resolver -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>	
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1"/>
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<!-- json view -->
+	<bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+	
 
 	<!-- multipart resolver -->
 	<bean id="multipartResolver"

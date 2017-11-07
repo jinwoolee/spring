@@ -16,6 +16,7 @@ public class ExceptionController {
 	//localhost:8080/exceptionController/view
 	@RequestMapping("/view")
 	public String view() {
+		logger.debug("requestMapping /view");
 		throw new ArithmeticException();		
 	}
 
