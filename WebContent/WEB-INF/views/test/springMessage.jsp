@@ -11,12 +11,18 @@
 <script src="/js/jquery/jquery-1.12.4.js"></script>
 <script>
 $(document).ready(function(){
+//	$("#language").val("${language}");
+	
+	//language 선택시 페이지 재요청
 	$("#language").on("change", function(){
-		console.log($(this).val());
+		$("input[name=language]").val($(this).val());
+		$("#frm").submit();
 	});
 });
 </script>
 </head>
+
+<spring:htmlEscape defaultHtmlEscape="true"/>
 
 <form:form commandName="boardVo">
 
@@ -39,16 +45,17 @@ $(document).ready(function(){
 </p>
 </form:form>
 
-<p>
-<select id="language" name="language">
-	<c:forEach items="${countryMap}" var="vo">
-		<option value="${vo.key}">${vo.value}</option>
-	</c:forEach>
-</select>	
-</p>
 
 
-<spring:message code="NotEmpty.jsr303BoardVo.reg_id"/>
+<form id="frm" method="post" action="/springMessageController/springMessageView">
+<p>언어:
+	<select id="language" name="language" value="${language}">
+		<c:forEach items="${countryMap}" var="vo">
+			<option value="${vo.key}" <c:if test="${language == vo.key}"> selected </c:if> >${vo.value}</option>
+		</c:forEach>
+	</select>	
+	</p>
+</form>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package kr.or.ddit.springMessage.web;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +38,9 @@ public class SpringMessageController {
 	
 	//localhost:8080/springMessageController/springMessageView
 	@RequestMapping("/springMessageView")
-	public String springMessageView(HttpServletRequest req, ModelMap map) {
-		logger.debug(map.get("countryMap").toString());
+	public String springMessageView(HttpServletRequest req, ModelMap map, Locale locale) {
 		
+		map.put("language", locale.getLanguage());		
 		return "test/springMessage";
 	}
 }
