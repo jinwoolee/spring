@@ -24,6 +24,18 @@ public class HelloController {
 		return "hello";
 	}
 	
+	//localhost:8080/helloTiles
+	@RequestMapping(value="/helloTiles")
+	public String helloTiles(Locale locale, Model model) {
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,DateFormat.LONG, locale);
+		String formattedDate = dateFormat.format(date);
+		model.addAttribute("localeInfo", locale);
+		model.addAttribute("serverTime", formattedDate);
+		
+		return "helloTiles";
+	}
+	
 	//localhost:8080/helloModelAndView
 	@RequestMapping(value="/helloModelAndView")
 	public ModelAndView helloModelAndView(Locale locale) {

@@ -24,30 +24,25 @@ $(document).ready(function(){
 
 <spring:htmlEscape defaultHtmlEscape="true"/>
 
-<form:form commandName="boardVo">
-
 <p>
-	<form:label path="reg_id"><spring:message code="reg_id"/></form:label>
-	<form:input path="reg_id" />
-	<form:errors path="reg_id" />
+	<label for="reg_id"><spring:message code="reg_id"/>
+	<input type="text" name="reg_id" value="${boardVo.reg_id}"/>
 </p>
 
 <p>
-	<form:label path="title"><spring:message code="title"/></form:label>
-	<form:input path="title" />
-	<form:errors path="title" />
+	<label for="title"><spring:message code="title"/>
+	<input type="text" name="title" value="${boardVo.title}"/>
 </p>
 
 <p>
-	<form:label path="cont"><spring:message code="cont"/></form:label>
-	<form:input path="cont" />
-	<form:errors path="cont" />
+	<label for="cont"><spring:message code="cont"/>
+	<input type="text" name="cont" value="${boardVo.cont}" />
 </p>
-</form:form>
 
 
 
-<form id="frm" method="post" action="/springMessageController/springMessageView">
+
+<form id="frm" method="post" action="/springMessageController/springMessageViewNoCtag">
 <p><spring:message code="language"/>:
 	<select id="language" name="language" value="${language}">
 		<c:forEach items="${countryMap}" var="vo">

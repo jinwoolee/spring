@@ -1,6 +1,9 @@
 	package kr.or.ddit.requestBody.web;
 	
-	import org.slf4j.Logger;
+	import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
 	import org.slf4j.LoggerFactory;
 	import org.springframework.stereotype.Controller;
 	import org.springframework.ui.Model;
@@ -24,7 +27,7 @@
 		//http://localhost:8080/requestBodyController/requestBody.do
 		@RequestMapping(value="/requestBody.do",
 				produces={"application/json", "application/xml"},
-			    consumes={"application/json", "application/xml"})
+			    consumes={"application/json"})
 		@ResponseBody
 		public TestVo result(@RequestBody TestVo testVo) {
 			logger.debug("testVo : " + testVo);

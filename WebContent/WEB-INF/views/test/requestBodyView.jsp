@@ -10,33 +10,44 @@ $(document).ready(function() {
 	var form = { userId : "brown", amount : "600", birthDay : "2017-11-01" };
 	$("#jsonString").html(JSON.stringify(form));
 	
-	
-	
 	//send 버튼 클릭 이벤트
-	$("#send").on("click", function() {
+	$("#getJson, #getXml").on("click", function() {
+		var that = this;
+		var dataType = $(this).attr("id") == "getJson" ? "json" : "xml";
+		var callback = $(this).attr("id") == "getJson" ? jsonCallback : xmlCallback;
+		
 		$.ajax({
 			url : "/requestBodyController/requestBody.do",
 			method : "post",
-			dataType: "json",
-			contentType: "application/json; charset=UTF-8",
-			//data : $("#frm").serialize(),
-			//data : { userId : "brown", amonut : "600", birthDay : "2017-11-01" },           
-			data : JSON.stringify(form),
+			data : JSON.stringify(form),						//server로 전송하려는 데이터
+			contentType: "application/json; charset=UTF-8",		//server로 보내는 mediatype
+			dataType: dataType,									//server로 부터 받으려는 데이터 타입
 			success : function(data) {
-				console.log("userId : " + data.userId);
-				console.log("amount : " + data.amount);
-				console.log("birthDay : " + data.birthDay);
-				$("#resultJsonString").html(JSON.stringify(data));
+				callbackFunction(callback, data);		
 			}
 		});
 	});
+	
 });
+
+function callbackFunction(callback, data){
+	callback(data);
+}
+function jsonCallback(data){
+	$("#resultJsonString").html(JSON.stringify(data));
+}
+
+function xmlCallback(data){
+	console.log(data.getElementsByTagName("testVo")[0]);
+	$("#resultJsonString").html(data.getElementsByTagName("testVo")[0]);
+}
+
 </script>
 </head>
 <body>
 	send jsonString : <span id="jsonString"></span><br/>
 	
-	<button id="send">json 전송</button><br/>
+	<button id="getXml">xml return</button> &nbsp; <button id="getJson">json return</button><br/>
 	
 	result jsonString : <span id="resultJsonString"></span>
 	
@@ -47,7 +58,7 @@ $(document).ready(function() {
 		<input type="text" name="userId" value="brown"/>
 		<input type="text" name="600" value="amount"/>
 		<input type="text" name="2017-11-01" value="birthDay"/>
-		<input type="submit" value="전송"/>
+		<input type="submit" value="form 전송"/> <br/>
 	</form>
 </body>
 </html>

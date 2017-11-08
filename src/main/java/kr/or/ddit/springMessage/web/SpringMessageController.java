@@ -23,7 +23,11 @@ public class SpringMessageController {
 	
 	@ModelAttribute("boardVo")
 	public BoardVo boardVo() {
-		return new BoardVo();
+		BoardVo boardVo = new BoardVo();
+		boardVo.setReg_id("brown");
+		boardVo.setTitle("제목 입니다.");
+		boardVo.setCont("내용 입니다.");
+		return boardVo;
 	}
 	
 	@ModelAttribute("countryMap")
@@ -42,5 +46,13 @@ public class SpringMessageController {
 		
 		map.put("language", locale.getLanguage());		
 		return "test/springMessage";
+	}
+	
+	//localhost:8080/springMessageController/springMessageViewNoCtag
+	@RequestMapping("/springMessageViewNoCtag")
+	public String springMessageViewNoCtag(HttpServletRequest req, ModelMap map, Locale locale) {
+		
+		map.put("language", locale.getLanguage());		
+		return "test/springMessageNoCustomTag";
 	}
 }

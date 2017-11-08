@@ -2,14 +2,20 @@ package kr.or.ddit.test.model;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@XmlRootElement(name = "testVo")
 public class TestVo {
 	
 	private	String	userId;
 	private	int		amount;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private	Date	birthDay;
 	
 	public TestVo() {	

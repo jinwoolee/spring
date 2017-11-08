@@ -19,41 +19,39 @@ import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 @RequestMapping("/jsonViewController")
 public class JsonViewController {
 	Logger logger = LoggerFactory.getLogger(JsonViewController.class);
-	
+
 	@ModelAttribute("dataList")
-	public List<String> dataList(){
+	public List<String> dataList() {
 		List<String> dataList = new ArrayList<String>();
 		dataList.add("brown");
 		dataList.add("cony");
 		dataList.add("sally");
-		
+
 		return dataList;
 	}
-	
-	//http://localhost:8080/jsonViewController/jsonStringView
+
+	// http://localhost:8080/jsonViewController/jsonStringView
 	@RequestMapping("/jsonStringView")
 	public String jsonStringView(Model model) {
 		return "pageJsonReport";
-	}	
-	
-	//http://localhost:8080/jsonViewController/jsonView
+	}
+
+	// http://localhost:8080/jsonViewController/jsonView
 	@RequestMapping("/jsonView")
 	public View jsonView() {
 		return new MappingJacksonJsonView();
 	}
-		
-	//http://localhost:8080/jsonViewController/jsonModelAndView
+
+	// http://localhost:8080/jsonViewController/jsonModelAndView
 	@RequestMapping("/jsonModelAndView")
 	public ModelAndView jsonModelAndView() {
 		return new ModelAndView("pageJsonReport");
 	}
-	
-	//http://localhost:8080/jsonViewController/jsonResponseBody
-	@RequestMapping(value="/jsonResponseBody"/*,
-				    consumes={"text/html"}*/,
-				    produces={"application/json"})
+
+	// http://localhost:8080/jsonViewController/jsonResponseBody
+	@RequestMapping(value = "/jsonResponseBody", produces = { "application/json" })
 	@ResponseBody
-	public List<String> jsonResponseBody(ModelMap map){
-		return (List<String>)map.get("dataList");
+	public List<String> jsonResponseBody(@ModelAttribute("dataList") List<String> dataList) {
+		return dataList;
 	}
 }
