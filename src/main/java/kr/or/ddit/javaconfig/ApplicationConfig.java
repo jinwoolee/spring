@@ -50,7 +50,8 @@ import kr.or.ddit.interceptors.PerformanceCheckInterceptor;
 @ComponentScan(basePackages = { "kr.or.ddit" }, useDefaultFilters = false, includeFilters = {
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Controller.class),
 		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = ControllerAdvice.class),
-		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Component.class) })
+		@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Component.class)},
+	excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = Configuration.class)})
 
 @EnableWebMvc // <mvc:annotation-driven>
 public class ApplicationConfig extends WebMvcConfigurerAdapter {
