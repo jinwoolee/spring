@@ -12,9 +12,11 @@ $(document).ready(function() {
 	
 	//send 버튼 클릭 이벤트
 	$("#getJson, #getXml").on("click", function() {
-		var that = this;
 		var dataType = $(this).attr("id") == "getJson" ? "json" : "xml";
 		var callback = $(this).attr("id") == "getJson" ? jsonCallback : xmlCallback;
+		
+		console.log(dataType);
+		console.log(callback);
 		
 		$.ajax({
 			url : "/requestBodyController/requestBody.do",

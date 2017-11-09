@@ -11,6 +11,8 @@ import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter;
+import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -218,6 +220,9 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		converters.add(mappingJacksonHttpMessageConverter());
+		
+		Jaxb2RootElementHttpMessageConverter jaxb2RootElementHttpMessageConverter = new Jaxb2RootElementHttpMessageConverter();
+		converters.add(jaxb2RootElementHttpMessageConverter);
 	}
 	
 	@Bean
@@ -226,4 +231,5 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 		converter.setPrettyPrint(true);
 		return converter;
 	}
+	
 }
