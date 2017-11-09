@@ -25,8 +25,7 @@ public class ContextDatasource{
 	@Autowired
     private Environment env;
 	
-/*
- * <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+/* <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
 		<property name="username" value="pc01" />
