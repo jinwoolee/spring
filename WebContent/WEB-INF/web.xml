@@ -31,10 +31,20 @@
 	</filter-mapping>
 
 	<!-- service / repository -->
-	<context-param>
+	<!-- <context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:config/spring/root-context.xml,
 					 classpath:config/spring/context-datasource.xml
+		</param-value>
+	</context-param> -->
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>kr.or.ddit.javaconfig.RootContext,
+					 kr.or.ddit.javaconfig.ContextDatasource
 		</param-value>
 	</context-param>
 	<listener>
@@ -42,14 +52,27 @@
 	</listener>
 	<!-- service / repository -->
 
+
+
 	<!-- dispatcher-servlet front controller -->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
+		
+		<!-- <init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:servlet-context.xml</param-value>
-		</init-param>
+		</init-param> -->
+		
+		<init-param>
+	  		<param-name>contextClass</param-name>
+	  		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	  	</init-param>
+	  	<init-param>
+	  		<param-name>contextConfigLocation</param-name>
+	  		<param-value>kr.or.ddit.javaconfig.ApplicationConfig</param-value>
+	  	</init-param>
+	  	
 	</servlet>
 
 	<servlet-mapping>

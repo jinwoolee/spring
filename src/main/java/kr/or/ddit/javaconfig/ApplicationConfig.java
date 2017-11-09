@@ -1,5 +1,7 @@
 package kr.or.ddit.javaconfig;
 
+import java.util.List;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -7,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -144,7 +148,7 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public InternalResourceViewResolver internalResourceViewResolver() {
 		InternalResourceViewResolver irViewResolver = new InternalResourceViewResolver();
-		irViewResolver.setPrefix("/WEB-INF/views");
+		irViewResolver.setPrefix("/WEB-INF/views/");
 		irViewResolver.setSuffix(".jsp");
 		irViewResolver.setOrder(2);
 		return irViewResolver;
@@ -209,5 +213,17 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
 		tilesConfigurer.setPreparerFactoryClass(SpringBeanPreparerFactory.class);
 		
 		return tilesConfigurer;
+	}
+	
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		converters.add(mappingJacksonHttpMessageConverter());
+	}
+	
+	@Bean
+	public MappingJackson2HttpMessageConverter mappingJacksonHttpMessageConverter() {
+		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+		converter.setPrettyPrint(true);
+		return converter;
 	}
 }

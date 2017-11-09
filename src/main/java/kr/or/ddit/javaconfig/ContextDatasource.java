@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 
@@ -16,7 +17,8 @@ import org.springframework.core.io.ClassPathResource;
  */
 @Configuration
 @PropertySource(value = { "classpath:config/spring/db.properties" })
-public class ContextDatasource {
+@ImportResource("classpath:config/spring/context-transaction-annotation.xml")
+public class ContextDatasource{
 /*
  * <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -54,7 +56,7 @@ public class ContextDatasource {
 	public SqlSessionFactory sqlSessionFactory() throws Exception{
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource());
-		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("classpath:config/mybatis/sql-map-config.xml"));
+		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("config/mybatis/sql-map-config.xml"));
 		
 		return sqlSessionFactoryBean.getObject();
 	}
@@ -65,4 +67,23 @@ public class ContextDatasource {
 		
 		return sqlSessionTemplate;
 	}
+	
+	//
+	/*<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="retrieve*" read-only="true" />
+			<tx:method name="select*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="within(kr.or.ddit..service..*)" />
+	</aop:config>
+	*/
 }

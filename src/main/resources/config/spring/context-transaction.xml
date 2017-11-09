@@ -11,6 +11,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<!-- tx:advice는 java config로 변경불가 -->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="*" propagation="REQUIRED" />
