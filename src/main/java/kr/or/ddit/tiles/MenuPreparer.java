@@ -33,7 +33,7 @@ public class MenuPreparer implements ViewPreparer{
 		HttpServletRequest request = servletTilesContext.getRequest();
 		logger.debug(request.getRequestURL().toString());
 		
-		String reg_id = request.getParameter("reg_id");
+		String reg_id = request.getParameter("reg_id");	//NOPMD
 		logger.debug(reg_id);
 		
 		logger.debug(attributeContext.toString());
