@@ -44,9 +44,14 @@ $(document).ready(function(){
 
 <form id="frm" method="post" action="/springMessageController/springMessageViewNoCtag">
 <p><spring:message code="language"/>:
-	<select id="language" name="language" value="${language}">
+	<select id="language" name="language">
+		
 		<c:forEach items="${countryMap}" var="vo">
-			<option value="${vo.key}" <c:if test="${language == vo.key}"> selected </c:if> >${vo.value}</option>
+			<c:set var="selected" value=""/>
+			<c:if test="${language == vo.key}">
+				<c:set var="selected" value="selected"/>
+			</c:if>
+			<option value="${vo.key}" ${selected} >${vo.value}</option>
 		</c:forEach>
 	</select>	
 	</p>
