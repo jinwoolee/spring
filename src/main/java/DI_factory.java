@@ -1,4 +1,3 @@
-import board.dao.BoardDao;
 import board.service.BoardService;
 
 public class DI_factory {
