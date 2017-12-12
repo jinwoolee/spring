@@ -37,7 +37,7 @@ public class DbInitTest {
 	@Before
 	public void setup() {
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-		populator.addScript(new ClassPathResource("/springDb/init.sql"));
+		populator.addScript(new ClassPathResource("/springDb/init.sql" ));
 		populator.setContinueOnError(true);
 		DatabasePopulatorUtils.execute(populator , dataSource);
 	}
