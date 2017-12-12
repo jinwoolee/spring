@@ -10,24 +10,24 @@ import javax.servlet.ServletException;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class ContextInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{	
+public class ContextInitializer /*extends AbstractAnnotationConfigDispatcherServletInitializer*/{	
 	
-	@Override
+	//@Override
 	protected Class<?>[] getRootConfigClasses() {
 		return new Class<?>[]{RootContext.class, ContextDatasource.class};
 	}
 	
-	@Override
+	//@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class<?>[]{ApplicationConfig.class};
 	}
 	
-	@Override
+	//@Override
 	protected String[] getServletMappings() {
 		return new String[]{"/"};
 	}
 	
-	@Override
+	//@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
 		encodingFilter.setEncoding("UTF-8");
@@ -37,6 +37,6 @@ public class ContextInitializer extends AbstractAnnotationConfigDispatcherServle
 	    
 	    characterEncoding.addMappingForUrlPatterns( EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), false, "/*");
 	    characterEncoding.setAsyncSupported(true);
-		super.onStartup(servletContext);
+		//super.onStartup(servletContext);
 	}
 }
