@@ -28,8 +28,8 @@ public class BeanInjectionTest {
 		logger.debug("start injectionTest");
 		
 		//given
-		BoardService boardServiceSetter					= applicationContext.getBean("boardServiceSetter", BoardServiceImpl.class);
-		BoardService boardServiceConstructor			= applicationContext.getBean("boardServiceConstructor", BoardServiceImpl.class);
+		BoardService boardServiceSetter					= applicationContext.getBean("boardServiceSetter", BoardService.class);
+		BoardService boardServiceConstructor			= applicationContext.getBean("boardServiceConstructor", BoardService.class);
 		BoardAbstractService boardServiceLookupMethod	= applicationContext.getBean("boardServiceLookupMethod", BoardAbstractService.class);
 		
 		//when

@@ -1,0 +1,32 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	
+	<!-- scope prototype의 빈 boardDao를, scope singleton의 빈 boardService에 주입 하는 테스트
+	     boardDao는 prototype 이기 때문에 boardService bean에서 매번 새로운 boardDao가 주입된것 같지만
+	     테스트를 해보면 그렇지 않다.  
+	 -->
+	
+	<bean id="boardDao" class="board.dao.BoardDao" scope="prototype"/>
+	
+	<bean id="boardService" class="board.service.impl.BoardServiceImpl">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+	<bean id="boardServiceLookupMethod" class="board.service.impl.BoardAbstractService">
+		<lookup-method name="getBoardDaoLookupMethod" bean="boardDao"/>
+	</bean>
+	
+	<!-- scoped proxy  -->
+	<bean id="boardDaoProxy" class="board.dao.BoardDao" scope="prototype">
+		<aop:scoped-proxy />
+	</bean>
+	
+	<bean id="boardServiceProxyInjection" class="board.service.impl.BoardServiceImpl">
+		<property name="boardDao" ref="boardDao" />
+	</bean>
+	
+</beans>
