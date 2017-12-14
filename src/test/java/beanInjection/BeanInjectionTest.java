@@ -52,5 +52,18 @@ public class BeanInjectionTest {
 		assertEquals(boardServiceConstructor.getBoardDao(), boardServiceLookupMethod.getBoardDaoLookupMethod());
 		
 		logger.debug("end injectionTest");
-	}		
+	}
+	
+	//팩토리 메서드(static)에 의해 생성된 빈
+	@Test
+	public void factoryMethodTest() {
+		//given
+		BoardDao boardDao = applicationContext.getBean("boardDaoFactoryMethod", BoardDao.class);
+		BoardDao boardDao2 = applicationContext.getBean("boardDaoFactoryMethod", BoardDao.class);
+		
+		//when
+
+		//then
+		assertEquals(boardDao, boardDao2);
+	}
 }

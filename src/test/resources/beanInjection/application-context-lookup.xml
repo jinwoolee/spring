@@ -21,12 +21,16 @@
 	</bean>
 	
 	<!-- scoped proxy  -->
-	<bean id="boardDaoProxy" class="board.dao.BoardDao" scope="prototype">
-		<aop:scoped-proxy />
+	<!-- proxy-target-class false 속성으로 cglib 라이브러리를 활용하지 않고 jdk 인터페이스 기반의 proxy 객체를 생성한다. -->
+	<bean id="boardDaoProxy" scope="prototype" class="board.dao.BoardDao" >
+		<aop:scoped-proxy proxy-target-class="false"/>
 	</bean>
 	
-	<bean id="boardServiceProxyInjection" class="board.service.impl.BoardServiceImpl">
-		<property name="boardDao" ref="boardDao" />
-	</bean>
+	<bean id="boardServiceProxy" class="board.service.impl.BoardServiceImpl">
+		<property name="boardDao" ref="boardDaoProxy" />
+	</bean>	
 	
+	<bean id="boardServiceProxy2" class="board.service.impl.BoardServiceImpl">
+		<property name="boardDao" ref="boardDaoProxy" />
+	</bean>
 </beans>

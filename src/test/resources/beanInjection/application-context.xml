@@ -7,6 +7,8 @@
 	
 	<bean id="boardDao" class="board.dao.BoardDao" />
 	
+	<bean id="boardDaoFactoryMethod" class="board.dao.BoardDao" factory-method="getInstance"/>
+	
 	<bean id="boardServiceSetter" class="board.service.impl.BoardServiceImpl">
 		<property name="boardDao" ref="boardDao"/>
 	</bean>
@@ -18,5 +20,6 @@
 	<bean id="boardServiceLookupMethod" class="board.service.impl.BoardAbstractService">
 		<lookup-method name="getBoardDaoLookupMethod" bean="boardDao"/>
 	</bean>
+	
 	
 </beans>	

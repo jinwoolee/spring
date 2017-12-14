@@ -1,11 +1,13 @@
 package board.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import board.model.BoardVo;
 
-public class BoardDao {
+public class BoardDao implements IBoardDao{
+	private	Date date = new Date();
 	
 	public List<BoardVo> getBoardList(String boardGb) {
 		//db에서 조회가 된 결과 라고 생각하자.          
@@ -16,4 +18,14 @@ public class BoardDao {
 		
 		return boardList;
 	}
+	
+	public static BoardDao getInstance() {
+		return new BoardDao();
+	}
+
+	@Override
+	public Date getDate() {
+		return date;
+	}
+	
 }
