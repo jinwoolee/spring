@@ -1,13 +1,12 @@
 package lifecycle;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,7 +17,7 @@ public class LifeCycleTest {
 	Logger logger = LoggerFactory.getLogger(LifeCycleTest.class);
 	
 	@Autowired
-	private ApplicationContext applicationContext;
+	private	Bean bean;
 
 	@Test
 	public void lifeCycleTest() {
@@ -27,6 +26,6 @@ public class LifeCycleTest {
 		/***When***/
 
 		/***Then***/
-		assertEquals(1, 1);
+		assertNotNull(bean);
 	}
 }

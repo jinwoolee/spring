@@ -15,10 +15,10 @@
 			</bean>
 		</list>
 	</property>		 
-</bean>
- -->
+</bean> -->
  
  
+ <!-- annotation 활용 -->
 <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
 									
 									

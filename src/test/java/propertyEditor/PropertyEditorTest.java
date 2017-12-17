@@ -29,5 +29,6 @@ public class PropertyEditorTest {
 		/***Then***/
 		BoardVo boardVo = applicationContext.getBean("boardVo", BoardVo.class);
 		logger.debug(boardVo.getReg_dt().toString());
+		assertEquals("Fri Oct 13 00:00:00 KST 2017", boardVo.getReg_dt().toString());
 	}	
 }

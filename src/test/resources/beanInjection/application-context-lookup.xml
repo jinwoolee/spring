@@ -30,7 +30,11 @@
 		<property name="boardDao" ref="boardDaoProxy" />
 	</bean>	
 	
+	<bean id="boardDaoProxy2" scope="prototype" class="board.dao.BoardDao" >
+		<aop:scoped-proxy />
+	</bean>
+	
 	<bean id="boardServiceProxy2" class="board.service.impl.BoardServiceImpl">
-		<property name="boardDao" ref="boardDaoProxy" />
+		<property name="boardDao" ref="boardDaoProxy2" />
 	</bean>
 </beans>

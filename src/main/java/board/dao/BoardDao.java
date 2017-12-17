@@ -1,12 +1,19 @@
 package board.dao;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import board.model.BoardVo;
 
 public class BoardDao implements IBoardDao{
+	Logger logger = LoggerFactory.getLogger(BoardDao.class);
+	
 	private	Date date = new Date();
 	
 	public List<BoardVo> getBoardList(String boardGb) {
@@ -26,6 +33,11 @@ public class BoardDao implements IBoardDao{
 	@Override
 	public Date getDate() {
 		return date;
+	}
+	
+	@PostConstruct
+	public void sayHello() {
+		logger.debug("sayHello");
 	}
 	
 }

@@ -14,10 +14,11 @@ public class Main {
 	
 	public static void main(String[] args) {
 		//class path xml
-		ApplicationContext	xmlContext				=	new ClassPathXmlApplicationContext(new String[] {"classpath:application-context.xml"});
+		//ApplicationContext	xmlContext				=	new ClassPathXmlApplicationContext(new String[] {"beanInjection/application-context.xml"});
+		ApplicationContext	xmlContext				=	new ClassPathXmlApplicationContext(new String[] {"application-context.xml"});
 		
 		//class path
-		ApplicationContext	genericXmlContext		=	new GenericXmlApplicationContext("classpath:application-context.xml");
+		//ApplicationContext	genericXmlContext		=	new GenericXmlApplicationContext("classpath:beanInjection/application-context.xml");
 		
 		//file
 		//ApplicationContext	genericXmlFileContext	=	new GenericXmlApplicationContext("file:/Applications/ljw/lecture_workspace/springBean/src/main/resources/application-context.xml");

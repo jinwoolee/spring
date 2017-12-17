@@ -1,3 +1,4 @@
+
 package beanInjection;
 
 import static org.junit.Assert.*; 
@@ -61,7 +62,7 @@ public class BeanInjectionLookupTest {
 	
 	
 	//http://www.logicbig.com/tutorials/spring-framework/spring-core/scoped-proxy/
-	// jdk interface proxy - 방식 
+	// jdk dynamic proxy - 방식(interface ) 
 	@Test
 	public void jdkInterfaceProxyInectionTest() {
 		//given
@@ -96,14 +97,21 @@ public class BeanInjectionLookupTest {
 	}
 	
 	
+	//cgilib 방식의 proxy 테스트
+	@Test
 	public void cglibProxyInectionTest() {
 		//given
-		BoardService boardService = applicationContext.getBean("boardServiceCGLIBProxy", BoardService.class);
-		BoardService boardService2 = applicationContext.getBean("boardServicCGLIBProxy2", BoardService.class);
+		BoardService boardService = applicationContext.getBean("boardServiceProxy2", BoardService.class);
+		
 		IBoardDao boardDao = boardService.getBoardDao();
-		IBoardDao boardDao2 = boardService2.getBoardDao();
+		IBoardDao boardDao2 = boardService.getBoardDao();
 		
 		//when
+		for(int i = 0; i < 10; i ++)
+			logger.debug("{}, {}", boardDao.getDate().getTime(), boardDao.hashCode());
+		
+		for(int i = 0; i < 10; i ++)
+			logger.debug("{}", boardService.getDate().getTime());
 
 		//then
 		assertNotEquals(boardDao, boardDao2);

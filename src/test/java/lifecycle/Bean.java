@@ -6,72 +6,94 @@ import javax.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
+import org.springframework.context.MessageSource;
+import org.springframework.context.MessageSourceAware;
+import org.springframework.context.ResourceLoaderAware;
+import org.springframework.core.io.ResourceLoader;
 
-public class Bean implements BeanNameAware, ApplicationContextAware, BeanPostProcessor, InitializingBean, DisposableBean {
+public class Bean implements BeanNameAware, ApplicationContextAware, InitializingBean, DisposableBean, BeanFactoryAware, ResourceLoaderAware, ApplicationEventPublisherAware, MessageSourceAware  {
 	Logger logger = LoggerFactory.getLogger(Bean.class);
 	
 	public Bean() {
-		logger.debug("Bean 생성자");
+		logger.debug("1.Bean 생성자");
 	}
 
-	//BeanPostProcessor 빈객체 초기화시 특정 작업을 수행할 수 있다.
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		logger.debug("postProcessBeforeInitialization " + beanName);
-		return bean;
-	}
-
-	//BeanPostProcessor 빈객체 초기화시 특정 작업을 수행할 수 있다.
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		logger.debug("postProcessAfterInitialization " + beanName);
-		return bean;
-	}
-
-	//ApplicationContextAware
-	@Override
-	public void setApplicationContext(ApplicationContext arg0) throws BeansException {
-		logger.debug("setApplicationContext");
-	}
-
-	//BeanNameWare
+	//BeanNameAware
 	@Override
 	public void setBeanName(String name) {
-		logger.debug("setBeanName " + name);
+		logger.debug("2.setBeanName " + name);
+	}
+		
+	//ApplicationContextAware
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		logger.debug("3.setApplicationContext");
 	}
 
+	@PostConstruct
+	public void postConstruct() {
+		logger.debug("4.postConstruct");
+	}
+	
 	//InitializingBean
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		logger.debug("afterPropertiesSet");
-	}
-
-	@Override
-	public void destroy() throws Exception {
-		logger.debug("destory");
+		logger.debug("5.afterPropertiesSet");
 	}
 	
-	@PostConstruct
-	public void postConstruct() {
-		logger.debug("postConstruct");
+	//init-method
+	public void initMethod() {
+		logger.debug("6.initMethod");
 	}
+	
 	
 	@PreDestroy
 	public void preDestory() {
-		logger.debug("preDestory");
+		logger.debug("9.preDestory");
 	}
 	
-	public void initMethod() {
-		logger.debug("initMethod");
+	//DisposableBean
+	@Override
+	public void destroy() throws Exception {
+		logger.debug("10.destory");
 	}
 	
 	public void destoryMethod() {
-		logger.debug("destoryMethod");
+		logger.debug("11.destoryMethod");
 	}
+
+
+	//BeanFactoryAware
+	@Override
+	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+		logger.debug("{}", "setBeanFactory");
+	}
+
+	//ResourceLoaderAware
+	@Override
+	public void setResourceLoader(ResourceLoader arg0) {
+		logger.debug("{}", "setResourceLoader");
+	}
+
+	//ApplicationEventPublisherAware
+	@Override
+	public void setApplicationEventPublisher(ApplicationEventPublisher arg0) {
+		logger.debug("{}", "setApplicationEventPublisher");
+	}
+
+	//MessageSourceAware
+	@Override
+	public void setMessageSource(MessageSource arg0) {
+		logger.debug("{}", "setMessageSource");
+	}
+	
 }
