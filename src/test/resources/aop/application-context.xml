@@ -14,7 +14,7 @@ pointcut : advice가 적용되는 지점
  
 <bean id="advice" class="aop.Advice"/>
 
-<aop:config proxy-target-class="true">
+<aop:config proxy-target-class="false">
 	<!-- <aop:pointcut id="targetMethod" expression="execution(* aop ..*(..))" /> -->
 	<aop:pointcut id="targetMethod" expression="bean(firstTarget)" />
 	

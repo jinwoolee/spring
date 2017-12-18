@@ -15,6 +15,7 @@
 	<constructor-arg value="true"/>
 </bean>	
 
+<!-- postProcessor  -->
 <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 	<property name="customEditors">
 		<map>
