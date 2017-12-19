@@ -30,7 +30,7 @@ public class AopTest {
 		
 		//when
 		firstTarget.firstTargetMethod();
-		logger.debug("\n");
+		//logger.debug("\n");
 		secondTarget.secondTargetMethod();
 		
 		//then

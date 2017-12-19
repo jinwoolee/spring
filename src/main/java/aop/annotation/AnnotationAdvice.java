@@ -19,7 +19,7 @@ public class AnnotationAdvice {
 	//pointcut 등록을 위한 dummy
 	@Pointcut("bean(annotationTarget)")
 	public void dummy() {};
-	
+
 	// 타겟 메소드 실행전 수행
 	@Before("dummy()")
 	public void beforeMethod(JoinPoint joinPoint) {
