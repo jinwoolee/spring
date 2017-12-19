@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +30,9 @@ public class placeHolderTest {
 	@Test
 	public void placeHolderTest() {
 		logger.debug("start placeHolderTest");
+		logger.debug("system.getProperty(\"username\") : {}", System.getProperty("username"));
+		logger.debug("system.getEnv(\"username\") : {}", System.getenv("username"));
+		
 		
 		//given
 		DbProperties dbProperties = applicationContext.getBean("dbProperties", DbProperties.class);

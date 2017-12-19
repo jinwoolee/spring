@@ -11,11 +11,11 @@ import kr.or.ddit.jdbc.model.BoardVo;
 @MyBatis
 public interface MyBatisInterfaceDao {
 
-	public List<BoardVo> boardList(Map<String, Integer> map);
+	List<BoardVo> boardList(Map<String, Integer> map);
 
-	public int boardTotalCnt();
+	int boardTotalCnt();
 
-	public int insertBoard(BoardVo boardVo);
+	int insertBoard(BoardVo boardVo);
 
-	public int updateBoard(BoardVo boardVo);
+	int updateBoard(BoardVo boardVo);
 }

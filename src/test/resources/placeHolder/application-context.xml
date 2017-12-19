@@ -6,13 +6,25 @@
 	      				http://www.springframework.org/schema/context 
       					http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	
-	<context:property-placeholder location="classpath:/placeHolder/db.properties"/>
+	<!-- property-placeholder의 location에서 설정한 값만 가져오는 것이 아님
+		 System properties, System environment에서도 가져옴
+		 System 속성 사용하지 않으려면  system-properties-mode를 설정하여  properties 파일에서 설정한 값만 사용하도록 설정 가능
+		 
+		 기본 설정이 FALLBACK 이라고 레퍼런스 문서에 나오나 실제 디폴트 값이 동작하지 않음
+	 -->
+	<context:property-placeholder location="classpath:/placeHolder/db.properties" system-properties-mode="FALLBACK"/>
 	
-	<bean id="dbProperties" class="placeHolder.DbProperties">
+	<!-- <bean id="dbProperties" class="placeHolder.DbProperties">
 		<property name="driver" value="${jdbc.driver}"/>
 		<property name="url" value="${jdbc.url}"/>
 		<property name="username" value="${jdbc.username}"/>
 		<property name="password" value="${jdbc.password}"/>
-	</bean>
+	</bean> -->
 	
+	<bean id="dbProperties" class="placeHolder.DbProperties">
+		<property name="driver" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${username}"/>
+		<property name="password" value="${password}"/>
+	</bean>
 </beans>	
