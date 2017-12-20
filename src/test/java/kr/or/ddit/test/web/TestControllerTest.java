@@ -1,10 +1,14 @@
 package kr.or.ddit.test.web;
 
 import static org.junit.Assert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 import javax.annotation.Resource;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,27 +27,9 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration		//WebApplicationContext 설정
 public class TestControllerTest {
 	Logger logger = LoggerFactory.getLogger(TestControllerTest.class);
-
-	@Autowired 
-	private WebApplicationContext ctx;
-	private MockMvc mockMvc;		//dispatcher servlet
 	
 	@Resource(name="testController")
 	private TestController testController;
-	
-	@Before
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
-	}
-	
-	@Test
-	public void pageRequestTest() {
-		//given
-		//mockMvc.perform(requestBuilder)
-		//when
-
-		//then
-	}
 	
 	@Test
 	public void testDoTest() {
