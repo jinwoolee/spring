@@ -11,7 +11,7 @@
 <script src="/js/jquery/jquery-1.12.4.js"></script>
 <script>
 $(document).ready(function(){
-//	$("#language").val("${language}");
+	$("#language").val("${language}");
 	
 	//language 선택시 페이지 재요청
 	$("#language").on("change", function(){
@@ -25,17 +25,17 @@ $(document).ready(function(){
 <spring:htmlEscape defaultHtmlEscape="true"/>
 
 <p>
-	<label for="reg_id"><spring:message code="reg_id"/>
+	<label for="reg_id"><spring:message code="reg_id"/></label>
 	<input type="text" name="reg_id" value="${boardVo.reg_id}"/>
 </p>
 
 <p>
-	<label for="title"><spring:message code="title"/>
+	<label for="title"><spring:message code="title"/></label>
 	<input type="text" name="title" value="${boardVo.title}"/>
 </p>
 
 <p>
-	<label for="cont"><spring:message code="cont"/>
+	<label for="cont"><spring:message code="cont"/></label>
 	<input type="text" name="cont" value="${boardVo.cont}" />
 </p>
 
@@ -44,9 +44,10 @@ $(document).ready(function(){
 
 <form id="frm" method="post" action="/springMessageController/springMessageViewNoCtag">
 <p><spring:message code="language"/>:
-	<select id="language" name="language" value="${language}">
+	<select id="language" name="language" >
 		<c:forEach items="${countryMap}" var="vo">
-			<option value="${vo.key}" <c:if test="${language == vo.key}"> selected </c:if> >${vo.value}</option>
+			<c:set var="selected" value="${language == vo.key ? 'selected' : '' }"> </c:set>
+			<option value="${vo.key}"  ${selected}>${vo.value}</option>
 		</c:forEach>
 	</select>	
 	</p>

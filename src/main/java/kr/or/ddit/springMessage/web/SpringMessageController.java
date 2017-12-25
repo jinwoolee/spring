@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.jdbc.model.BoardVo;
 
@@ -22,11 +23,11 @@ public class SpringMessageController {
 	Logger logger = LoggerFactory.getLogger(SpringMessageController.class);
 	
 	@ModelAttribute("boardVo")
-	public BoardVo boardVo() {
-		BoardVo boardVo = new BoardVo();
+	public BoardVo boardVo(HttpServletRequest req, BoardVo boardVo) {
+		/*BoardVo boardVo = new BoardVo();
 		boardVo.setReg_id("brown");
 		boardVo.setTitle("제목 입니다.");
-		boardVo.setCont("내용 입니다.");
+		boardVo.setCont("내용 입니다.");*/
 		return boardVo;
 	}
 	

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import kr.or.ddit.test.model.TestVo;
 
 @Controller
-@RequestMapping("requestMappingController")		//http://localhost:8080/requestMappingController
+@RequestMapping(value="/requestMappingController")		//http://localhost:8080/requestMappingController
 public class RequestMappingController {
 	private Logger logger = LoggerFactory.getLogger(RequestMappingController.class);
 	

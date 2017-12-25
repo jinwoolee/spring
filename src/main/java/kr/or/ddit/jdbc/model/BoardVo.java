@@ -6,6 +6,7 @@ public class BoardVo {
 	private	int		seq;
 	private	String	title;
 	private	String	cont;
+	private	String	language;
 	private	String	reg_id;
 	private	Date	reg_dt;
 	
@@ -54,6 +55,12 @@ public class BoardVo {
 		this.reg_dt = reg_dt;
 	}
 	
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 	@Override
 	public String toString() {
 		return "BoardVo [title=" + title + ", cont=" + cont + ", reg_id=" + reg_id + ", reg_dt=" + reg_dt + "]";

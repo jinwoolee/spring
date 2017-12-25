@@ -3,10 +3,13 @@ package kr.or.ddit.test.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
+import kr.or.ddit.test.jaxb.JaxbDateSerializer;
 
 @XmlRootElement(name = "testVo")
 public class TestVo {
@@ -40,6 +43,8 @@ public class TestVo {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+	
+	@XmlJavaTypeAdapter(JaxbDateSerializer.class)
 	public Date getBirthDay() {
 		return birthDay;
 	}

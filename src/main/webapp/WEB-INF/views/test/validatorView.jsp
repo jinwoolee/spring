@@ -17,10 +17,11 @@ $(document).ready(function() {
 	<!-- name 속성에 명시한 커맨드 객체와 관련된 에러 정보를 errors 커스턴 태그에서 사용할 수 있도록 선언 -->
 	<spring:hasBindErrors name="boardVo"/>
 	
-	<form id="frm" method="post" action="/initBinderValidatorController/initBinderValidatorResult">		<!-- 커맨드객체.필드 -->
+	<form id="frm" method="post" action="/validatorController/validatorResult">		<!-- 커맨드객체.필드 -->
 		작성자 id : <input type="text" name="reg_id" value="${boardVo.reg_id}" />  <form:errors path="boardVo.reg_id"/> <br/>
 		글 제목 : <input type="text" name="title" value="${boardVo.title}"/> <form:errors path="boardVo.title"/> <br/>
 		글 내용 : <input type="text" name="cont" value="${boardVo.cont}"/> <form:errors path="boardVo.cont"/> <br/>
+		작성일 : <input type="text" name="reg_dt" value="${boardVo.reg_dt}"/> <form:errors path="boardVo.reg_dt"/> <br/>
 		<input type="submit" value="전송"/>
 	</form>
 </body>

@@ -7,7 +7,8 @@
 <script src="/js/jquery/jquery-1.12.4.js"></script>
 <script>
 $(document).ready(function() {
-	var form = { userId : "brown", amount : "600", birthDay : "2017-11-01" };
+	//var form = { userId : "brown", amount : "600", birthDay : "2017-11-01" };
+	var form = { "userId" : "brown", "amount" : "600", "birthDay" : "2017-11-01" };
 	$("#jsonString").html(JSON.stringify(form));
 	
 	//send 버튼 클릭 이벤트
@@ -20,7 +21,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			url : "/requestBodyController/requestBody.do",
-			method : "post",
+			method : "post",			
 			data : JSON.stringify(form),						//server로 전송하려는 데이터
 			contentType: "application/json; charset=UTF-8",		//server로 보내는 mediatype
 			dataType: dataType,									//server로 부터 받으려는 데이터 타입

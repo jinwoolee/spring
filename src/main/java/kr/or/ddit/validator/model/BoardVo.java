@@ -2,11 +2,15 @@ package kr.or.ddit.validator.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class BoardVo {
 	private	int		seq;
 	private	String	title;
 	private	String	cont;
 	private	String	reg_id;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private	Date	reg_dt;
 	
 	public BoardVo() {
