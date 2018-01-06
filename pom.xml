@@ -4,12 +4,18 @@
 	<groupId>com.ljw</groupId>
 	<artifactId>springBean</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java-version>1.7</java-version>
+		<!-- maven update project -->
+		<!-- http://wiki.eclipse.org/M2E-WTP_FAQ#How_do_I_change_the_context_root_of_my_project.3F -->
+		<!-- https://maven.apache.org/pom.html -->
+		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
+		<!-- maven update project -->
+
+		<version.java>1.7</version.java>
 
 		<!-- Test -->
 		<version.junit>4.12</version.junit>
@@ -40,10 +46,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.0</version>
+				<version>3.1</version>
 				<configuration>
-					<source>${java-version}</source>
-					<target>${java-version}</target>
+					<soruce>${version.java}</soruce>
+					<target>${version.java}</target>
+					<encoding>utf-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -51,27 +58,14 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<warSourceDirectory>${basedir}/webapp</warSourceDirectory>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
 				</configuration>
 			</plugin>
-			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
-            
-            <!-- jar src, doc 다운 -->
-            <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-				</configuration>
-			</plugin>	
+
+			<!-- jar src, doc 다운 -->
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-eclipse-plugin</artifactId> 
+				<configuration> <downloadSources>true</downloadSources> <downloadJavadocs>true</downloadJavadocs> 
+				</configuration> </plugin> -->
 		</plugins>
 	</build>
 
