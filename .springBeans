@@ -15,6 +15,7 @@
 		<config>src/test/resources/batch/application-context.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/main/resources/config/spring/context-batch.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
