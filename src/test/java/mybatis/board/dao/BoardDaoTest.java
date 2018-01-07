@@ -35,12 +35,14 @@ public class BoardDaoTest {
 	@Test
 	public void getBoardFileListTest() {
 		/***Given***/
-		//BoardVo boardVo = BoardDao.getBoardFileList();
+		BoardVo vo = new BoardVo();
+		vo.setBoardno(1);
 		
 		/***When***/
+		BoardVo boardVo = boardDao.getBoardFileList(vo);
 
 		/***Then***/
-		//assertTrue(boardVo.get);
+		assertTrue(boardVo.getFileList().size() > 0);
 	}
 
 }

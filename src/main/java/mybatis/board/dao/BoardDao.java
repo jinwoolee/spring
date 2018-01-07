@@ -8,4 +8,6 @@ public interface BoardDao {
 
 	List<BoardVo> getBoardList();
 
+	BoardVo getBoardFileList(BoardVo vo);
+
 }

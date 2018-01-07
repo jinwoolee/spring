@@ -26,6 +26,7 @@
 	</collection>	
 </resultMap>
 
+
 <!-- 게시판 조회 -->
 <!-- <select id="getBoardList" resultType="boardVo"> -->
 <select id="getBoardList" resultMap="boardMap">
@@ -33,9 +34,8 @@
 	from board
 </select>
 
-
 <!-- 게시판 첨부파일 조회 -->
-<select id="getBoardFile" parameterType="boardVo" resultMap="boardFileMap">
+<select id="getBoardFileList" parameterType="boardVo" resultMap="boardFileMap">
 	select a.*, b.*
 	 from board a, boardfile b
 	where a.boardno = #{boardno}

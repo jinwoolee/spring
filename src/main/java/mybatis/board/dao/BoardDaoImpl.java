@@ -19,4 +19,9 @@ public class BoardDaoImpl implements BoardDao{
 	public List<BoardVo> getBoardList() {
 		return sqlSession.selectList("getBoardList");
 	}
+
+	@Override
+	public BoardVo getBoardFileList(BoardVo vo) {
+		return sqlSession.selectOne("getBoardFileList", vo);
+	}
 }
