@@ -16,7 +16,7 @@
 </bean>	
 
 <!-- postProcessor  -->
-<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 	<property name="customEditors">
 		<map>
 			<entry key ="java.util.Date" value-ref="dateEditor" />
