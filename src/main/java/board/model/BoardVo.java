@@ -1,8 +1,9 @@
 package board.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class BoardVo {
+public class BoardVo implements Serializable{
 	private	Integer	boardno;
 	private	String	title;
 	private	String	content;

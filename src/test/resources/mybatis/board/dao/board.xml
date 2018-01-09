@@ -4,6 +4,7 @@
 
 <mapper namespace="board">
 
+
 <resultMap id="boardMap" type="boardVo" >
 	<id column="boardno" property="boardno"/>
 	<result column="title" property="title"/>
@@ -29,7 +30,7 @@
 
 <!-- 게시판 조회 -->
 <!-- <select id="getBoardList" resultType="boardVo"> -->
-<select id="getBoardList" resultMap="boardMap">
+<select id="getBoardList" resultMap="boardMap" useCache="true">
 	select *
 	from board
 </select>

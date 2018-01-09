@@ -44,5 +44,22 @@ public class BoardDaoTest {
 		/***Then***/
 		assertTrue(boardVo.getFileList().size() > 0);
 	}
+	
+	@Test
+	public void getBoardListCacheTest() {
+		/***Given***/
+		
+		//sql mapper 파일에 cache 설정후
+		//같은 sql mapper를 호출시 sql 실행 로그가 몇번 작성되는지 확인
+		//sql mapper 설정 : <cache></cache> 
+		//--> 해당 mapper의 select 문에 대해 cache 설정됨 (mapper 전체에 cache 설정 후, 개별 sql문 마다 미사용 여부 설정 가능)
+		// <select id... useCache="false">
+		List<BoardVo> boardList = boardDao.getBoardList();
+		List<BoardVo> boardList2 = boardDao.getBoardList();
 
+		/***When***/
+
+		/***Then***/
+		assertTrue(boardList.size() > 0);
+	}
 }
