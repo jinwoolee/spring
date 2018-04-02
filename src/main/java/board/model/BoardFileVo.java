@@ -1,6 +1,8 @@
 package board.model;
 
-public class BoardFileVo {
+import java.io.Serializable;
+
+public class BoardFileVo implements Serializable{
 	
 	private	String	fileno;
 	private	String	boardno;
