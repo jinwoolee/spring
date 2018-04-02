@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="defaultContent" template="/WEB-INF/view/tiles/defaultLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/view/commonJsp/header.jsp"/>
+		<put-attribute name="leftMenu" value="/WEB-INF/view/commonJsp/leftMenu.jsp"/>
+		<put-attribute name="content" value=""/>
+	</definition>
+	
+	<definition name="helloTiles" extends="defaultContent">
+		<put-attribute name="content" value="/WEB-INF/view/tiles/helloTiles.jsp"/>
+	</definition>
+</tiles-definitions>

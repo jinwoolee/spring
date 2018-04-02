@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.7.3.201602250914-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>src/test/resources/ddit/or/kr/bean/collection/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/bean/pholder/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/bean/lifecycle/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/bean/scan/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/bean/type/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/bean/type/conversion/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/bean/type/fmconversion/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/aop/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/aop/application-context-profile.xml</config>
+		<config>src/test/resources/ddit/or/kr/aop/application-context-annotation.xml</config>
+		<config>src/test/resources/ddit/or/kr/mvc/application-context.xml</config>
+		<config>src/main/resources/ddit/or/kr/spring/config/application-context.xml</config>
+		<config>src/test/resources/ddit/or/kr/dummy.xml</config>
+		<config>src/main/resources/ddit/or/kr/spring/config/context-datasource.xml</config>
+		<config>src/test/resources/ddit/or/kr/user/dao/application-context.xml</config>
+		<config>src/main/resources/ddit/or/kr/spring/config/context-transaction.xml</config>
+		<config>src/main/resources/ddit/or/kr/spring/config/context-batch.xml</config>
+		<config>src/main/resources/ddit/or/kr/spring/config/context-beans.xml</config>
+		<config>src/main/resources/ddit/or/kr/spring/config/context-message.xml</config>
+	</configs>
+	<autoconfigs>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

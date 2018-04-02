@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+  
+<!-- 사용자 전체 리스트 -->
+<select id="userListAll" resultType="userVo">
+  select *
+    from t_user
+</select>
+  
+<!-- 사용자 입력 -->
+<insert id="insertUser" parameterType="userVo">
+	insert into t_user (userId, userNm, userAlias)
+		 values (#{userId}, #{userNm}, #{userAlias})
+</insert>
+  
+</mapper>
+
+
+
+
+
+
+
+
+

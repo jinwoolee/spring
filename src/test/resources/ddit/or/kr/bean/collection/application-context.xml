@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+	
+	<bean id="collectionBean" class="ddit.or.kr.bean.collection.CollectionBean">
+		<!-- private	List lists;  -->
+		<property name="lists" >
+			<list>
+				<value>10</value>
+				<value>100</value>
+				<value>1000</value>
+			</list>
+		</property>
+		
+		<!--private	Set sets;-->
+		<property name="sets">
+			<set>
+				<value>s10</value>
+				<value>s100</value>
+				<value>s1000</value>
+			</set>
+		</property>
+		
+		<!-- 	private Map maps;-->
+		<property name="maps">
+			<map>
+				<entry key="key10" value="value10"/>
+				<entry key="key100" value="value100"/>
+				<entry key="key1000" value="value1000"/>
+			</map>
+		</property>
+	
+		<!--private Properties pros; -->
+		<property name="pros">
+			<props>
+				<prop key="pro10">value10</prop>		
+				<prop key="pro100">value100</prop>
+				<prop key="pro1000">value1000</prop>
+			</props>
+		</property>
+		
+		<property name="msg" value="hello" />
+	</bean>
+</beans>
+
+
+
+
+
+
+

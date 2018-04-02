@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="simpleDateFormat" class="java.text.SimpleDateFormat">
+		<constructor-arg value="yyyy-MM-dd"/>
+	</bean>
+	
+	<!-- custom editor 등록 -->
+	<!-- 속성 주입 <property name=""></property>-->
+	<bean id="dateEditor" class="org.springframework.beans.propertyeditors.CustomDateEditor">
+		<!-- 생성자 인자 2개 : (DateFormat dateFormat, boolean allowEmpty)  -->
+		<constructor-arg ref="simpleDateFormat"/>	
+		<constructor-arg value="true"/>
+	</bean>
+	
+	<!-- <bean id="dateEditor"를 통해 bean을 선언만 한 상태, 특수 빈 처리를 위해 등록하는 과정이 필요
+	      customEditorConfigurer 클래스의 내부를 확인해보면 BeanFactoryPostProcessor를 구현한것을 
+	       확인 할수 있다 : bean 생명주기 참고 -->
+	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<!-- key : type, valu-ref 에 지정된 클래스로 변환작업 -->
+				<entry key="java.util.Date" value-ref="dateEditor"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="valueObject" class="ddit.or.kr.bean.type.ValueObject">
+		<!-- date속성에 주입하는 예제 -->
+		<property name="dt" value="2017-12-20"/>
+	</bean>
+
+</beans>
+
+
+
+
+

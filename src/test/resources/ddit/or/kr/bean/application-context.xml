@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- beans : spring container -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+<!-- beans 안에 스프링에서 관리될 bean을 정의 할 수 있다 -->
+<!-- 메세지 dao -->
+<!-- id / name : bean의 이름, 식별자  중복이되면 안된다. 
+     class : 해당 bean의 구현체(인터페이스가 아니다)  
+     
+     스프링의 기본 bean 설정은 singleton 이다.
+   하지만 디자인패턴에서 이야기하는 singleton과는 조금 다르다.
+   
+   디자인 패턴 signleton : 해당 클래스로부터 하나의 객체만 생성 (ex : getInstance() : jvm에서 해당 객체는 오직하나)
+  스프링 : bean기준으로 singleton 
+       같은 클래스로 다른 id의 bean을 등록하면 class가 같더라도 서로다른 bean 
+   -->
+     
+	<bean id="messageDao" class="ddit.or.kr.bean.dao.MessageDao"  />
+	<bean id="messageDaoClone" class="ddit.or.kr.bean.dao.MessageDao" />
+	<bean id="messageDaoFactory" class="ddit.or.kr.bean.dao.MessageDao" factory-method="getInstance"/>
+	<bean id="messageDaoPrototype" class="ddit.or.kr.bean.dao.MessageDao" scope="prototype" />
+	
+	<bean id="messageService" class="ddit.or.kr.bean.service.MessageService">
+		<property name="messageDao" ref="messageDao"/>
+	</bean>
+	
+	<bean id="messageServiceConstruct" class="ddit.or.kr.bean.service.MessageService">
+		<constructor-arg ref="messageDao"/>
+	</bean>
+	
+	<!-- scope : singleton, prototype
+	    messageService : singleton 
+	    messgeDao : prototype -->
+	<bean id="messageServiceProto" class="ddit.or.kr.bean.service.MessageService">
+		<property name="messageDao" ref="messageDaoPrototype"/>
+	</bean>		  
+	
+	<!-- singleton객체에 prototype 객체 주입하기-->
+	<bean id="messageDaoProxy" class="ddit.or.kr.bean.dao.MessageDao" scope="prototype">
+		<aop:scoped-proxy proxy-target-class="false"/>		
+	</bean>
+	<bean id="messageServiceProxy" class="ddit.or.kr.bean.service.MessageService">
+		<property name="messageDao" ref="messageDaoProxy"/>
+	</bean>
+	
+	
+
+</beans>
+
+
+
+
+
+
