@@ -1,4 +1,4 @@
-package kr.or.ddit.excpetion.controllerAdvice;
+package kr.or.ddit.exception.controllerAdvice;
 
 import javax.servlet.http.HttpServletResponse;
 

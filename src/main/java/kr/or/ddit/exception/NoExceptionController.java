@@ -1,4 +1,4 @@
-package kr.or.ddit.excpetion;
+package kr.or.ddit.exception;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
