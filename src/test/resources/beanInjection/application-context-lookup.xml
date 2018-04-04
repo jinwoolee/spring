@@ -7,8 +7,8 @@
 	
 	<!-- scope prototype의 빈 boardDao를, scope singleton의 빈 boardService에 주입 하는 테스트
 	     boardDao는 prototype 이기 때문에 boardService bean에서 매번 새로운 boardDao가 주입된것 같지만
-	     테스트를 해보면 그렇지 않다.  
-	 -->
+	     테스트를 해보면 그렇지 않다.
+	-->
 	
 	<bean id="boardDao" class="board.dao.BoardDao" scope="prototype"/>
 	
@@ -22,7 +22,7 @@
 	
 	<!-- scoped proxy  -->
 	<!-- proxy-target-class false 속성으로 cglib 라이브러리를 활용하지 않고 jdk 인터페이스 기반의 proxy 객체를 생성한다. -->
-	<bean id="boardDaoProxy" scope="prototype" class="board.dao.BoardDao" >
+	<bean id="boardDaoProxy" class="board.dao.BoardDao" scope="prototype">
 		<aop:scoped-proxy proxy-target-class="false"/>
 	</bean>
 	
@@ -30,7 +30,7 @@
 		<property name="boardDao" ref="boardDaoProxy" />
 	</bean>	
 	
-	<bean id="boardDaoProxy2" scope="prototype" class="board.dao.BoardDao" >
+	<bean id="boardDaoProxy2" class="board.dao.BoardDao" scope="prototype">
 		<aop:scoped-proxy />
 	</bean>
 	

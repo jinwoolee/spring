@@ -84,6 +84,7 @@
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>12.1.0.2</version>
+			<scope>provided</scope>
 			<!-- <version>11.2.0.3</version> -->
 		</dependency>
 
@@ -257,8 +258,7 @@
 			<artifactId>tiles-servlet</artifactId>
 			<version>2.2.2</version>
 		</dependency>
-	
-		
+
 		<!-- security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -271,5 +271,13 @@
 			<version>3.2.4.RELEASE</version>
 		</dependency>
 		<!-- security -->
+
+		<!-- https://mvnrepository.com/artifact/cglib/cglib -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.2.6</version>
+		</dependency>
+
 	</dependencies>
 </project>

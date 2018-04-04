@@ -17,9 +17,4 @@
 		<constructor-arg index="0" name="boardDao" ref="boardDao"/>
 	</bean>
 	
-	<bean id="boardServiceLookupMethod" class="board.service.impl.BoardAbstractService">
-		<lookup-method name="getBoardDaoLookupMethod" bean="boardDao"/>
-	</bean>
-	
-	
 </beans>	

@@ -12,5 +12,8 @@ public abstract class BoardAbstractService implements BoardService{
 		return getBoardDaoLookupMethod().getBoardList(boardGb);
 	}
 	
+	//매번 새로운 bean을 생성하는 방법
+	//1.<aop:scoped-proxy>
+	//2.lookup method
 	public abstract BoardDao getBoardDaoLookupMethod();
 }

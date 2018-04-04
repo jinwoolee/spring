@@ -65,11 +65,10 @@
 
 
 	<!-- dispatcher-servlet front controller -->
+	<!--servlet-context-->
 	<servlet>
 		<servlet-name>appServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-
-
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:servlet-context.xml</param-value>
@@ -78,8 +77,12 @@
 		<!-- <init-param> <param-name>contextClass</param-name> <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value> 
 			</init-param> <init-param> <param-name>contextConfigLocation</param-name> 
 			<param-value>kr.or.ddit.javaconfig.ApplicationConfig</param-value> </init-param> -->
+			<!-- 서블릿은 최초 요청시 초기화가 진행. 
+			     load-on-startup을 0보다 큰 값으로 할 경우
+			        서버기동시 초기화 진행 (값은 우선순위) -->
+		<load-on-startup>1</load-on-startup>
+		
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>

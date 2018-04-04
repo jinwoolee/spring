@@ -30,7 +30,6 @@ public class BeanInjectionTest {
 		//given
 		BoardService boardServiceSetter					= applicationContext.getBean("boardServiceSetter", BoardService.class);
 		BoardService boardServiceConstructor			= applicationContext.getBean("boardServiceConstructor", BoardService.class);
-		BoardAbstractService boardServiceLookupMethod	= applicationContext.getBean("boardServiceLookupMethod", BoardAbstractService.class);
 		
 		//when
 		
@@ -43,13 +42,6 @@ public class BeanInjectionTest {
 		//constructor
 		assertTrue(boardServiceConstructor.getBoardDao() != null);
 		assertNotNull(boardServiceConstructor.getBoardDao());
-		
-		//method lookup
-		assertTrue(boardServiceLookupMethod.getBoardDaoLookupMethod() != null);
-		assertNotNull(boardServiceLookupMethod.getBoardDaoLookupMethod());
-		
-		assertEquals(boardServiceSetter.getBoardDao(), boardServiceConstructor.getBoardDao());
-		assertEquals(boardServiceConstructor.getBoardDao(), boardServiceLookupMethod.getBoardDaoLookupMethod());
 		
 		logger.debug("end injectionTest");
 	}

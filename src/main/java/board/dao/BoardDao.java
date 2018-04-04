@@ -17,7 +17,7 @@ public class BoardDao implements IBoardDao{
 	private	Date date = new Date();
 	
 	public List<BoardVo> getBoardList(String boardGb) {
-		//db에서 조회가 된 결과 라고 생각하자.          
+		//db에서 조회가 된 결과 라고 생각하자.
 		List<BoardVo> boardList = new ArrayList<BoardVo>();
 		boardList.add(new BoardVo("title--1", "content--1", "brown", "2017-10-30"));
 		boardList.add(new BoardVo("title--2", "content--2", "brown", "2017-10-30"));
@@ -37,7 +37,6 @@ public class BoardDao implements IBoardDao{
 	
 	@PostConstruct
 	public void sayHello() {
-		logger.debug("sayHello");
+		//logger.debug("sayHello");
 	}
-	
 }

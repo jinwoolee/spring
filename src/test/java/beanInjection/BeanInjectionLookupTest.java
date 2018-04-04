@@ -1,21 +1,21 @@
-
 package beanInjection;
 
-import static org.junit.Assert.*; 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import board.dao.BoardDao;
 import board.dao.IBoardDao;
 import board.service.BoardService;
 import board.service.impl.BoardAbstractService;
-import board.service.impl.BoardServiceImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"application-context-lookup.xml"})
@@ -53,13 +53,12 @@ public class BeanInjectionLookupTest {
 		//when
 		
 		//then
+		assertEquals(boardServiceLookupMethod, boardServiceLookupMethod2);
 		assertNotEquals(boardServiceLookupMethod.getBoardDaoLookupMethod(), boardServiceLookupMethod.getBoardDaoLookupMethod());
 		assertNotEquals(boardServiceLookupMethod.getBoardDaoLookupMethod(), boardServiceLookupMethod2.getBoardDaoLookupMethod());
 		
 		logger.debug("end injectionTest");
 	}
-	
-	
 	
 	//http://www.logicbig.com/tutorials/spring-framework/spring-core/scoped-proxy/
 	// jdk dynamic proxy - 방식(interface ) 
@@ -107,13 +106,17 @@ public class BeanInjectionLookupTest {
 		IBoardDao boardDao2 = boardService.getBoardDao();
 		
 		//when
-		for(int i = 0; i < 10; i ++)
+		for(int i = 0; i < 10; i ++) {
+			try { Thread.sleep(2);}
+			catch (InterruptedException e) {e.printStackTrace(); }
 			logger.debug("{}, {}", boardDao.getDate().getTime(), boardDao.hashCode());
+		}
 		
 		for(int i = 0; i < 10; i ++)
 			logger.debug("{}", boardService.getDate().getTime());
 
 		//then
-		assertNotEquals(boardDao, boardDao2);
+		//assertNotEquals(boardDao, boardDao2);	//프록시객체의 주소가 같을수 있음
+		assertNotEquals(boardDao.toString(), boardDao2.toString());
 	}
 }
