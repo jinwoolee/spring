@@ -64,6 +64,8 @@ public class BeanInjectionLookupTest {
 	// jdk dynamic proxy - 방식(interface ) 
 	@Test
 	public void jdkInterfaceProxyInectionTest() {
+		logger.debug("{}", "jdkInterfaceProxyInectionTest() start");
+		
 		//given
 		BoardService boardService = applicationContext.getBean("boardServiceProxy", BoardService.class);
 		
@@ -72,7 +74,7 @@ public class BeanInjectionLookupTest {
 		long dateTime = boardDao.getDate().getTime();
 		//시간을 두고 객체를 호출한다.
 		try {
-			Thread.sleep(5);
+			Thread.sleep(300);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -93,6 +95,8 @@ public class BeanInjectionLookupTest {
 		
 		logger.debug("{}, {}", dateTime, dateTime2);
 		assertNotEquals(dateTime, dateTime2);
+		
+		logger.debug("{}", "jdkInterfaceProxyInectionTest() end");
 	}
 	
 	
