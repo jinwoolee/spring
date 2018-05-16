@@ -17,6 +17,7 @@ public class BoardDao implements IBoardDao{
 	private	Date date;
 	
 	public BoardDao() {
+		logger.debug("public BoardDao()");
 		date = new Date();
 	}
 	
