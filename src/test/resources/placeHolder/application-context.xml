@@ -12,8 +12,11 @@
 		 
 		 기본 설정이 FALLBACK 이라고 레퍼런스 문서에 나오나 실제 디폴트 값이 동작하지 않음
 	 -->
-	<context:property-placeholder location="classpath:/placeHolder/db.properties" system-properties-mode="FALLBACK"/>
-	
+		<context:property-placeholder 
+			location="classpath:/placeHolder/db.properties,
+				  	  classpath:/placeHolder/config.properties"
+		/>
+			 
 	<!-- <bean id="dbProperties" class="placeHolder.DbProperties">
 		<property name="driver" value="${jdbc.driver}"/>
 		<property name="url" value="${jdbc.url}"/>
@@ -26,5 +29,7 @@
 		<property name="url" value="${url}"/>
 		<property name="username" value="${username}"/>
 		<property name="password" value="${password}"/>
+		<property name="admin" value="${admin}"/>
+		<property name="town" value="${town}"/>
 	</bean>
 </beans>	

@@ -28,7 +28,7 @@ public class placeHolderTest {
 	private ApplicationContext applicationContext;
 	
 	@Test
-	public void placeHolderTest() {
+	public void placeHoldTest() {
 		logger.debug("start placeHolderTest");
 		logger.debug("system.getProperty(\"username\") : {}", System.getProperty("username"));
 		logger.debug("system.getEnv(\"username\") : {}", System.getenv("username"));
@@ -45,10 +45,14 @@ public class placeHolderTest {
 		logger.debug(dbProperties.getUrl());
 		logger.debug(dbProperties.getUsername());
 		logger.debug(dbProperties.getPassword());
+		logger.debug(dbProperties.getAdmin());
+		logger.debug(dbProperties.getTown());
 		assertEquals("oracle.jdbc.driver.OracleDeriver", dbProperties.getDriver());
 		assertEquals("jdbc:oracle:thin:@127.0.0.1:1521:XE", dbProperties.getUrl());
 		assertEquals("dba", dbProperties.getUsername());
 		assertEquals("admin", dbProperties.getPassword());
+		assertEquals("brown", dbProperties.getAdmin());
+		assertEquals("lineTown", dbProperties.getTown());
 		
 		logger.debug("end placeHolderTest");
 	}
