@@ -13,8 +13,13 @@ import board.model.BoardVo;
 
 public class BoardDao implements IBoardDao{
 	Logger logger = LoggerFactory.getLogger(BoardDao.class);
+
+	private	Date date;
 	
-	private	Date date = new Date();
+	public BoardDao() {
+		date = new Date();
+	}
+	
 	
 	public List<BoardVo> getBoardList(String boardGb) {
 		//db에서 조회가 된 결과 라고 생각하자.
