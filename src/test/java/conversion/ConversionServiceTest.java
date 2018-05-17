@@ -1,5 +1,7 @@
 package conversion;
-import static org.junit.Assert.*; 
+import static org.junit.Assert.assertEquals;
+
+import java.util.Calendar;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,13 +23,17 @@ public class ConversionServiceTest {
 	private ApplicationContext applicationContext;
 	
 	@Test
-	public void propertyEditorTest() {
+	public void conversionServiceTest() {
 		/***Given***/
-
+		FormattVo formattVo = applicationContext.getBean("formattVo", FormattVo.class);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(2017, 9, 13, 0, 0, 0);
+		
 		/***When***/
 
 		/***Then***/
-		FormattVo formattVo = applicationContext.getBean("formattVo", FormattVo.class);
 		logger.debug(formattVo.toString());
-	}	
+		
+		assertEquals(calendar.getTime().toString(),	 formattVo.getReg_dt().toString());
+	}
 }

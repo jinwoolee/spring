@@ -6,15 +6,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 public class FormattVo {
-	
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+
 	private	Date			reg_dt;
-	
-	@DateTimeFormat(pattern = "MM-yyyy-dd")
-	private	Date			mod_dt;
-	
-	@NumberFormat(pattern = "#,###")
-	private int				amount;
 	
 	public FormattVo() {
 
@@ -28,25 +21,9 @@ public class FormattVo {
 		this.reg_dt = reg_dt;
 	}
 
-	public Date getMod_dt() {
-		return mod_dt;
-	}
-
-	public void setMod_dt(Date mod_dt) {
-		this.mod_dt = mod_dt;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
 	@Override
 	public String toString() {
-		return "FormattVo [reg_dt=" + reg_dt + ", mod_dt=" + mod_dt + ", amount=" + amount + "]";
+		return "FormattVo [reg_dt=" + reg_dt + "]";
 	}
 
 }
