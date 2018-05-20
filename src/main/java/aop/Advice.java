@@ -41,11 +41,11 @@ public class Advice {
 	public Object aroundMethod(ProceedingJoinPoint joinPoint) throws Throwable {
 		String methodName = joinPoint.getSignature().getName();
 		String className = joinPoint.getTarget().getClass().getSimpleName();
-		logger.debug("aroundMethod실행 - 1");
+		logger.debug("aroundMethod실행 - before");
 		long startTime = System.currentTimeMillis();
 		Object[] args = joinPoint.getArgs();
 		Object retVal = joinPoint.proceed(args);
-		logger.debug("aroundMethod 실행 - 2 " + className + "." + methodName + ", lead time ="
+		logger.debug("aroundMethod 실행 - after " + className + "." + methodName + ", lead time ="
 				+ (System.currentTimeMillis() - startTime));
 		return retVal;
 	}
