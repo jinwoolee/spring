@@ -1,5 +1,8 @@
 package kr.or.ddit.multipart.web;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -33,6 +36,20 @@ public class MultipartResolverController {
 							Model model) {
 		MultipartFile file = request.getFile("attach");
 		logger.debug(file.getName());
+		
+		String path = hsr.getServletContext().getRealPath("/upload");
+		try {
+			file.transferTo(new File(path + File.separator + file.getOriginalFilename()));
+			
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
 		
 		model.addAttribute("fileName", file.getName());
 		model.addAttribute("fileSize", file.getSize());
