@@ -209,7 +209,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- jsonView -->
+		<!-- jsonView : responsebody -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -270,6 +270,27 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>3.2.4.RELEASE</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-core</artifactId>
+			<version>4.0.1.RELEASE</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-test</artifactId>
+			<version>4.0.1.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.batch</groupId>
+			<artifactId>spring-batch-infrastructure</artifactId>
+			<version>4.0.1.RELEASE</version>
+		</dependency>
+
 		<!-- security -->
 
 		<!-- https://mvnrepository.com/artifact/cglib/cglib -->
@@ -278,6 +299,7 @@
 			<artifactId>cglib</artifactId>
 			<version>3.2.6</version>
 		</dependency>
+
 
 	</dependencies>
 </project>
