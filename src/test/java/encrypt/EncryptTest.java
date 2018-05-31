@@ -10,7 +10,7 @@ public class EncryptTest {
 	Logger logger = LoggerFactory.getLogger(EncryptTest.class);
 
 	@Test
-	public void encryptTest() throws Exception {
+	public void encryptTest(){
 		/***given***/
 		String originalText = "plain text";
 		String key = "key";
