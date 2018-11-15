@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="util">
+	
+	<!-- 월단위 달력 생성 -->
+	<insert id="makeMothlyCalender" parameterType="String">
+		<![CDATA[
+		insert into calendar
+		select to_char( to_date(#{ym} || '01', 'yyyyMMdd') + (level-1), 'yyyyMMdd') ymd,
+		       sysdate
+ 		  from dual
+ 				connect by level <= LAST_DAY(to_date(#{ym}, 'yyyyMM')) 
+     			- to_date(#{ym} || '01', 'yyyyMMdd') +1
+     	]]>
+	</insert>
+		
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

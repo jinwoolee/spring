@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	<select id="selectUserAll" resultType="userVo">
+		select * from jspuser
+	</select>
+
+	<select id="selectUser" resultType="userVo" parameterType="String">
+		select *
+		from jspuser
+		where userId = #{userId}
+	</select>
+
+	<select id="selectUserByVo" resultType="userVo" parameterType="userVo">
+		select *
+		from jspuser
+		where userId = #{userId}
+	</select>
+
+	<select id="selectUserPageList" parameterType="pageVo"
+		resultType="userVo">
+		select *
+   		  from
+		(select rownum rnum, a.*
+  		   from
+		       (select jspuser.*
+ 				  from jspuser
+				order by userId) a)
+		  where rnum between #{page}*#{pageSize}-(#{pageSize}-1)
+		                 and #{page}*#{pageSize}         
+	</select>
+	
+	<select id="getUserCnt" resultType="int">
+		select count(*) from jspuser
+	</select>
+	
+	<!-- 사용자 등록 -->
+	<insert id="insertUser" parameterType="userVo">
+		insert into jspuser 
+			(userId, name, pass, addr1, addr2, zipcd, email, tel, birth, profile)
+		 values(#{userId}, #{name}, #{pass}, #{addr1}, #{addr2}, #{zipcd}, #{email}, #{tel}, #{birth}, #{profile, jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 사용자 삭제 -->
+	<delete id="deleteUser" parameterType="string">
+		delete from jspuser
+		where userId = #{userId}
+	</delete>	
+	
+	<!-- 사용자 수정 -->
+	<update id="updateUser" parameterType="UserVo">
+		update jspuser set name = #{name}, 
+						   pass = #{pass},
+						   addr1 = #{addr1},
+						   addr2 = #{addr2},
+						   zipcd = #{zipcd},
+						   email = #{email},
+						   tel = #{tel},
+						   birth = #{birth},
+						   profile = #{profile}
+		where userId = #{userId}
+		
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+

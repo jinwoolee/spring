@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- kr.or.ddit.ioc.CollectionBean 스프링 빈으로 등록하기
+		 collection bean에 선언한 4가지 속성을 스프링 설정파일에서 주입 
+		 list, set, map, property
+	-->
+	<bean id="collectionBean" class="kr.or.ddit.ioc.CollectionBean">
+		<property name="list">
+			<list>
+				<value>brown</value>
+				<value>cony</value>
+				<value>sally</value>
+			</list>
+		</property>
+		
+		<property name="set">
+			<set>
+				<value>brown_set</value>
+				<value>cony_set</value>
+				<value>sally_set</value>
+			</set>
+		</property>
+		
+		<property name="map">
+			<map>
+				<entry key="name" value="brown" />
+				<entry key="age" value="15" />
+			</map>
+		</property>
+		
+		<property name="property">
+			<props>
+				<prop key="db.userId">sem</prop>
+				<prop key="db.password">java</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+

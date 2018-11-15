@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="kr/or/ddit/config/db/db.properties" />
+
+	<typeAliases>
+		<typeAlias type="kr.or.ddit.file.model.FileVo" alias="fileVo" />
+		<typeAlias type="kr.or.ddit.user.model.UserVo" alias="userVo" />
+		<typeAlias type="kr.or.ddit.util.model.PageVo" alias="pageVo" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+			<property name="driver" value="${jdbc.driver}"/>
+			<property name="url" value="${jdbc.url}"/>
+			<property name="username" value="${jdbc.user}"/>
+			<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+
+
+<!-- 			<dataSource type="JNDI"> -->
+<!-- 				<property name="data_source" value="java:comp/env/jdbc/oracleDB" /> -->
+<!-- 			</dataSource> -->
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="kr/or/ddit/config/db/file.xml" />		
+		<mapper resource="kr/or/ddit/config/db/user.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
