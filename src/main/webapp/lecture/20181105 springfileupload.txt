@@ -1,0 +1,83 @@
+m05-967-226
+
+--springfileupload id 시퀀스
+CREATE SEQUENCE  seq_fileid MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 CACHE 20 NOORDER  NOCYCLE ;
+
+
+/* 첨부파일 */
+CREATE TABLE springFileUpload (
+	ID NUMBER NOT NULL, /* 첨부파일ID */
+	file_name VARCHAR2(255) NOT NULL, /* 파일명 */
+	org_file_name VARCHAR2(255) NOT NULL, /* 원본파일명 */
+	file_path VARCHAR2(500) NOT NULL, /* 파일경로 */
+	file_ext VARCHAR2(255) /* 파일확장자 */
+);
+
+COMMENT ON TABLE springFileUpload IS '첨부파일';
+
+COMMENT ON COLUMN springFileUpload.ID IS '첨부파일ID';
+
+COMMENT ON COLUMN springFileUpload.file_name IS '파일명';
+
+COMMENT ON COLUMN springFileUpload.org_file_name IS '원본파일명';
+
+COMMENT ON COLUMN springFileUpload.file_path IS '파일경로';
+
+COMMENT ON COLUMN springFileUpload.file_ext IS '파일확장자';
+
+CREATE UNIQUE INDEX PK_springFileUpload
+	ON springFileUpload (
+		ID ASC
+	);
+
+ALTER TABLE springFileUpload
+	ADD
+		CONSTRAINT PK_springFileUpload
+		PRIMARY KEY (
+			ID
+		);
+		
+		
+FileDao.insertFile 메소드와 동일하게
+FileService.insertFile 메소드 구현
+(테스트 코드 포함)
+		
+
+class boardService{
+	insertPost(){
+		boardDao.insertPost();	//commit
+	}
+	
+	insertFile(){
+		boardDao.insertFile();	//commit
+	}
+	
+	
+	==>
+	//명시적트랜잭션 : 개발자가 commit,rollback 직접 명령
+	//선언적트랜잭션 : 특정환경에서 트랜잭션이 이루어지도록
+	                   (*Service 이름을 갖은 객체의 모든 메소드에서
+					     트랜잭션이 이루어지도록
+						 예외가 발생하지 않으면 자동커밋
+						 RuntimeException이 발생하면 자동 rollback)
+	
+	insertPost(){
+		SqlSession session = SqlSessionFactpry.
+		int insertPostCnt = boardDao.insertPost();	//commit
+		int insertFileCnt = boardDao.insertFile();	//commit
+		if(insertPostCnt == 0 || 
+		   insertFileCnt == 0 )
+			session.rollback();
+			
+		
+	}
+	
+}		
+		
+		
+		
+		
+		
+		
+		
+		

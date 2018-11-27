@@ -1,0 +1,35 @@
+jndi 설정
+
+<GlobalNamingResources>
+     <!--   jdbc 셋팅 -->
+	<Resource name="jdbc/oracleDB" 
+            auth="Container" 
+            type="javax.sql.DataSource" 
+            factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+            maxActive="100" 
+            minIdle="10" 
+            maxWait="10000" 
+            initialSize="10"
+            validationQuery="SELECT 1 FROM DUAL"
+            driverClassName="oracle.jdbc.driver.OracleDriver"
+            defaultAutoCommit="false"
+            username="pc01" 
+            password="java"
+            url="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+      </GlobalNamingResources>
+
+context.xml
+<ResourceLink type="javax.sql.DataSource"
+                name="jdbc/oracleDB"
+                global="jdbc/oracleDB"/>
+                
+                
+
+web.xml
+<!-- JNDI -->
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/oracleDB</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>        

@@ -1,0 +1,30 @@
+m40-832-644
+
+{userList : [userVo : {userId : "brown", name:"브라운"...},
+			          {userId : "sally", name:"샐리"...} ] , pageCnt:13}
+				
+paraemter
+userId="brown"
+
+page=1
+pageSize=10
+
+--> request.getParameter("page");
+--> request.getParameter("PageSize");
+-->spring /
+public Stirng getUserList(PageVo pageVo){
+
+
+@requestBody					  
+{page:1, pageSize:10}
+json ==> java객체 ==> json (마샬링 / 언마샬링)
+xml ==> java객체 ==> xml
+java객체(List<String> rangers, Map) ==> json
+
+
+
+
+
+
+
+

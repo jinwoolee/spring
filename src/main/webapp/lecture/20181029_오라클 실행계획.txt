@@ -1,0 +1,32 @@
+OLTP : Online transaction Processing
+
+OLAP : Online Analytical Processing
+
+
+게시판 과제물에
+
+1.첨부파일, 댓글 조회시 인덱스 스캔이 되도록
+HINT 작성후 실행계획 확인하여 캡쳐 제출
+
+2.게시판 프로젝트 mapper 파일의 sql에도
+  힌트 적용
+where post_id =''
+
+인덱스 
+장점 : 검색속도를 빠르게 할수 있다
+단점 : 입력시 느려질수 있다
+     (정렬후 index 구조에 데이터를 넣어야함
+	  인덱스가 8개라고 하면 각각의 인덱스 구조에
+	  맞게 데이터를 정렬후 입력하는 과정이 필요)
+	   
+
+
+
+
+
+
+
+
+
+
+

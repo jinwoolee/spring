@@ -1,0 +1,79 @@
+m87-625-640
+
+tiles jsp support
+
+tiles servlet support
+
+tiles extras
+
+
+<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-jsp</artifactId>
+    <version>3.0.8</version>
+</dependency>
+
+
+<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-servlet -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-servlet</artifactId>
+    <version>3.0.8</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.apache.tiles/tiles-extras -->
+<dependency>
+    <groupId>org.apache.tiles</groupId>
+    <artifactId>tiles-extras</artifactId>
+    <version>3.0.8</version>
+</dependency>
+
+
+사용자 전체리스트 userAllList.jsp
+사용자 페이지 리스트 userPageList.jsp
+사용자 상세 조회 userDetail.jsp
+사용자 입력 userForm.jsp
+사용자 수정 userUpdate.jsp
+
+userController 에서 리턴하고 있던 viewName은
+그대로 유지 한 상황에서 작업
+
+
+
+
+
+1.jsp를 요청(userList, pageCnt) ==> 빈 페이지를 조회
+2.페이지 로딩이 완료되면 getUserList(1);
+2-1. ajax call을 통해 json객체를 응답으로 받음
+2-2. json 객체를 사용하여 html 문서를 만듬
+
+1.jsp를 요청(userList, pageCnt) ==> 빈 페이지를 조회
+2.페이지 로딩이 완료되면 getUserListHtml(1);
+2-1. ajax call을 통해 html 응답으로 받음
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

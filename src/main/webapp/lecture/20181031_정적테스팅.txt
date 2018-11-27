@@ -1,0 +1,2 @@
+pmd 플러그인 설치
+https://dl.bintray.com/pmd/pmd-eclipse-plugin/updates/

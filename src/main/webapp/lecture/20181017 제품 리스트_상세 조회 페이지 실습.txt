@@ -1,0 +1,11 @@
+﻿메뉴추가 : 제품리스트 - 페이지처리(페이지당 10건)
+table : prod, lprod
+정렬기준 : 제품아이디
+
+제품아이디, 제품명, 제품그룹명, 제품등록일(yyyy/mm/dd)
+prod_id, prod_name, lprod_nm, prod_insdate (yyyy/mm/dd) 
+
+
+제품상세
+제품아이디, 제품명, 제품그룹명, 바이어이름, 바이어 이메일
+prod_id, prod_name, lprod_nm, buyer_name, buyer_email

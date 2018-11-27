@@ -1,0 +1,34 @@
+m26-735-974
+
+
+프로젝트명 : springProject (spring framework 사용)
+메이븐 기반 프로젝트 생성후
+
+localhost:8081/hello 요청시
+
+hello.jsp를 통해 hello.jsp라는 문구를 화면에
+
+출력하는 웹서비스 개발
+
+
+/hello --> HelloServlet.java --> hello.jsp
+
+<servlet>
+	<servlet-name>임의대로이름을</servlet-name>
+	<servlet-class>요청을처리할 서블릿</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>임의대로이름을</servlet-name>
+	<url-pattern>/hello</url-pattern>
+</servlet-mapping>
+
+
+
+
+
+
+
+
+
+
+

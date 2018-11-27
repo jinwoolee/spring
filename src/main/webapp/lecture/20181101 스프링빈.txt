@@ -1,0 +1,72 @@
+m56-913-436
+
+
+ComponentScanTest 에서 작업
+
+[1] boardService가 스프링 빈으로 정상적으로
+생성되었는지 테스트
+
+1.해당 객체가 null인지 확인
+2.해당 객체의 selectBoardList를 logger로 출력
+
+
+[2] boardService.getBoardDao()를 통해 리턴받은
+   boardDao와
+   
+   ComponentScanTest의 boardDao 객체가 동일한
+   객체인지 확인하는 테스트 코드 작성
+
+
+
+   
+====spring mvc====
+dispatcher-servlet url-mapping 설정에 따른
+리소스 접근 유무
+
+테스트 대상
+ 정적자료 : localhost:8081/js/jquery-3.3.1.min.js
+ jsp : localhost:8081/index.jsp
+ spring controller : localhost:8081/hello/hello.do
+ 
+테스트 대상을 대상으로 url-mapping 설정을
+변경하면서 접근 성공 여부를 확인
+url-mapping : /*, /
+ 
+
+
+
+[사용자 로그인]
+kr.or.ddit.user.web.UserController
+
+/user/loginView ==> /WEB-INF/view/login/login.jsp
+/user/loginProcess ==> userId == brown / brwonPass
+                       이면 /WEB-INF/view/main.jsp
+					   그렇지 않으면 
+					   /WEB-INF/view/login/login.jsp
+login.jsp, main.jsp 화면을 jsp/servlet
+수업시간에 만든 결과물과 동일하게 브라우저에
+표시될 수 있도록 개발
+
+
+
+
+
+
+
+
+					   
+
+
+
+
+
+
+
+
+   
+   
+   
+   
+   
+   
+   

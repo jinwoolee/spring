@@ -1,0 +1,17 @@
+m57-386-140
+
+remeber-me(사용자 아이디 기억하기)
+1.login.jsp
+  remeber-me input(checkbox) 파라미터를
+  login 요청시 전송
+  (userId, pass --> userId, pass, remember-me)
+
+2./dditLogin(LoginServlet)
+ remember-me 파라미터를 확인
+ 2-1)아이디 기억하기 사용
+	 response 객체에 rememeber-me cookie 생성
+ 2-2)아이디 기억하기 사용하지 않기
+     response 객체에 rememeber-me cookie 삭제
+
+3.쿠키 값에 따라 remember-me checkbox 설정하기
+	login.jsp

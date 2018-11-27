@@ -1,0 +1,105 @@
+war --> /home/pi/was/tomcat7/webapps
+
+cp 복사대상 복사위치
+
+cp /home/pi/deploy/target/jsp-0.0.1-SNAPSHOT.war 
+	  /home/pi/was/tomcat7/webapps/
+
+/home/pi/was/tomcat7/webapps/jsp-0.0.1-SNAPSHOT.war
+
+
+/home/pi/was/tomcat7/webapps/jsp-0.0.1-SNAPSHOT
+-->
+/home/pi/was/tomcat7/webapps/ROOT
+
+기존 루트 백업
+/home/pi/was/tomcat7/webapps/ROOT
+-->
+/home/pi/was/tomcat7/webapps/ROOT_BACK
+
+pwd : /home/pie/was/tomcat7/webapps/
+mv -rf 대상디렉토리 이동디렉토리
+mv -rf /home/pi/was/tomcat7/webapps/ROOT
+	   /home/pi/was/tomcat7/webapps/ROOT_BACK
+mv -rf ./ROOT ./ROOT_BACK	   
+
+
+webapps/ROOT 삭제
+rm -rf 삭제대상디렉토리
+rm -rf /home/pi/was/tomcat7/webapps/ROOT
+rm -rf ~/was/tomcat7/webapps/ROOT
+
+pwd : /home/pi/was/tomcat7/webapps
+rm -rf ./ROOT
+
+
+cp 복사대상 복사위치
+cp ~/.m2/repository/com/oracle.ojdbc6/12.0.1.2/ojdbc6-12.0.1.2.jar ~/was/tomcat7/lib
+
+pwd : ~/.m2/repository/com/oracle.ojdbc6/12.0.1.2/
+cp ./ojdbc6-12.0.1.2.jar ~/was/tomcat7/lib
+
+
+
+
+
+=====배포위치=====
+/home/pi/was/tomcat7/webapps/ROOT
+
+=====git source clone 위치=======
+/home/pi/deploy/프로젝트명
+
+
+======deploy.sh 파일 : /home/pi/deploy ======
+: jsp 프로젝트의 배포 스크립트
+
+1.git에서 소스를 최신화한다(git pull)
+  --jsp 프로젝트의 .git 폴더가 위치한 경로로 이동
+cd /home/pi/deploy/201805jsp
+
+  --git hub에서 소스를 최신화
+git pull
+
+2.소스 컴파일, 패키징
+mvn clean package -Dmaven.test.skip=true
+
+3.라즈베리파이에서 동작 가능한 db.properties를
+  미리 올려둠.(/home/pi/deploy/db.properties)
+  
+  해당 파일을 maven package 경과 (target) 적용
+  (삭제후 복사)
+rm ~/deploy/201805jsp/target/jsp-0.0.1-SNAPSHOT/WEB-INF/classes/kr/or/ddit/db/db.properties  
+cp ~/deploy/db.properties ~/deploy/201805jsp/target/jsp-0.0.1-SNAPSHOT/WEB-INF/classes/kr/or/ddit/db/
+
+4.tomcat shutdown
+~/was/tomcat7/bin/shutdown.sh
+
+5.maven package 파일을 tomcat webapps ROOT 복사
+  --기존 ROOT 삭제
+rm -rf ~/was/tomcat7/webapps/ROOT
+  
+  --target폴더에 준비한 소스를 복사
+cp -rf ~/deploy/201805jsp/target/jsp-0.0.1-SNAPSHOT ~/was/tomcat7/webapps/ROOT
+		
+6.tomcat 기동
+~/was/tomcat7/bin/startup.sh
+  
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

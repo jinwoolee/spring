@@ -85,7 +85,7 @@ public class MvcController {
 	}
 	
 	//fileupload 테스트를 위한 view (get)
-	@RequestMapping(value="/mvc/fileupload", method=RequestMethod.GET)
+	@RequestMapping(value="/mvc/fileupload")
 	public String fileuploadView(){
 		return "mvc/fileuploadView";		
 	}

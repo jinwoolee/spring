@@ -1,0 +1,42 @@
+m28-327-827
+
+1.CharacterSetFilter 생성
+request.setCharacterEncoding("utf-8");
+
+2.web.xml filter-mapping 처리
+
+=====================================
+
+1.RequestCounterFilter 생성
+
+2.요청 uri ==> request 객체에서 획득
+  ex : '/filterServlet'
+
+  3.Map객체가 필요하지 않을까...?
+    (application)
+
+4.requestCount.jsp
+ uri : 접속 횟수
+/filterServlet : 5
+/dditLogin : 10
+
+
+
+
+
+
+================================
+
+LoginCheckFilter
+
+세션에 사용자 정보(S_USER)가 없을경우
+login.jsp로 이동(forward)
+
+
+
+
+
+
+
+
+
