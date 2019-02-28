@@ -24,6 +24,12 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	
+	
+	게시판 구분 : ${boardGb } <br>
+	게시판 구분 : ${boardGb2 } <br>
+	session scope : ${sessionScope.boardGb2 }
+	
 </body>
 </html>
 

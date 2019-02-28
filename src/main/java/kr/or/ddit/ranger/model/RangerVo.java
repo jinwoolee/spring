@@ -53,8 +53,8 @@ public class RangerVo {
 
 	@Override
 	public String toString() {
-		return "RangerVo [userId=" + userId + ", userNm=" + userNm + ", birth=" + birth + "]";
+		return "RangerVo [userId=" + userId + ", userNm=" + userNm + ", listIndex=" + listIndex + ", birth=" + birth
+				+ ", regDt=" + regDt + "]";
 	}
-	
 	
 }
