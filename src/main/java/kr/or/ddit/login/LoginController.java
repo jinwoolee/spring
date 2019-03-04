@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.user.model.UserVo;
@@ -45,7 +46,7 @@ public class LoginController {
 			return "main";
 		}
 		else
-			return "login/login";
+			return "redirect:login";
 	}
 	
 	
