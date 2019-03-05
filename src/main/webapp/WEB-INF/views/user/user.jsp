@@ -39,7 +39,7 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">사용자 정보조회</h1>
 				
-				<form action="${cp }/userModifyForm" class="form-horizontal" role="form">
+				<form action="${cp }/user/userModifyForm" class="form-horizontal" role="form">
 					
 					<input type="hidden" name="userId" value="${userVo.userId }"/>
 					
@@ -99,22 +99,13 @@
 					</div>
 					
 					<div class="form-group">
-						<label for="pass" class="col-sm-3 control-label">Password</label>
-						<div class="col-sm-9">
-							<label class="control-label">*********</label>
-						</div>
-					</div>
-					
-					
-					<div class="form-group">
 						<label for="pass" class="col-sm-3 control-label">등록일자</label>
 						<div class="col-sm-9">
 							<label class="control-label">
 								<fmt:formatDate value="${userVo.reg_dt }" pattern="yyyy-MM-dd"/>
 							</label>
 						</div>
-					</div>
-					
+					</div>					
 
 					<div class="form-group">
 						<div class="col-sm-offset-3 col-sm-9">
@@ -122,8 +113,6 @@
 						</div>
 					</div>
 				</form>
-					
-
 			</div>
 		</div>
 	</div>
@@ -136,5 +125,19 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+	<script>
+		<c:if test="${msg != null }">
+			alert("${msg}");
+		</c:if>		
+	</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
