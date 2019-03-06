@@ -19,8 +19,26 @@
 				 expression="org.springframework.stereotype.Repository"/>		 
 											
 	</context:component-scan>
+	
+	<!--
+		 messageSource 등록
+		 bean 이름은 messageSource로 해야 spring에서 인식을 한다 
+	-->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:kr/or/ddit/config/msg/error</value>
+			</list>
+		</property>
+	</bean>	
 
 </beans>
+
+
+
+
+
+
 
 
 
