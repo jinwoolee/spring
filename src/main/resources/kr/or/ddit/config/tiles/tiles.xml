@@ -14,4 +14,28 @@
 		<put-attribute name="content" value="/WEB-INF/views/hello.jsp"/>
 	</definition>
 	
+	<definition name="layout" template="/WEB-INF/views/module/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/module/newHeader.jsp"/>
+		<put-attribute name="left" value="/WEB-INF/views/module/left.jsp"/>
+		<put-attribute name="content" value=""/>
+	</definition>
+	
+	<definition name="userAllListTiles" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/views/user/userAllListContent.jsp"/>
+	</definition>
+	
+	<definition name="userPagingListTiles" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/views/user/userPagingListContent.jsp"/>
+	</definition>
+	<definition name="userTiles" extends="layout">
+		<put-attribute name="content" value="/WEB-INF/views/user/userContent.jsp"/>
+	</definition>
+	
+	
 </tiles-definitions>
+
+
+
+
+
+
