@@ -3,6 +3,7 @@
 <ul class="nav nav-sidebar">
 	<li><a href="${cp}/user/userAllList">사용자 리스트</a></li>
 	<li><a href="${cp}/user/userPagingList">사용자 리스트 페이징</a></li>
+	<li><a href="${cp}/user/userPagingListAjaxView">사용자 리스트 페이징(ajax)</a></li>
 </ul>
 
 <ul class="nav nav-sidebar">
