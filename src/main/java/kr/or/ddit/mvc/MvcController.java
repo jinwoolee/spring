@@ -2,6 +2,8 @@ package kr.or.ddit.mvc;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.Valid;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import kr.or.ddit.exception.NoFileException;
 import kr.or.ddit.user.model.UserVo;
@@ -156,6 +160,60 @@ public class MvcController {
 		}
 		
 		return "mvc/textView";
+	}
+	
+	@RequestMapping("/jsonResponse")
+	public String jsonResponse(Model model){
+		List<String> list = new ArrayList<String>();
+		list.add("brown");
+		list.add("cony");
+		list.add("sally");
+		list.add("james");
+		list.add("moon");
+		
+		model.addAttribute("list", list);
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping("/jsonResponseViewObj")
+	public View jsonResponseViewObj(Model model){
+		List<String> list = new ArrayList<String>();
+		list.add("brown");
+		list.add("cony");
+		list.add("sally");
+		list.add("james");
+		list.add("moon");
+		list.add("ljw");
+		
+		model.addAttribute("list", list);
+		
+		return new MappingJackson2JsonView();
+	}
+	
+	@RequestMapping("/profileImgView")
+	public String profileImgView(@RequestParam(name="userId", defaultValue="brown")String userId,
+								Model model){
+		model.addAttribute("userId", userId);
+		
+		return "profileImgView";
+	}
+	
+	@RequestMapping("/helloTiles")
+	public String helloTiles(){
+		// 1.BeanNameViewResolver
+		//   hellotTiles() 에서 리턴하는 문자열에 해당하는 
+		//	 bean id를 갖는 스프링 빈이 있는지 확인
+		//		있으면 -> 해당 스프링 객체를 사용 하여 응답이 전달
+		//      없으면 -> 다음 view Resolver에서 처리
+		// 2.TilesViewResolver
+		//   helloTiles() 에서 리턴하는 문자열이 
+		//   tilesConfigurer에 설정한 타일즈 설정파일의 definition 이름(name)과 동일한
+		//   선언이 있는지 확인
+		//      있으면 -> 해당 tiles 설정대로(layout extends) 응답 생성
+		//      없으면 -> 다음 view Resolver에서 처리
+		
+		return "helloTiles";
 	}
 }
 
