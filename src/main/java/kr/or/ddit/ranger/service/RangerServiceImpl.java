@@ -12,32 +12,42 @@ import kr.or.ddit.ranger.dao.IRangerDao;
 public class RangerServiceImpl implements IRangerService{
 	
 	@Resource(name="rangerDao")
-	private IRangerDao rangerD;
+	private IRangerDao rangerDao;
 	
 	public RangerServiceImpl() {
 	}
 	
 	public RangerServiceImpl(IRangerDao rangerDao) {
-		this.rangerD = rangerDao;
+		this.rangerDao = rangerDao;
 	}
 
 	@Override
 	public List<String> getRangers() {
-		return rangerD.getRangers();
+		return rangerDao.getRangers();
 	}
 
 	public void setRangerD(IRangerDao rangerDao) {
-		this.rangerD = rangerDao;
+		this.rangerDao = rangerDao;
 	}
 
 	@Override
 	public IRangerDao getRangerDao() {
-		return this.rangerD;
+		return this.rangerDao;
 	}
 
 	@Override
 	public String getRanger(int index) {
-		return rangerD.getRanger(index);
+		return rangerDao.getRanger(index);
+	}
+
+	@Override
+	public int deleteRanger(String id) {
+		int deleteCnt = 0;
+		
+		deleteCnt += rangerDao.deleteRangerDept(id);
+		deleteCnt += rangerDao.deleteRanger(id);
+		
+		return deleteCnt;
 	}
 	
 }

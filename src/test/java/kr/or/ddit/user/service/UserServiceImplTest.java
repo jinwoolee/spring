@@ -24,7 +24,6 @@ public class UserServiceImplTest extends LogicTestConfig{
 	
 	@Before
 	public void setup(){
-
 		userService.deleteUser("test1");
 	}
 	

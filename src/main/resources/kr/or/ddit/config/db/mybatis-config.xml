@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<properties resource="kr/or/ddit/config/db/db.properties"/>
+<!-- 	<properties resource="kr/or/ddit/config/db/db.properties"/> -->
 	
 	<typeAliases>
 		<typeAlias alias="userVo" type="kr.or.ddit.user.model.UserVo" />
@@ -12,21 +12,22 @@
 		<typeAlias alias="pageVo" type="kr.or.ddit.util.model.PageVo" />
 	</typeAliases>
 	
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="${jdbc.driver}" />
-				<property name="url" value="${jdbc.url}" />
-				<property name="username" value="${jdbc.username}" />
-				<property name="password" value="${jdbc.password}" />
-			</dataSource>
-		</environment>
-	</environments>
+<!-- 	<environments default="development"> -->
+<!-- 		<environment id="development"> -->
+<!-- 			<transactionManager type="JDBC" /> -->
+<!-- 			<dataSource type="POOLED"> -->
+<!-- 				<property name="driver" value="${jdbc.driver}" /> -->
+<!-- 				<property name="url" value="${jdbc.url}" /> -->
+<!-- 				<property name="username" value="${jdbc.username}" /> -->
+<!-- 				<property name="password" value="${jdbc.password}" /> -->
+<!-- 			</dataSource> -->
+<!-- 		</environment> -->
+<!-- 	</environments> -->
 	<mappers>
 		<mapper resource="kr/or/ddit/config/db/mapper/user.xml" />		
 		<mapper resource="kr/or/ddit/config/db/mapper/lprod.xml" />
 		<mapper resource="kr/or/ddit/config/db/mapper/prod.xml" />
+		<mapper resource="kr/or/ddit/config/db/mapper/ranger.xml" />
 	</mappers>
 </configuration>
 

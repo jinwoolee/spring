@@ -11,7 +11,7 @@
 	
 	<!-- @Controller, @Service, @Repository, @Component를 스캔 -->
 	<context:component-scan base-package="kr.or.ddit" 
-							use-default-filters="false">
+							use-default-filters="false" >
 							
 		<context:include-filter type="annotation"
 				 expression="org.springframework.stereotype.Service"/>

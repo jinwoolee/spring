@@ -6,14 +6,10 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
-import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
 import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.user.dao.IUserDao;
-import kr.or.ddit.user.dao.UserDaoImpl;
 import kr.or.ddit.user.model.UserVo;
 import kr.or.ddit.util.model.PageVo;
 
@@ -36,13 +32,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public List<UserVo> getAllUser() {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		
-		List<UserVo> userList = userDao.getAllUser(sqlSession);
-		sqlSession.close();
-		return userList;
+		return userDao.getAllUser();
 	}
 
 
@@ -56,14 +46,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public UserVo selectUser(String userId) {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		
-		UserVo userVo = userDao.selectUser(sqlSession, userId);
-		sqlSession.close();
-		
-		return userVo;
+		return userDao.selectUser(userId);
 	}
 
 
@@ -77,16 +60,11 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public Map<String, Object> selectUserPagingList(PageVo pageVo) {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
-		resultMap.put("userList", userDao.selectUserPagingList(sqlSession, pageVo));
-		resultMap.put("userCnt", userDao.getUserCnt(sqlSession));
-		
-		sqlSession.close();
+		resultMap.put("userList", userDao.selectUserPagingList(pageVo));
+		resultMap.put("userCnt", userDao.getUserCnt());
 		
 		return resultMap;
 	}
@@ -102,15 +80,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public int insertUser(UserVo userVo) {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		int insertCnt = userDao.insertUser(sqlSession, userVo);
-		
-		sqlSession.commit();
-		sqlSession.close();
-		
-		return insertCnt;
+		return userDao.insertUser(userVo);
 	}
 
 
@@ -123,15 +93,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public int deleteUser(String userId) {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		int deletetCnt = userDao.deleteUser(sqlSession, userId);
-		
-		sqlSession.commit();
-		sqlSession.close();
-		
-		return deletetCnt;
+		return userDao.deleteUser(userId);
 	}
 
 
@@ -145,15 +107,7 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public int updateUser(UserVo userVo) {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		int updateCnt = userDao.updateUser(sqlSession, userVo);
-		
-		sqlSession.commit();
-		sqlSession.close();
-		
-		return updateCnt;
+		return userDao.updateUser(userVo);
 	}
 
 
@@ -166,24 +120,17 @@ public class UserServiceImpl implements IUserService {
 	 */
 	@Override
 	public int encryptPass() {
-		SqlSessionFactory sqlSessionFactory = 
-				MybatisSqlSessionFactory.getSqlSessionFactory();
-		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		int updateCnt = 0;
 		
 		//사용자 전체 정보조회
-		List<UserVo> userList = userDao.getAllUser(sqlSession);
+		List<UserVo> userList = userDao.getAllUser();
 		
 		//사용자 비밀번호를암호화
 		for(UserVo userVo : userList){
 			userVo.setPass(KISA_SHA256.encrypt(userVo.getPass()));
-			updateCnt += userDao.updatePass(sqlSession, userVo);
+			updateCnt += userDao.updatePass(userVo);
 		}
-		
-		sqlSession.commit();
-		sqlSession.close();
-		
 		return updateCnt;
 	}
 

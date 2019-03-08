@@ -18,6 +18,8 @@ public interface IRangerService {
 	IRangerDao getRangerDao();
 
 	String getRanger(int index);
+	
+	int deleteRanger(String id);
 }
 
 
