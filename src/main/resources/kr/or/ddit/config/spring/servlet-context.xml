@@ -28,7 +28,8 @@
 		
 	<bean id="profileImgView"
 		class="kr.or.ddit.view.ProfileImgView"/>
-		
+	<bean id="excelView"
+		class="kr.or.ddit.view.ExcelDownloadView"/>	
 	
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="1"/>

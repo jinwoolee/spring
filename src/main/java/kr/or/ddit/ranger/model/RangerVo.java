@@ -20,6 +20,11 @@ public class RangerVo {
 		
 	}
 	
+	public RangerVo(String userId, String userNm) {
+		this.userId = userId;
+		this.userNm = userNm;
+	}
+
 	public String getUserId() {
 		return userId;
 	}

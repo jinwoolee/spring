@@ -16,5 +16,21 @@
 			
 			<bean class="kr.or.ddit.interceptor.ProfileInterceptor"/>
 		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/excelView" />
+			<mvc:exclude-mapping path="/resources/**" />
+			<mvc:exclude-mapping path="/css/**" />
+			<mvc:exclude-mapping path="/js/**" />
+			<mvc:exclude-mapping path="/error/**" />
+			<bean class="kr.or.ddit.interceptor.SesseionCheckInterceptor"/>
+		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	<mvc:resources location="/resources/" mapping="/resources/**" cache-period="0"/>
+	<mvc:resources location="/resources/css/" mapping="/css/**" cache-period="0"/>
+	<mvc:resources location="/resources/js/" mapping="/js/**" cache-period="0"/>
+	<mvc:resources location="/resources/error/" mapping="/error/**" cache-period="0"/>
 </beans>
