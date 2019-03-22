@@ -1,21 +1,20 @@
 package kr.or.ddit.user.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
-import kr.or.ddit.test.LogicTestConfig;
-import kr.or.ddit.user.dao.IUserDao;
-import kr.or.ddit.user.dao.UserDaoImpl;
-import kr.or.ddit.user.model.UserVo;
-import kr.or.ddit.util.model.PageVo;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import kr.or.ddit.test.LogicTestConfig;
+import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.util.model.PageVo;
 
 public class UserServiceImplTest extends LogicTestConfig{
 	
@@ -45,7 +44,7 @@ public class UserServiceImplTest extends LogicTestConfig{
 
 		/***Then***/
 		assertNotNull(userList);
-		assertEquals(105, userList.size());
+		assertEquals(114, userList.size());
 	}
 	
 	/**
@@ -63,7 +62,7 @@ public class UserServiceImplTest extends LogicTestConfig{
 
 		/***Then***/
 		assertEquals("brown", userVo.getUserId());
-		assertEquals("brown1234", userVo.getPass());
+		assertEquals("c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44", userVo.getPass());
 	}
 	
 	/**
@@ -113,7 +112,7 @@ public class UserServiceImplTest extends LogicTestConfig{
 		assertEquals(10, userList.size());
 		
 		//userCnt
-		assertEquals(105, userCnt);
+		assertEquals(114, userCnt);
 	}
 	
 	/**

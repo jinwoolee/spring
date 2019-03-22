@@ -5,9 +5,11 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.ranger.dao.IRangerDao;
 
+@Transactional
 @Service("rangerService")
 public class RangerServiceImpl implements IRangerService{
 	

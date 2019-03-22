@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
 import kr.or.ddit.lprod.dao.ILprodDao;
@@ -15,6 +16,7 @@ import kr.or.ddit.lprod.dao.LprodDaoImpl;
 import kr.or.ddit.lprod.model.LprodVo;
 import kr.or.ddit.util.model.PageVo;
 
+@Transactional
 @Service("lprodService")
 public class LprodServiceImpl implements ILprodService {
 

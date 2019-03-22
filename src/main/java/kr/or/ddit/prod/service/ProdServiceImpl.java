@@ -6,12 +6,14 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.db.mybatis.MybatisSqlSessionFactory;
 import kr.or.ddit.prod.dao.IProdDao;
 import kr.or.ddit.prod.dao.ProdDaoImpl;
 import kr.or.ddit.prod.model.ProdVo;
 
+@Transactional
 @Service("prodService")
 public class ProdServiceImpl implements IProdService {
 	

@@ -30,7 +30,7 @@
 	<!-- 레인저 소속 삭제 -->
 	<delete id="deleteRangerDept" parameterType="string">
 		delete rangerDept
-		where id = #{id}
+		where deptcd = #{id}
 	</delete>
 	
 </mapper>

@@ -1,21 +1,32 @@
 package kr.or.ddit.aop;
 
-
-
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-public class LoggingAdvice {
+@Aspect
+@Component
+public class LoggingAspect {
 	
-	private Logger logger = LoggerFactory.getLogger(LoggingAdvice.class);
+	private Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 	
+	@Pointcut("execution(* kr.or.ddit..service.*.*(..))")
+	public void dummy() {
+		
+	}
+	
+	@Before("dummy()")
 	public void beforeMethod(JoinPoint joinPoint){
 		logger.debug("loggingAdvice before");
 	}
 	
+	@After("dummy()")
 	public void afterMethod(JoinPoint joinPoint){
 		String className = joinPoint.getTarget().getClass().getName();
 		String methodName = joinPoint.getSignature().getName();
