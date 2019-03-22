@@ -90,6 +90,11 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 	
+	<mvc:resources location="/resources/" mapping="/resources/**" cache-period="0"/>
+	<mvc:resources location="/resources/css/" mapping="/css/**" cache-period="0"/>
+	<mvc:resources location="/resources/js/" mapping="/js/**" cache-period="0"/>
+	<mvc:resources location="/resources/error/" mapping="/error/**"/>
+	
 </beans>
 
 
