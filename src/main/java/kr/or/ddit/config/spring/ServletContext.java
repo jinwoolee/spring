@@ -37,6 +37,7 @@ public class ServletContext extends WebMvcConfigurerAdapter{
 		configurer.enable();	// <mvc:default-servlet-handler/>
 	}
 	
+
 	//interceptor
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
