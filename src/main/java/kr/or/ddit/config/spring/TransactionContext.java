@@ -16,21 +16,11 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 //<tx:annotation-driven/>	transactionManger는 platformTransctionManger 타입의 빈을 자동으로 검색하여 사용
 //<tx:adrvice> <aop>를 이용한 java config는 불가
-@EnableTransactionManagement	
-@Configuration
-public class TransactionContext {
-	private Logger logger = LoggerFactory.getLogger(TransactionContext.class);
-	
-	//@Resource(name="datasource")
-	//private DataSource datasource;
-	
-	@Bean
-	public PlatformTransactionManager trasnsactionManager(DataSource datasource){
 
-
+@EnableTransactionManagement
 @Import(value={DatasourceContext.class})
 @Configuration
-public class TransactionContext implements TransactionManagementConfigurer{
+public class TransactionContext{
 	private Logger logger = LoggerFactory.getLogger(TransactionContext.class);
 	
 	@Resource(name="datasource")
@@ -46,11 +36,6 @@ public class TransactionContext implements TransactionManagementConfigurer{
 		return transactionManager;
 	}
 
-	@Override
-	public PlatformTransactionManager annotationDrivenTransactionManager() {
-		return trasnsactionManager();
-	}
-	
 //	<bean id="transactionManager"
 //		 	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 //		 	<property name="dataSource" ref="datasource"/>
@@ -72,3 +57,4 @@ public class TransactionContext implements TransactionManagementConfigurer{
 //		 	<aop:advisor advice-ref="txAdvice" 
 //		 				 pointcut="within(kr.or.ddit..service.*)"/>
 //		 </aop:config>
+}
