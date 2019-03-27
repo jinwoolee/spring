@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd"
+	xmlns:p="http://www.springframework.org/schema/p">
+	
+	
+	<bean id="boardDao" class="board.dao.BoardDao" />
+	
+	<bean id="boardDaoFactoryMethod" class="board.dao.BoardDao" factory-method="getInstance"/>
+	
+	<bean id="boardServiceSetter" class="board.service.impl.BoardServiceImpl">
+		<property name="boardDao" ref="boardDao"/>
+	</bean>
+	
+	<bean id="boardServiceConstructor" class="board.service.impl.BoardServiceImpl">
+		<constructor-arg index="0" name="boardDao" ref="boardDao"/>
+	</bean>
+	
+</beans>	

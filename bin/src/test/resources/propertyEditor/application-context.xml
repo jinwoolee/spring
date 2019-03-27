@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	      				http://www.springframework.org/schema/context 
+      					http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+<bean id="dateEditor" class="org.springframework.beans.propertyeditors.CustomDateEditor">		 
+	<constructor-arg>
+		<bean class="java.text.SimpleDateFormat">
+			<constructor-arg value="yyyy-MM-dd"/>
+		</bean>
+	</constructor-arg>
+	<constructor-arg value="true"/>
+</bean>	
+
+<!-- postProcessor  -->
+<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	<property name="customEditors">
+		<map>
+			<entry key ="java.util.Date" value-ref="dateEditor" />
+		</map>
+	</property>
+</bean>
+
+<bean id="boardVo" class="propertyEditor.model.BoardVo">
+	<property name="reg_dt" value="2017-10-13"/>
+</bean>		
+
+</beans>	

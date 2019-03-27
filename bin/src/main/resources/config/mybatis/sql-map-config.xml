@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>  
+	<settings>
+	 	<setting name="localCacheScope" value="STATEMENT"></setting>
+	</settings>
+	
+	<typeAliases>
+		<!--board VO -->
+		<typeAlias type="kr.or.ddit.jdbc.model.BoardVo" alias="BoardVo"/>  
+    </typeAliases>
+    
+    <mappers>
+		<mapper resource="config/mybatis/board.xml"/>
+	</mappers>
+</configuration>
