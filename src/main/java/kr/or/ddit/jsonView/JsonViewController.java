@@ -7,13 +7,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
-import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 @Controller
 @RequestMapping("/jsonViewController")
@@ -39,7 +38,7 @@ public class JsonViewController {
 	// http://localhost:8080/jsonViewController/jsonView
 	@RequestMapping("/jsonView")
 	public View jsonView() {
-		return new MappingJacksonJsonView();
+		return new MappingJackson2JsonView();
 	}
 
 	// http://localhost:8080/jsonViewController/jsonModelAndView

@@ -80,7 +80,7 @@
 	</bean>
 
 	<!-- json view -->
-	<bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+	<bean id="pageJsonReport" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />
 
 	<!-- multipart resolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -103,4 +103,6 @@
 		</property>
 		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory"/>
 	</bean>
+	
+	<bean class="config.WebsocketConfig"/>
 </beans>

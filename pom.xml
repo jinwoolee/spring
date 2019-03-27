@@ -25,7 +25,7 @@
 		<version.logback>1.1.2</version.logback>
 
 		<!-- Spring -->
-		<version.spring>3.2.13.RELEASE</version.spring>
+		<version.spring>4.3.22.RELEASE</version.spring>
 
 		<!-- Jackson -->
 		<version.jackson>2.8.4</version.jackson>
@@ -165,6 +165,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			 <artifactId>spring-websocket</artifactId>
 			<version>${version.spring}</version>
 		</dependency>
 
