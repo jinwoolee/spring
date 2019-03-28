@@ -2,15 +2,14 @@ package config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 import kr.or.ddit.websocket.MyHandshakeInterceptor;
-import kr.or.ddit.websocket.SocketHandler;
-
-
-
+import kr.or.ddit.websocket.SocketChatHandler;
 
 @Configuration
 @EnableWebSocket
@@ -21,13 +20,13 @@ public class WebsocketConfig implements WebSocketConfigurer{
 
 		 registry.addHandler(socketHandler(), "/ws/chat")
 		 			.setAllowedOrigins("*")
-		 			.addInterceptors(new MyHandshakeInterceptor())
+		 			//.addInterceptors(new MyHandshakeInterceptor())
+		 			.addInterceptors(new HttpSessionHandshakeInterceptor())
 		 			.withSockJS();
 	}
 
 	@Bean
-	public SocketHandler socketHandler(){
-		return new SocketHandler();
-
+	public WebSocketHandler socketHandler(){
+		return new SocketChatHandler();
 	}
 }

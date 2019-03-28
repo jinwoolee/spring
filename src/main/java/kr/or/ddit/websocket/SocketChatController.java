@@ -9,20 +9,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class SocketController {
+public class SocketChatController {
 	
 	@Autowired
-	private SocketHandler socketHandler;
+	private SocketChatHandler socketHandler;
 	
 	@RequestMapping("/socket/view")
 	public String socketView(HttpSession session, String userId) {
 		
 		session.setAttribute("userId", userId);
-		return "websocket/socketView";
+		return "websocket/chatView";
 	}
 	
-	@RequestMapping("/soccket/serverToClient")
-	public void serverToClient(HttpSession session) throws IOException {
-		socketHandler.serverToClient(session);
+	@RequestMapping("/socket/serverToClient")
+	public void serverToClient() throws IOException {
+		socketHandler.serverToClient();
 	}
+	
+//	@RequestMapping("/socket/serverToClient")
+//	public void serverToClient(HttpSession session) throws IOException {
+//		socketHandler.serverToClient(session);
+//	}
 }

@@ -13,13 +13,13 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-public class SocketHandler extends TextWebSocketHandler {
+public class SocketChatHandler extends TextWebSocketHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(SocketHandler.class);
+	private static final Logger logger = LoggerFactory.getLogger(SocketChatHandler.class);
 
 	private List<WebSocketSession> sessionList;
 
-	public SocketHandler() {
+	public SocketChatHandler() {
 		sessionList = new ArrayList<>();
 	}
 
@@ -50,10 +50,15 @@ public class SocketHandler extends TextWebSocketHandler {
 		return (String) session.getAttributes().get("userId");
 	}
 
-	public void serverToClient(HttpSession session) throws IOException {
+	public void serverToClient() throws IOException {
 		for(WebSocketSession wSession : sessionList)
-			if(wSession.getId().equals(session.getId()))
-				wSession.sendMessage(new TextMessage("서버 전송 메세지"));
+			wSession.sendMessage(new TextMessage("서버 전송 메세지"));				
 	}
+	
+//	public void serverToClient(HttpSession session) throws IOException {
+//		for(WebSocketSession wSession : sessionList)
+//			if(wSession.getId().equals(session.getId()))
+//				wSession.sendMessage(new TextMessage("서버 전송 메세지"));				
+//	}
 
 }

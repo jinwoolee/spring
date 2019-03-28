@@ -23,7 +23,8 @@ public class MyHandshakeInterceptor extends HttpSessionHandshakeInterceptor{
 		
 		HttpServletRequest req = ((ServletServerHttpRequest)request).getServletRequest();
 		
-		attributes.put("userId", req.getParameter("userId"));
+		if(req.getParameter("userId") != null)
+			attributes.put("userId", req.getParameter("userId"));
 		return super.beforeHandshake(request, response, wsHandler, attributes);
 	}
 
