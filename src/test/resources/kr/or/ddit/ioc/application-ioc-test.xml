@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 스프링 컨테이너에서 관리하고자 하는 빈을 등록 -->
+	
+	<!-- boardService 등록, boardService를 등록하기 위해서는 boardDao필요 -->
+	
+	<!-- IboardDao boardDao = new BoardDao(); -->
+	<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
+	
+	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
+		<!-- boardService의 filed, property -->
+		<property name="name" value="brown"/>
+		<property name="boardDao" ref="boardDao"/>
+	</bean>
+	
+	
+
+</beans>
