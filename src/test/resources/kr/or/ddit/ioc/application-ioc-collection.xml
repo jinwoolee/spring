@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="collectionBean" class="kr.or.ddit.ioc.collection.IocCollection" >
+		<!-- 해당 클래스의 필드명으로 setter 주입 -->
+		<property name="list">
+			<list>
+				<value>brown</value>
+				<value>sally</value>
+				<value>cony</value>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="name" value="brown"/>
+				<entry key="birth" value="2019-08-08"/>
+					</map>
+		</property>
+		<property name="set">
+			<set>
+				<value>brown</value>
+				<value>sally</value>
+				<value>cony</value>
+			</set>
+		</property>
+		<property name="properties">
+			<props >
+				<prop key="userId">brown</prop>
+				<prop key="name">브라운</prop>
+			</props>
+		</property>
+	</bean> 
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
