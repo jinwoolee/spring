@@ -7,11 +7,14 @@
 	
 	<context:property-placeholder location="classpath:kr/or/ddit/config/mybatis/db.properties"/>
 	
-	<bean id="dbInfo" class="kr.or.ddit.ioc.placeholder.DbInfo">
+	<bean id="dbInfo" class="kr.or.ddit.ioc.placeholder.DbInfo" init-method="init">
 		<constructor-arg value="${jdbc.driver}"/>
 		<constructor-arg value="${jdbc.url}"/>
 		<constructor-arg value="${jdbc.username}"/>
 		<constructor-arg value="${jdbc.password}"/>
 	</bean>
+	
+	<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
+		
 
 </beans>
