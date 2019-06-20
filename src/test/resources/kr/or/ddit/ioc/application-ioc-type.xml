@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- vo객체는 값을 운반하는 목적의 객체이기 때문에 스프링 빈으로 등록하는 경우는 거의 없다
+			해당 설정 파일은 date 필드의 값을 주입하는 예제를 위해 vo객체를 스프링 빈으로 등록한다-->
+	
+	<bean id="userVo" class="kr.or.ddit.user.model.UserVo">
+		<!-- userId 속성에 brown 값을 setter 주입한다 -->
+		<property name="userId" value="brown"/>
+		
+		<!-- birth 속성에 2019-08-08 값을 setter 주입한다 -->
+		<property name="birth" value="2019-08-08"/>
+	</bean>
+
+	
+<!-- 	<bean id="dateEditor" class="org.springframework.beans.propertyeditors.CustomDateEditor" > -->
+	
+<!-- 		<constructor-arg> -->
+<!-- 			<bean class="java.text.SimpleDateFormat"> -->
+<!-- 				<constructor-arg value="yyyy-MM-dd"/> -->
+<!-- 			</bean> -->
+<!-- 		</constructor-arg> -->
+		
+<!-- 		<constructor-arg value="true"/> -->
+<!-- 	</bean> -->
+
+
+<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="propertyEditorRegistrars">
+			<list>
+				<bean class="kr.or.ddit.typeConvert.CustomDateRegistry"/>
+			</list>
+		</property>
+</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
