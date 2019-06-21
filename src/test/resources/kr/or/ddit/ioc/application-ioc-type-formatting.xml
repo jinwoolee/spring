@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- id : conversionService -->
+	<bean id="conversionService" 
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+		
+	<bean id="formattingVo" class="kr.or.ddit.typeConvert.model.FormattingVo">
+		<property name="reg_dt" value="2019-06-21"/>
+		<property name="mod_dt" value="06-21-2019"/>
+		<property name="number" value="6,000"/>
+	</bean>
+	
+	<!--  2019-06-21 : Date  SimpleDateFormat("yyyy-dd-MM")-->
+	
+
+</beans>

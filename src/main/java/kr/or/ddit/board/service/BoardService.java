@@ -39,8 +39,6 @@ public class BoardService implements IboardService{
 		this.name = name;
 	}
 
-
-
 	@Override
 	public IboardDao getBoardDao() {
 		return this.boardDao;
