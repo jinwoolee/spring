@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	<!-- 전체 사용자 리스트 조회 -->
+	<select id="userList" resultType="userVo">
+		select *
+		from users
+		order by
+		userid
+	</select>
+
+	<!-- 특정 사용자 조회 -->
+	<select id="getUser" parameterType="string" resultType="userVo">
+		select /*+ INDEX(users PK_users) */ users.*, to_char(birth, 'yyyy-MM-dd') birthStr
+		from users
+		where userId = #{userId}
+	</select>
+
+	<!-- 사용자 페이지 리스트 조회 -->
+	<!-- pageVo int page, int pageSize -->
+<!-- 	<select id="userPagingList" parameterType="pageVo" resultType="userVo"> -->
+				
+<!-- 		<![CDATA[ -->
+<!-- 		select * -->
+<!-- 		from -->
+<!-- 		(select a.*, rownum rn -->
+<!-- 		 from -->
+<!-- 		(select a.* -->
+<!-- 		 from users a -->
+<!-- 		order by userid) a ) -->
+<!-- 		where rn >= (#{page}-1)*#{pageSize} + 1 and rn <= #{page}*#{pageSize} -->
+<!-- 		]]> -->
+<!-- 	</select> -->
+	
+	<!-- 사용자 전체수 조회 -->
+	<select id="usersCnt" resultType="int">
+		select /*+ INDEX_FFS(users PK_USERS) */ count(*)
+		from users
+	</select>
+	
+	<!-- 사용자 등록 -->
+	<insert id="insertUser" parameterType="userVo">
+		insert into users 
+		values(#{userId}, #{name}, #{alias}, #{pass}, #{addr1}, 
+        		#{addr2}, #{zipcd}, #{birth}, #{path, jdbcType=VARCHAR}, #{filename, jdbcType=VARCHAR})
+     </insert>
+     
+     <!-- 사용자 삭제 -->
+     <delete id="deleteUser" parameterType="string">
+     	delete users
+		where userid=#{userId}
+     </delete>
+     
+     <!-- 사용자 수정 -->
+     <update id="updateUser" parameterType="userVo">
+     	update users
+     		set name = #{name}, alias = #{alias}, pass = #{pass}, 
+     		    addr1 = #{addr1}, addr2 = #{addr2}, zipcd = #{zipcd},
+     		    birth = #{birth}
+     		    <if test="path != null">
+     		    	, path = #{path}, filename = #{filename} 
+     		    </if>
+     	where userid = #{userId}   
+     </update>
+     
+     <!-- 사용자 비밀번호 암호화 적용 대상 조회 -->
+     <select id="userListForPassEncrypt" resultType="userVo">
+     	select *
+		from users
+		where userid not in ('brown', 'userTest')
+     </select>
+     
+     <!-- 사용자 비밀번호 업데이트 -->
+     <update id="updateUserEncryptPass" parameterType="userVo">
+     	update users set pass = #{pass}
+     	where userid = #{userId}
+     </update> 
+     
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
