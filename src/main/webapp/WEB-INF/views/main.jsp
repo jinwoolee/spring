@@ -50,6 +50,7 @@
 							<h3>상세내역</h3>
 							<p>JSP과정에서는 다음과 같은 내용을 학습한다.</p>
 							<ul>
+								<li>${userVo}</li>
 								<li>servlet 동작원리</li>
 								<li>jsp와 servlet의 관계</li>
 								<li>jsp 스크립틀릿 요소</li>

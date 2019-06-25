@@ -5,7 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="userVo" type="kr.or.ddit.user.model.UserVo" />
-<!-- 		<typeAlias alias="pageVo" type="kr.or.ddit.paging.model.PageVo" /> -->
+		<typeAlias alias="pageVo" type="kr.or.ddit.paging.model.PageVo" />
 <!-- 		<typeAlias alias="prodVo" type="kr.or.ddit.prod.model.ProdVo" /> -->
 	</typeAliases>
 	
