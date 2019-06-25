@@ -42,7 +42,7 @@ public class UserService implements IuserService{
 		insertCnt += userDao.insertUser(userVo);
 		
 		//동일한데이터를 재입력 했으니까 => ORA-00001 (unique constraint)
-		insertCnt += userDao.insertUser(userVo);
+		//insertCnt += userDao.insertUser(userVo);
 		
 		//첫번째 useDao.insertUser(userVo)에서 입력된 데이터도 rollback이 되어 있어야 한다
 		return insertCnt;
@@ -60,7 +60,24 @@ public class UserService implements IuserService{
 		return userDao.deleteUser(userId);
 	}
 
+	/** 
+	 * Method   : getUser
+	 * 작성자 : SEM
+	 * 변경이력 : 
+	 * @param userId
+	 * @return 
+	 * Method 설명 : 사용자 정보 조회 
+	 */
+	@Override
+	public UserVo getUser(String userId) {
+		return userDao.getUser(userId);
+	}
+
 }
+
+
+
+
 
 
 

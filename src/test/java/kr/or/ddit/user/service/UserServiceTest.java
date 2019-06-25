@@ -36,7 +36,7 @@ public class UserServiceTest extends LogicTestEnv{
 		/***Then***/
 		assertNotNull(userList);
 		assertTrue(userList.size() >= 100);
-		assertEquals(107, userList.size());
+		assertEquals(106, userList.size());
 	}
 	
 	/** 
@@ -64,6 +64,25 @@ public class UserServiceTest extends LogicTestEnv{
 		
 		//data 삭제
 		userService.deleteUser(userVo.getUserId());
+	}
+	
+	/** 
+	 * Method   : getUserTest
+	 * 작성자 : SEM
+	 * 변경이력 :  
+	 * Method 설명 : 사용자 정보 조회 테스트
+	 */
+	@Test
+	public void getUserTest() {
+		/***Given***/
+		String userId = "brown";
+
+		/***When***/
+		UserVo userVo = userService.getUser(userId);
+
+		/***Then***/
+		assertEquals("브라운", userVo.getName());
+		assertEquals("곰-한글", userVo.getAlias());
 	}
 }
 

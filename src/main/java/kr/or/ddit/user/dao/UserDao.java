@@ -5,6 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import kr.or.ddit.user.model.UserVo;
@@ -50,6 +52,19 @@ public class UserDao implements IuserDao{
 	@Override
 	public int deleteUser(String userId) {
 		return sqlSession.delete("user.deleteUser", userId);
+	}
+
+	/** 
+	 * Method   : getUser
+	 * 작성자 : SEM
+	 * 변경이력 : 
+	 * @param userId
+	 * @return 
+	 * Method 설명 : 사용자 정보 조회 
+	 */
+	@Override
+	public UserVo getUser(String userId) {
+		return sqlSession.selectOne("user.getUser", userId);
 	}
 	
 	

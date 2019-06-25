@@ -1,6 +1,6 @@
 package kr.or.ddit.aop;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import javax.annotation.Resource;
 
@@ -13,7 +13,7 @@ import kr.or.ddit.board.service.IboardService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {AopScanConfig.class})
-public class AopScanJavaConfigTest {
+public class AopScanJavaConfigTest{
 
 	@Resource(name="boardService")
 	private IboardService boardService;

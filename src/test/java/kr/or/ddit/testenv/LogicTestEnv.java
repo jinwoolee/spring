@@ -4,6 +4,8 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
@@ -27,5 +29,9 @@ public class LogicTestEnv {
 		rdp.addScript(new ClassPathResource("kr/or/ddit/testenv/dbInit.sql"));
 		DatabasePopulatorUtils.execute(rdp, datasource);
 	}
+	
+	@Ignore
+	@Test
+	public void dummy() {}
 
 }

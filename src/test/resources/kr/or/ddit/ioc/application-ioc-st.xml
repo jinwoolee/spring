@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="bDao" class="kr.or.ddit.board.dao.BoardDao"/>
-	<bean id="bService" class="kr.or.ddit.board.service.BoardService">
-		<property name="boardDao" ref="bDao"></property>
+	<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
+	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
+		<property name="boardDao" ref="boardDao"/>
 	</bean>
 </beans>

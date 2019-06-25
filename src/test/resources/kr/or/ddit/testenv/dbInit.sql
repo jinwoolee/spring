@@ -108,7 +108,18 @@ Insert into SEM_TEST.USERS (USERID,NAME,ALIAS,PASS,ADDR1,ADDR2,ZIPCD,BIRTH,PATH,
 Insert into SEM_TEST.USERS (USERID,NAME,ALIAS,PASS,ADDR1,ADDR2,ZIPCD,BIRTH,PATH,FILENAME) values ('user96','사용자96','사용자별명96','5446f05a705aa2498cc3926a13e7b192db1ba9d493c351e34135e7d31dfa',null,null,null,null,null,null);
 Insert into SEM_TEST.USERS (USERID,NAME,ALIAS,PASS,ADDR1,ADDR2,ZIPCD,BIRTH,PATH,FILENAME) values ('user98','사용자98','사용자별명98','e4ec5cc71686ac98f0b05d11b6dc1ce1bcd9dc44f3108347be65a0ada5a68',null,null,null,null,null,null);
 Insert into SEM_TEST.USERS (USERID,NAME,ALIAS,PASS,ADDR1,ADDR2,ZIPCD,BIRTH,PATH,FILENAME) values ('user100','사용자100','사용자별명100','e7a46e2db1136495f6bac1a7c3b5559941e1fb5b5dcc5e92d3fb4846e6d385',null,null,null,null,null,null);
-Insert into SEM_TEST.USERS (USERID,NAME,ALIAS,PASS,ADDR1,ADDR2,ZIPCD,BIRTH,PATH,FILENAME) values ('brown','업데이트','곰-한글','c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44','대전광역시 중구 중앙로76','영민빌딩 2층 대덕인재개발원','34940',to_date('18/08/08','RR/MM/DD'),'d:\upload\2019\06\0ce567be-a994-4ef4-ae3c-88f5decfd9b0.png','brown.png');
+Insert into SEM_TEST.USERS (USERID,NAME,ALIAS,PASS,ADDR1,ADDR2,ZIPCD,BIRTH,PATH,FILENAME) values ('brown','브라운','곰-한글','c6347b73d5b1f7c77f8be828ee3e871c819578f23779c7d5e082ae2b36a44','대전광역시 중구 중앙로76','영민빌딩 2층 대덕인재개발원','34940',to_date('18/08/08','RR/MM/DD'),'d:\upload\2019\06\0ce567be-a994-4ef4-ae3c-88f5decfd9b0.png','brown.png');
 
 
 commit;
+
+
+
+
+
+
+
+
+
+
+

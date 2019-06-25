@@ -16,10 +16,10 @@ import kr.or.ddit.board.service.IboardService;
 @ContextConfiguration("classpath:kr/or/ddit/ioc/application-ioc-st.xml")
 public class SpringIocStTest {
 
-	@Resource(name="bDao")
+	@Resource(name="boardDao")
 	private IboardDao boardDao;
 	
-	@Resource(name="bService")
+	@Resource(name="boardService")
 	private IboardService boardService;
 	
 	@Test

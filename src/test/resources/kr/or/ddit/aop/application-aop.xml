@@ -14,7 +14,7 @@
 	<bean id="profilingAspect" class="kr.or.ddit.aop.ProfilingAspect"/>
 	
 	<!-- @Controller, @Service, @Respository, @Component 4가지 어노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
-	<context:component-scan base-package="kr.or.ddit"/>
+	<context:component-scan base-package="kr.or.ddit.board"/>
 	
 	<context:annotation-config/>
 	
