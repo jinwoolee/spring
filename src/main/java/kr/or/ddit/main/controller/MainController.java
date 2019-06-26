@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 /*
@@ -29,6 +30,7 @@ import org.springframework.web.servlet.ModelAndView;
      - @RequestMapping에 설정한 url method 호출
  */
 
+import kr.or.ddit.main.model.MainVo;
 import kr.or.ddit.user.model.UserVo;
 
 @Controller
@@ -144,6 +146,23 @@ public class MainController {
 		logger.debug("Accept : {}", accept);
 		return "main";
 	}
+	
+	@RequestMapping("/main/view")
+	public String view() {
+		return "view";
+	}
+	
+	@RequestMapping("/main/process")
+	public void process(@RequestParam("userId") String[] userIdArr, @RequestParam("userId") List<String> userIdList, MainVo mainVo) {
+		logger.debug("userIdArr" );
+		for(String userId : userIdArr)
+			logger.debug("userId : ", userId );
+		
+		logger.debug("userIdList : {}", userIdList );
+		
+		logger.debug("mainVo : {}", mainVo );
+	}
+	
 }
 
 

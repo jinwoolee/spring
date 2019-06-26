@@ -81,14 +81,14 @@ function dataInit(){
 						<h2 class="sub-header">사용자 등록</h2>
 						
 						<form id="frm" class="form-horizontal" role="form"
-							  action="${cp }/userModify"
+							  action="${cp }/user/modify"
 							  method="post"
 							  enctype="multipart/form-data" >
 							<div class="form-group">
 								<label for="filename" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
 									<img
-										src="${cp }/profile?userId=${userVo.userId}" />
+										src="${cp }/user/profile?userId=${userVo.userId}" />
 									<input type="file" name="profile"/>
 								</div>
 							</div>
@@ -152,13 +152,13 @@ function dataInit(){
 								</div>
 							</div>
 							
-							<div class="form-group">
-								<label for="pass" class="col-sm-2 control-label">비밀번호</label>
-								<div class="col-sm-10">
-									<input type="password" class="form-control" id="pass" name="pass"
-										placeholder="비밀번호" value="${userVo.pass }">
-								</div>
-							</div>
+<!-- 							<div class="form-group"> -->
+<!-- 								<label for="pass" class="col-sm-2 control-label">비밀번호</label> -->
+<!-- 								<div class="col-sm-10"> -->
+<!-- 									<input type="password" class="form-control" id="pass" name="pass" -->
+<%--   										placeholder="비밀번호" value="${userVo.pass }">  --%>
+<!-- 								</div> -->
+<!-- 							</div> -->
 		
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
