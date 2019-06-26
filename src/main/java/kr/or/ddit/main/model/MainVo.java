@@ -1,27 +1,36 @@
 package kr.or.ddit.main.model;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class MainVo {
 	
-	private String[] userId;
-	private String[] name;
-	public String[] getUserId() {
-		return userId;
+	private List<String> userIdList;
+	private List<String> nameList;
+	private List<AddrVo> addrVoList;
+	
+	public List<String> getUserIdList() {
+		return userIdList;
 	}
-	public void setUserId(String[] userId) {
-		this.userId = userId;
+	public void setUserIdList(List<String> userIdList) {
+		this.userIdList = userIdList;
 	}
-	public String[] getName() {
-		return name;
+	public List<String> getNameList() {
+		return nameList;
 	}
-	public void setName(String[] name) {
-		this.name = name;
+	public void setNameList(List<String> nameList) {
+		this.nameList = nameList;
+	}
+	public List<AddrVo> getAddrVoList() {
+		return addrVoList;
+	}
+	public void setAddrVoList(List<AddrVo> addrVoList) {
+		this.addrVoList = addrVoList;
 	}
 	@Override
 	public String toString() {
-		return "MainVo [userId=" + Arrays.toString(userId) + ", name=" + Arrays.toString(name) + "]";
+		return "MainVo [userIdList=" + userIdList + ", nameList=" + nameList + ", addrVoList=" + addrVoList + "]";
 	}
 	
 	
+		
 }

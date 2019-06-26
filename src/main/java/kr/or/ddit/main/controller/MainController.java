@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -153,14 +154,23 @@ public class MainController {
 	}
 	
 	@RequestMapping("/main/process")
-	public void process(@RequestParam("userId") String[] userIdArr, @RequestParam("userId") List<String> userIdList, MainVo mainVo) {
-		logger.debug("userIdArr" );
-		for(String userId : userIdArr)
-			logger.debug("userId : ", userId );
+	public void process(@RequestParam("userIdList") String[] userId, 
+						@RequestParam("userIdList") List<String> userIdList,
+						@RequestParam("userIdList") String userIdStr,
+						MainVo mainVo, HttpServletRequest request) {
+		
+		for(String user : userId)
+			logger.debug("userId : {}", user );
 		
 		logger.debug("userIdList : {}", userIdList );
 		
+		logger.debug("userIdStr : {}", userIdStr );
+		
 		logger.debug("mainVo : {}", mainVo );
+		
+		String[] pArr = request.getParameterValues("userIdList");
+		for(String user : pArr)
+			logger.debug("userId : {}", user );
 	}
 	
 }
