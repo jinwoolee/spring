@@ -24,8 +24,7 @@
 <script>
 	$(document).ready(function() {
 		<c:if test="${not empty msg}">
-		alert("${msg}");
-		<c:remove var="msg"/>
+			alert("${msg}");
 		</c:if>
 
 		$("#userModifyBtn").on("click", function() {

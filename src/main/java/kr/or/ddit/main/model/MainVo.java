@@ -4,33 +4,38 @@ import java.util.List;
 
 public class MainVo {
 	
-	private List<String> userIdList;
-	private List<String> nameList;
-	private List<AddrVo> addrVoList;
+	private List<String> userId;
+	private List<String> name;
 	
-	public List<String> getUserIdList() {
-		return userIdList;
+	private List<AddrVo> addr;
+
+	public List<String> getUserId() {
+		return userId;
 	}
-	public void setUserIdList(List<String> userIdList) {
-		this.userIdList = userIdList;
+
+	public void setUserId(List<String> userId) {
+		this.userId = userId;
 	}
-	public List<String> getNameList() {
-		return nameList;
+
+	public List<String> getName() {
+		return name;
 	}
-	public void setNameList(List<String> nameList) {
-		this.nameList = nameList;
+
+	public void setName(List<String> name) {
+		this.name = name;
 	}
-	public List<AddrVo> getAddrVoList() {
-		return addrVoList;
+
+	public List<AddrVo> getAddr() {
+		return addr;
 	}
-	public void setAddrVoList(List<AddrVo> addrVoList) {
-		this.addrVoList = addrVoList;
+
+	public void setAddr(List<AddrVo> addr) {
+		this.addr = addr;
 	}
+
 	@Override
 	public String toString() {
-		return "MainVo [userIdList=" + userIdList + ", nameList=" + nameList + ", addrVoList=" + addrVoList + "]";
+		return "MainVo [userId=" + userId + ", name=" + name + ", addr=" + addr + "]";
 	}
 	
-	
-		
 }
