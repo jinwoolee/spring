@@ -86,10 +86,23 @@
 		<property name="basenames">
 			<list>
 				<value>classpath:kr/or/ddit/msg/error</value>
+				<value>classpath:kr/or/ddit/msg/msg</value>
 			</list>
 		</property>
-	</bean>	
+	</bean>
+	
+	<!-- 빈 이름 고정 localeResolver -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>	
 </beans>
+
+
+
+
+
+
+
+
+
 
 
 
