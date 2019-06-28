@@ -90,6 +90,7 @@ $(document).ready(function(){
 						</div>
 
 						<a href="${cp }/user/form" class="btn btn-default pull-right">사용자 등록</a>
+						<a href="${cp }/user/userListExcel?filename=userList" class="btn btn-default pull-right">엑셀 다운</a>
 
 						<!-- 사용자수 : 105건
 							 페이지네이션 : 11건

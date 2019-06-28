@@ -27,9 +27,9 @@
 
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-<!-- 				<version>2.14</version> -->
+				<!-- <version>2.14</version> -->
 				<configuration>
-<!-- 					<skipTests>true</skipTests> -->
+					<!-- <skipTests>true</skipTests> -->
 					<argLine>-Dfile.encoding=UTF-8</argLine>
 				</configuration>
 			</plugin>
@@ -180,6 +180,27 @@
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.3.6.Final</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.1.0</version>
 		</dependency>
 
 	</dependencies>
