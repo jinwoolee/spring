@@ -23,18 +23,34 @@
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>	<!-- 접두 -->
 		<property name="suffix" value=".jsp"/>		<!-- 접미 -->
-		<property name="order" value="2"/>
+		<property name="order" value="3"/>
 	</bean>
 	
 	<!-- controller 리턴하는 view 이름과 동일한 spring bean이 존재하면 해당 view에 위임 -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="2"/>
+	</bean>
+	
+	
+	<!-- tiles view resolver -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:kr/or/ddit/config/tiles/tiles-config.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="1"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 	</bean>
 	
 	<!--
 		ex: controller.method 가 "user/user" viewName을 리턴
-		1. 우선순위에 따라 beanNameViewResolver가 "user/user"과 동일한 spring bean 있는지 확인 : 없음 확인
-		2. 후순 우선순위에 따라서 internalResourceViewResolver가 prefix + "user/user" + surffix 로 forward
+		1. 우선순위에 따라 tilesViewResolver가 "user/user"와 동일한 tilesdefinition이 있는지 확인 : 없음 확인->다음viewResolver  
+		2. 2순위 우선순위에 따라 beanNameViewResolver가 "user/user"과 동일한 spring bean 있는지 확인 : 없음 확인
+		3. 후순 우선순위에 따라서 internalResourceViewResolver가 prefix + "user/user" + surffix 로 forward
 		
 		ex: controller.method 가 "jsonView" viewName을 리턴
 		1. 우선순위에 따라 beanNameViewResolver가 "jsonView"과 동일한 spring bean 있는지 확인 : 있음
@@ -43,6 +59,10 @@
 		ex: controller.method 가 "profileView" viewName을 리턴
 		1. 우선순위에 따라 beanNameViewResolver가 "profileView"과 동일한 spring bean 있는지 확인 : 있음
 		2. 해당 springBean(profileView)에게 응답을 생성하도록 요청
+		
+		ex: controller.method가 "main" viewName을 리턴
+		1. 우선순위에 따라 tilewViewRessolver가 tiles 설정파일에서 "main"이라는 이름으로 defination이 있는지 확인 : 있음
+		2. tiles 설정에 의해 layout.jsp를 template으로 body 영역만 main.jsp로 대체하여 응답을 생성
 	 -->
 	
 	<!-- controller에서 model객체에 넣은 속성을 이용하여  json으로 만들어주는 view -->
