@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import kr.or.ddit.config.spring.ApplicationDatasource;
+import kr.or.ddit.config.spring.ApplicationDatasource_dev;
 import kr.or.ddit.config.spring.ApplicationTransaction;
 import kr.or.ddit.config.spring.RootContext;
 
@@ -22,7 +22,7 @@ import kr.or.ddit.config.spring.RootContext;
 //									  "classpath:kr/or/ddit/config/spring/application-datasource-dev.xml",
 //									  "classpath:kr/or/ddit/config/spring/application-transaction.xml"})
 @ContextConfiguration(classes = {RootContext.class, 
-												ApplicationDatasource.class,
+												ApplicationDatasource_dev.class,
 												ApplicationTransaction.class})
 public class LogicTestEnv {
 	
