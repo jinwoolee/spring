@@ -95,7 +95,8 @@
 		<servlet-name>springDispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>	<!-- default servlet -->
 	</servlet-mapping>
-
+	
+	<!-- branch 확인용 커밋 -->
 </web-app>
 
 
