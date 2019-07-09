@@ -5,11 +5,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean id="rangerTask" class="kr.or.ddit.batch.RangerTask"/>
+	<bean id="yogultTask" class="kr.or.ddit.batch.YogultTask"/>
 	
 	<task:scheduler id="scheduler"/>
 	<task:scheduled-tasks scheduler="scheduler">
-		<task:scheduled ref="rangerTask" method="rangerTask" cron="*/10 * * * * *"/>
+		<!-- 매달 1일 새벽 1시 -->
+		<!-- 초 분 시 일 월 요일  -->
+		<task:scheduled ref="yogultTask" method="yogultTask" cron="* * 1 1 * *"/>
 	</task:scheduled-tasks>
 
 </beans>

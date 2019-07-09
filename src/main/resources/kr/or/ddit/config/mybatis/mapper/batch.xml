@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="batch">
+	<select id="getCycleList" resultType="cycleVo">
+		select *
+		from cycle
+	</select> 
+     
+     <insert id="mergeDaily" parameterType="dailyVo">
+     	merge into daily
+     		using dual on(
+     					daily.pid = #{pid} and
+     					daily.cid = #{cid} and
+     					daily.dt = #{dt}
+     					)
+     		when matched then update set
+     				cnt = #{cnt}
+     		when not matched then insert
+     				(pid, cid, dt, cnt)
+	     				values (#{pid}, #{cid}, #{dt}, #{cnt})
+     </insert>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
