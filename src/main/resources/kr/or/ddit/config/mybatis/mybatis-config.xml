@@ -9,6 +9,7 @@
 		<typeAlias alias="prodVo" type="kr.or.ddit.prod.model.ProdVo" />
 		<typeAlias alias="cycleVo" type="kr.or.ddit.yogult.model.CycleVo" />
 		<typeAlias alias="dailyVo" type="kr.or.ddit.yogult.model.DailyVo" />
+		<typeAlias alias="batchVo" type="kr.or.ddit.batch.model.BatchVo" />
 	</typeAliases>
 	
 	<mappers>
