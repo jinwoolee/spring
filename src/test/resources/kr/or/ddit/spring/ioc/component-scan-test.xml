@@ -20,7 +20,7 @@
 		  <context:include-filter>, <context:exclude-filter> 두 엘레멘트를 활용하여
 		  어노테이션 필터를 설정  
 	 -->   
-	<context:component-scan base-package="kr.or.ddit">
+	<context:component-scan base-package="kr.or.ddit" >
 	</context:component-scan>
 
 	<!-- 스캔 이후에 @Resource, @Autowired, @Inject 어노테이션에 대한 후처리 -->
