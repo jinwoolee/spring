@@ -30,8 +30,7 @@
 		<!-- controller에서 리턴하는 viewName prefix와 suffix가 결합되서 jsp 경로를 판단
 			 ex : controller 리턴한 viewName : index
 			  prefix + viewName + suffix
-			  /WEB-INF/views/(index).jsp => /WEB-INF/views/index.jsp 			   
-		-->
+			  /WEB-INF/views/(index).jsp => /WEB-INF/views/index.jsp-->
 	</bean>
 		
 
