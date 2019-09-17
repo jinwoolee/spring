@@ -1,6 +1,5 @@
 package kr.or.ddit.user.web;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,9 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.ddit.common.model.Page;
-import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.service.IUserService;
 
 @RequestMapping("user/")
@@ -78,8 +77,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "userPagingList", method = RequestMethod.GET)
-	//public String userPagingList(int page, int pagesize, Model model) {
-	public String userPagingList(Page page, Model model) {
+	public String userPagingList(@RequestParam(name="page", defaultValue = "1") int p,
+								 @RequestParam(defaultValue = "10")int pagesize, Model model) {
+	//public String userPagingList(Page page, Model model) {
+		Page page = new Page(p, pagesize);
 		model.addAttribute("pageVo", page);
 				
 		Map<String, Object> resultMap = userService.getUserPagingList(page);
