@@ -1,8 +1,8 @@
 package kr.or.ddit.common.model;
 
 public class Page {
-	private int page;
-	private int pagesize;
+	private int page;		//0
+	private int pagesize;	//0
 	
 	public Page() {
 	}
@@ -12,13 +12,13 @@ public class Page {
 		this.pagesize = pagesize;
 	}
 	public int getPage() {
-		return page;
+		return page == 0 ? 1 : page;
 	}
 	public void setPage(int page) {
 		this.page = page;
 	}
 	public int getPagesize() {
-		return pagesize;
+		return pagesize == 0 ? 10 : pagesize;
 	}
 	public void setPagesize(int pagesize) {
 		this.pagesize = pagesize;
