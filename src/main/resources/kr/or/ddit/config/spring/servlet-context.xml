@@ -32,7 +32,13 @@
 			  prefix + viewName + suffix
 			  /WEB-INF/views/(index).jsp => /WEB-INF/views/index.jsp-->
 	</bean>
-		
+	
+	<!-- multipartResolver -->
+	<bean id="multipartResolver"
+		 class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		 <property name="maxUploadSize" value="5242880"/>	<!-- 5mb -->
+		 <property name="maxUploadSizePerFile" value="26214400"/>	<!-- 25mb -->
+	</bean>		
 
 </beans>
 
