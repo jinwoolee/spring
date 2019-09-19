@@ -1,5 +1,8 @@
 package kr.or.ddit.user.model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -14,8 +17,16 @@ public class UserValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		User user = (User)target;
 		//userId 필드는 null일수 없고, 문자열길이는 4글자 이상이어야 한다 
-		if(user.getUserId() == null || user.getUserId().length() <= 3)
+//		if(user.getUserId() == null || user.getUserId().length() <= 3)
+//			errors.rejectValue("userId", "required"); 	//필드명, 에러코드(개발자 정의)
+		
+		//("^([a-zA-Z\\d\\.@]){5,20}$");
+		// \d . @
+		Pattern p = Pattern.compile("^([a-zA-z\\d\\.@]){3,20}$");
+		Matcher m = p.matcher(user.getUserId());
+		if(!m.find()) {
 			errors.rejectValue("userId", "required"); 	//필드명, 에러코드(개발자 정의)
+		}
 		
 	}
 
