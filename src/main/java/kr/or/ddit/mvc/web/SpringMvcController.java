@@ -264,6 +264,11 @@ public class SpringMvcController {
 		model.addAttribute("pictureName", pictureName);
 		return "fileDownloadView";
 	}
+	
+	@RequestMapping("i18n")
+	public String i18n() {
+		return "mvc/view";
+	}
 }
 
 
