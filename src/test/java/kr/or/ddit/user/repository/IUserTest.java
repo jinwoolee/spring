@@ -1,0 +1,39 @@
+package kr.or.ddit.user.repository;
+
+
+
+import static org.junit.Assert.assertNotNull;
+
+import javax.annotation.Resource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import kr.or.ddit.user.model.UserVo;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(value= {"classpath:kr/or/ddit/config/spring/root-context.xml"})
+public class IUserTest {
+
+//	@Resource(name="iUser")
+//	private IUser user;
+//	
+//	@Autowired
+//	private SqlSessionFactoryBean sqlSessionFactory;
+	
+	@Autowired
+	private UserVo userVo;
+	
+	@Test
+	public void getNumberTest() {
+		assertNotNull(userVo);
+		//assertNotNull(sqlSessionFactory);
+		//assertNotNull(user);
+	}
+
+}
