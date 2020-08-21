@@ -20,11 +20,11 @@ import kr.or.ddit.user.model.UserVo;
 @ContextConfiguration(value= {"classpath:kr/or/ddit/config/spring/root-context.xml"})
 public class IUserTest {
 
-//	@Resource(name="iUser")
-//	private IUser user;
-//	
-//	@Autowired
-//	private SqlSessionFactoryBean sqlSessionFactory;
+	@Autowired
+	private IUser user;
+	
+	@Autowired
+	private SqlSessionFactoryBean sqlSessionFactory;
 	
 	@Autowired
 	private UserVo userVo;
@@ -32,8 +32,8 @@ public class IUserTest {
 	@Test
 	public void getNumberTest() {
 		assertNotNull(userVo);
-		//assertNotNull(sqlSessionFactory);
-		//assertNotNull(user);
+		assertNotNull(sqlSessionFactory);
+		assertNotNull(user);
 	}
 
 }
