@@ -1,7 +1,6 @@
 package kr.or.ddit.user.repository;
 
-
-
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import javax.annotation.Resource;
@@ -34,6 +33,8 @@ public class IUserTest {
 		assertNotNull(userVo);
 		assertNotNull(sqlSessionFactory);
 		assertNotNull(user);
+		int result = user.getNumber(5);
+		assertEquals(7, result);
 	}
 
 }
