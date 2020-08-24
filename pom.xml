@@ -45,11 +45,11 @@
 	</repositories>
 
 	<dependencies>
-<!-- 		<dependency> -->
-<!-- 			<groupId>ch.qos.logback</groupId> -->
-<!-- 			<artifactId>logback-classic</artifactId> -->
-<!-- 			<version>1.2.3</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.2.3</version>
+		</dependency>
 
 		<!-- Spring -->
 		<dependency>
@@ -109,27 +109,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.6</version>
-		</dependency>
-
-		<dependency>
 			<groupId>org.lazyluke</groupId>
 			<artifactId>log4jdbc-remix</artifactId>
 			<version>0.2.7</version>
 		</dependency>
-
-
-
-
-
 
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>

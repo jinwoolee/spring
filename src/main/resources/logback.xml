@@ -31,45 +31,47 @@
 		</encoder>
 	</appender>
 
-	<logger name="kr.or.ddit" level="debug">
-		<appender-ref ref="STDOUT2" />
+	<logger name="kr.or.ddit">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="org.springframework" level="debug">
-		<appender-ref ref="STDOUT2" />
-	</logger>
-
+	
+	
+	<!--                       development production -->
+    <!-- jdbc.connection     :     WARN       WARN    -->
+    <!-- jdbc.audit          :     WARN       WARN    -->
+    <!-- jdbc.sqlonly        :     WARN       WARN    -->
+    <!-- jdbc.sqltiming      :     INFO       WARN    -->
+    <!-- jdbc.resultset      :     WARN       WARN    -->
+    <!-- jdbc.resultsettable :     INFO       WARN    -->
+    
 	<logger name="jdbc.connection" additivity="false">
-        <level value="WARN"/>
-        <appender-ref ref="CONSOLE"/>
+        <level value="debug"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
  
     <logger name="jdbc.audit" additivity="false">
-        <level value="WARN"/>
-        <appender-ref ref="CONSOLE"/>
+        <level value="debug"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
  
     <logger name="jdbc.sqlonly" additivity="false">
-        <level value="WARN"/>
-        <appender-ref ref="CONSOLE"/>
+        <level value="debug"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
  
     <logger name="jdbc.sqltiming" additivity="false">
-        <level value="INFO"/>
-        <appender-ref ref="CONSOLE"/>
+        <level value="debug"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
  
     <logger name="jdbc.resultset" additivity="false">
-        <level value="WARN"/>
-        <appender-ref ref="CONSOLE"/>
+        <level value="debug"/>
+        <appender-ref ref="STDOUT"/>
     </logger>
     
-    <logger name="jdbc.resultsettable" additivity="false">
-        <level value="INFO"/>
-        <appender-ref ref="CONSOLE"/>
-    </logger>
-
-	<!-- <root level="debug"> -->
-	<!-- <appender-ref ref="STDOUT" /> -->
-	<!-- </root> -->
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
 </configuration>
