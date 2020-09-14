@@ -31,7 +31,7 @@
 		</encoder>
 	</appender>
 
-	<logger name="kr.or.ddit">
+	<logger name="kr.or.ddit" >
 		<level value="debug" />
 		<appender-ref ref="STDOUT" />
 	</logger>
@@ -46,13 +46,13 @@
     <!-- jdbc.resultset      :     WARN       WARN    -->
     <!-- jdbc.resultsettable :     INFO       WARN    -->
     
-	<logger name="jdbc.connection" additivity="false">
-        <level value="debug"/>
+	<logger name="jdbc.connection" >
+        <level value="off"/>
         <appender-ref ref="STDOUT"/>
     </logger>
  
     <logger name="jdbc.audit" additivity="false">
-        <level value="debug"/>
+        <level value="off"/>
         <appender-ref ref="STDOUT"/>
     </logger>
  
@@ -62,7 +62,7 @@
     </logger>
  
     <logger name="jdbc.sqltiming" additivity="false">
-        <level value="debug"/>
+        <level value="off"/>
         <appender-ref ref="STDOUT"/>
     </logger>
  
@@ -71,7 +71,7 @@
         <appender-ref ref="STDOUT"/>
     </logger>
     
-	<root level="debug">
-		<appender-ref ref="STDOUT" />
-	</root>
+<!-- 	<root level="debug"> -->
+<!-- 		<appender-ref ref="STDOUT" /> -->
+<!-- 	</root> -->
 </configuration>
