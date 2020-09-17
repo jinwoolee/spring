@@ -10,7 +10,7 @@
 		<put-attribute name="content" value=""/>
 	</definition>
 	
-	<definition name="userPagingListTiles" extends="layout">
-		<put-attribute name="content" value="/WEB-INF/views/user/userPagingListContent.jsp"/>
+	<definition name="*/*" >
+		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 </tiles-definitions>
