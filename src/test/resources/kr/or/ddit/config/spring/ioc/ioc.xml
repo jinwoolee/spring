@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 스프링 컨테이너에게 건네줄 객체 생성 설명서 -->
+	
+	<!-- bean : 스프링 컨테이너에서 관리될 스프링 빈 선언
+	        . id - 스프링 컨테이너 안에서 관리될 스프링 빈의 이름, 다른 스프링 빈과 이름이 중복되면 안된다
+	               name속성을 사용해도 무방하나 관리차원에서 id or name 한쪽만 사용할 것을 추천 
+	               설정시에만 사용 스프링 빈의 경우는 별도로 이름일 작성하지 않는 경우도 있음
+	        . class - 해당 스프링빈을 만들 class
+	        
+	     property : class의 필드(속성) ==> 스프링컨테이너가 해당 필드의 setter메소드를 이용하여
+	                                     스프링 빈을 주입  -->
+	
+	<!-- 1. boardDao라는 이름으로 BoardDao 클래스를 이용하여 스프링 빈 생성
+	     2. boardService라는 이름으로 BoardService 클래스를 이용하여 스프링 빈 생성
+	     		boardService의 boardDao 속성으로 1번에 생성한 스프링 빈을 setter 메소드를 통해 주입 -->
+	     		
+	<bean id="boardDao" class="kr.or.ddit.board.repository.BoardRepository"/>
+	
+	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
+		<!-- boardService가 의존하는 boardDao 스프링빈을 setter 메소드를 통해 주입(Dependency Injection) -->
+		<property name="boardRepository" ref="boardDao"/>
+	</bean>
+	
+	<bean id="boardServiceC" class="kr.or.ddit.board.service.BoardService" >
+		<constructor-arg ref="boardDao" />
+	</bean>
+
+	<!-- person 스프링빈 등록
+	     age : 30
+	     boardRepository : boardDao 스프링 빈
+	     
+	     value : 고정된 상수 값
+	     ref : 다른 스프링 빈을 참조
+	      -->
+	<bean id="person" class="kr.or.ddit.person.model.Person">
+		<property name="age" value="30"/>
+		<property name="boardRepository" ref="boardDao"/>
+	</bean>	     
+</beans>
+
+
+
+
+
+
+

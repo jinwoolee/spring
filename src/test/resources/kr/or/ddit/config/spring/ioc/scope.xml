@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- scope 속성을 지정하지 않았으므로 singleton
+	     boardRepository라는 스프링 빈은 해당 스프링 컨테이너에서 유일하다 -->
+	<bean id="boardRepository" class="kr.or.ddit.board.repository.BoardRepository" />
+	
+	<bean id="boardRepository_a" class="kr.or.ddit.board.repository.BoardRepository" />
+	
+	<!-- BoardRepository class를 이용하여 boardRepository_p 스프링빈을
+	     prototype scope로 생성 -->
+	<bean id="boardRepository_p" class="kr.or.ddit.board.repository.BoardRepository"
+		  scope="prototype" />
+		     
+</beans>
+
+
+
+
+
+
+
+
+
+ 

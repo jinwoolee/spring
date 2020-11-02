@@ -1,0 +1,69 @@
+스프링 컨테이너 == IOC 컨테이너 == 컨테이너
+  . 스프링 빈을 생성, 관리하는 객체
+  .* 서블릿 컨테이너에서 HttpServlet 클래스를 상속하여 작성한 서블릿을 관리 하는 것과 유사
+     서블릿 컨테이너를 통해 서블릿을 관리할 때 얻을 수 있는 점
+     url을 호출 했을 때 매핑된 서블릿의 service 메소드를 호출 할 수 있다
+        ==> 개발자가 servlet 코드를 직접 실행하지 않는다
+        ==> 실행에 대한 제어가 서블릿 컨테이너에게 있다
+        ==> 개발자는 servlet 스팩에 맞게 서블릿을 작성만 한다
+
+DI: Dependency Injection - 의존성 주입
+    의존성을 고려하여 필요한 객체를 setter, 생성자를 통해 제공하여 설정하는 작업
+    reflection : @Autowired(호환Type으로 설정 - spring framework),
+    			 @Resource(빈의 이름), @Inject(호환Type으로 설정 - java 표준) 
+    
+    * service 객체에서 필요한 dao 객체를 setter 통해 주입
+      <bean id ="service" class =".....">
+      	<property name="dao" ref="dao"/>
+      </bean>
+
+DL : Dependency Lookup - 의존 검색
+     컨테이너로 부터 관리되는 빈을 요청
+
+IOC, DI, DL, AOP등 스프링에서 자주 언급되는 개념은 스프링에 종속되는 개념이 아니라
+디자인 패턴에서 다루는 언어와 관련 없는 일반적은 개념    
+    
+    
+스프링 빈 scope
+	기본 값 : singleton
+    <bean > 엘레멘트에서 선언한 id, name별로 객체가 관리된다는 의미
+            class 속성이 동일한 bean이 여러개 존재 할 수 있다
+            
+    prototype : DL을 할때 마다 스프링 컨테이너가 새로운 스프링 빈 객체를 생성하여 리턴
+                (singleton 처럼 한번 생성해놓고 재활용 하지 않음)
+
+디자인 패턴의 singleton : 클래스 객체가 하나만 생성되도록 강제하는 디자인 패턴   
+    
+스프링 빈 속성
+lazy-init : 빈 생성 시기 결정
+            빈이 필요해지는 시점에 스프링 컨테이너가 해당 스프링 빈을생성
+            default : 스프링빈이 만들어지는 시점에서 모든 스프링 빈을 생성
+            
+스프링 빈의 갯수가 많아 질때 
+  ==> server start ==> 스프링 빈 초기화 ==> 시간이 지연
+  
+  만약 lazy-init 속성을 true로 설정 할경우
+  해당 빈이 필요 할때 생성 ==> 스프링 컨테이너 생성시 초기화 시간이 단축된다 
+
+** 오라클 row level locking    
+
+init-method, destroy-method : 스프링 빈 생성, 소멸시 초기화, 리소스 해제시 사용
+factory-bean, factory-method : 생성자가 아닌 factory 객체를 통해 객체를 생성할때
+depends-on : 스프링 빈 생성시 이전에 반드시 생성이 되어야하는 다른 스프링 빈을 명시    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
