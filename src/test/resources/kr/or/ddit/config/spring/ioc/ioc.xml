@@ -18,15 +18,15 @@
 	     2. boardService라는 이름으로 BoardService 클래스를 이용하여 스프링 빈 생성
 	     		boardService의 boardDao 속성으로 1번에 생성한 스프링 빈을 setter 메소드를 통해 주입 -->
 	     		
-	<bean id="boardDao" class="kr.or.ddit.board.repository.BoardRepository"/>
+	<bean id="boardRepository" class="kr.or.ddit.board.repository.BoardRepository"/>
 	
 	<bean id="boardService" class="kr.or.ddit.board.service.BoardService">
 		<!-- boardService가 의존하는 boardDao 스프링빈을 setter 메소드를 통해 주입(Dependency Injection) -->
-		<property name="boardRepository" ref="boardDao"/>
+		<property name="boardRepository" ref="boardRepository"/>
 	</bean>
 	
 	<bean id="boardServiceC" class="kr.or.ddit.board.service.BoardService" >
-		<constructor-arg ref="boardDao" />
+		<constructor-arg ref="boardRepository" />
 	</bean>
 
 	<!-- person 스프링빈 등록
@@ -38,8 +38,33 @@
 	      -->
 	<bean id="person" class="kr.or.ddit.person.model.Person">
 		<property name="age" value="30"/>
-		<property name="boardRepository" ref="boardDao"/>
-	</bean>	     
+		<property name="boardRepository" ref="boardRepository"/>
+		<property name="birthdate" value="2020-11-03"/>
+	</bean>
+	
+	<!-- customEditorConfigurer에 우리가 만든 CustomDateRgistrar를 등록하여
+	     Date 형으로 현변환시 스프링 프레임워크가 형변환시 사용할 수 있도록 설정한다 -->
+<!-- 	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"> -->
+<!-- 		<property name="propertyEditorRegistrars"> -->
+<!-- 			<list> -->
+<!-- 				<bean class="kr.or.ddit.config.type.CustomDateRegistrar"/> -->
+<!-- 			</list> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<!-- conversion service -->
+<!-- 	<bean id="conversionService"  -->
+<!-- 			class="org.springframework.context.support.ConversionServiceFactoryBean"> -->
+<!-- 		<property name="converters"> -->
+<!-- 			<set> -->
+<!-- 				<bean class="kr.or.ddit.config.type.DateStringConverter"/> -->
+<!-- 			</set> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+	
+	<!-- formatting conversion service -->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean"/>
+			     
 </beans>
 
 
