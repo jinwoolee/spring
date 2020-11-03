@@ -1,7 +1,26 @@
 package kr.or.ddit.board.repository;
 
+import org.springframework.stereotype.Repository;
+
 import kr.or.ddit.board.model.BoardVo;
 
+/**
+* BoardRepository.java
+*
+* @author SEM
+* @version 1.0
+* @see
+*
+* <pre>
+* << 개정이력(Modification Information) >>
+*
+* 수정자 수정내용
+* ------ ------------------------
+* SEM 최초 생성
+*
+* </pre>
+*/
+@Repository("boardRepository")
 public class BoardRepository implements BoardRepositoryI{
 
 	@Override
