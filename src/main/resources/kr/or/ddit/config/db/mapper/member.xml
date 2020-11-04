@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+  <select id="getMember" parameterType="String" resultType="MemberVo">
+    SELECT * 
+    FROM users
+    WHERE userid = #{userId} 
+  </select>
+  
+  <select id="selectAllMember" resultType="MemberVo">
+  	SELECT *
+  	FROM users
+  </select>
+  
+  <select id="selectMemberPageList" resultType="MemberVo" parameterType="PageVo">
+	  SELECT *
+		FROM
+		    (SELECT ROWNUM rn, a.*
+		     FROM
+		        (SELECT *
+		         FROM users
+		         ORDER BY userid) a )
+		WHERE rn BETWEEN (#{page} - 1) * #{pageSize} + 1  AND #{page} * #{pageSize}
+  </select>
+  
+  <select id="selectMemberTotalCnt" resultType="int" >
+		SELECT COUNT(*)
+		FROM users	
+  </select>
+  
+  <insert id="insertMember" parameterType="MemberVo">
+  	INSERT INTO users VALUES(#{userid}, #{usernm}, #{pass},
+  							 SYSDATE, #{alias}, #{addr1}, #{addr2},
+  							 #{zipcode}, #{filename}, #{realFilename})
+  </insert>
+  
+  <delete id="deleteMember" parameterType="String">
+  	DELETE users
+  	WHERE userid = #{userid}
+  </delete>
+  
+  <update id="updateMember" parameterType="MemberVo">
+	UPDATE users SET usernm = #{usernm}, 
+					 pass = #{pass},
+					 alias = #{alias},
+					 addr1 = #{addr1},
+					 addr2 = #{addr2},
+  					 zipcode = #{zipcode},
+  					 filename = NVL(#{filename}, filename),
+  					 realFilename = #{realFilename}
+	WHERE userid = #{userid}  							   
+  </update>
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+

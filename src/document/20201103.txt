@@ -113,7 +113,8 @@ url-pattern   mvc:default-  spring controller(/login/view.do)   index.jsp   js/b
 			 	handler      
     /*          미적용                 X                         X              X
     /*           적용
-    /           미적용                 X                          O
+    /           미적용                 O                          O              X
+    /             적용                 O                          O              O
 
 
 

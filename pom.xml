@@ -145,6 +145,14 @@
 			<version>12.1.0.2</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		
 
 	</dependencies>
 

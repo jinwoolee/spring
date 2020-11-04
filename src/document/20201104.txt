@@ -1,0 +1,155 @@
+@RequestMapping : 요청 처리할 컨트롤러의 메소드를 지정
+ 사용위치 : 1. class
+          2. method
+          
+@Controller
+@RequestMapping(path="/mainPath")
+public class xxxController{
+
+	@RequestMapping(path="/subPath")
+	public String subPath(){
+	}
+	
+	@RequestMapping(path="/subPath2")
+	public String subPath2(){
+	}
+}
+
+ /mainPath/subPath ==> xxxController.subPath();
+ /mainPath/subPath2 ==> xxxController.subPath2();
+ 
+ 
+ @RequestMapping 속성
+ path : url 패턴(default)
+ 	@RequestMapping("login/view") == @RequestMapping(path="login/view")
+
+method : 요청 메소드에 따라 설정한 요청에 대해서만 처리하게끔 한정 	 
+@RequestMapping(path="login/view", method={RequestMethod.GET, RequestMethod.POST}
+ == @GetMapping
+ 
+params : 파라미터중에 특정 값을 갖거나, 파라미터가 존재하는 등 파라미터와 관련된 조건을 기술
+	@ReuqestMapping(params = {"userid"}) : userid 파라미터가 존재할 때
+	@ReuqestMapping(params = {"!userid"}) : userid 파라미터가 존재하지 않을 때
+	@ReuqestMapping(params = {"pass=brownPass"}) : pass 파라미터가 전송되었고 그 값이 brownPass 일때
+	@ReuqestMapping(params = {"pass!=brownPass"}) : pass 파라미터가 전송되었고 그 값이 brownPass가 아닐때
+	
+header : 요청 헤더에 특정 값이 담겨 있을 때만 요청처리
+consume - Content-type, produce - Accept 헤더: ajax 수업 시 다시  
+	
+
+스프링 컨트롤러 메소드의 인자 : 서블릿과 다르게 정해진 규칙 안에서 자유롭게 인자를 설정 할 수 있다
+1. Servlet Api : HttpServletRequest, HttpServletResponse, HttpSession
+	public String method(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		session.setAttribute("S_MEMBER", .....);
+	}
+	
+	public String method(HttpSession session){
+		session.setAttribute("S_MEMBER", .....);
+	}
+
+2. command 객체 (form 전송을 통해 전달된 파라미터를 담는 객체 - Value Object)
+
+3. 파리미터를 담을 개별 변수 (String userid, String pass)
+
+3.5 bindingResult : 바인딩 결과를 담는 객체-추후 validation 수업시 진행 
+
+4. model/ModelMap/map : 속성을 저장할 객체 (servlet의 request에 해당)
+
+5. RedirectAttributes : 리다이렉트 페이지에서 사용할 1회용 속성을 설정
+
+
+. HttpMethod : post, get
+. Principal : Spring Security에서 사용하는 사용자 인증 정보
+
+
+스프링 컨트롤러에서 사용할 수 있는 어노테이션
+@RequestParam : 파라미터 이름과 값을 담을 변수 명이 다를때 파라미터를 특정 변수에 할당 할 수 있다
+                기본 값 설정
+                사용방법 : 컨트롤러 메소드의 인자에 설정
+name : 받고싶은 파라미터 이름 지정
+required : 파라미터 존재 유무 설정, 기본은 true
+           required가 true일때 해당 파라미터가 전송되지 않으면 에러 
+
+@RequestPart : multipart/form-data, 파일 업로드시 다시 
+
+@RequestHeader, @CookieValue : 요청시 사용된 헤더, 쿠키값을 파라미터 인자에서 받을수 있다
+
+@PathVariable : 패스변수
+                @RequestMapping에 설정한 url 경로중 일부를 파라미터 인자로 받아온다
+
+/notice/ct
+/notice/sk
+@RequestMapping("/notice/{library}")
+	public String notice(@PathVariable("library") String library) {
+		
+	}                
+
+
+스프링 컨트롤러의 리턴 타입
+1. String : 논리적인 viewName을 의미
+            ViewResolver에 의해 처리할 view를 결정하여 처리, 많이 사용되는 형태
+            
+2. ModelAndView : 스프링 컨테이너는 응답 생성을 위해 내부적으로 ModelAndView 객체를 생성 하여 처리
+                  하는데 그 과정을 개발자가 직접 하는 것
+                               
+3. void : servlet과 같은 형태, outputstream, writer 객체를 통해 응답을 직접 생성하는 경우
+		  imgage응답을 생성하는 controller 생성(추후)
+
+4. View : 응답을 처리할 View객체를 직접 개발자가 명시		                                 
+
+
+
+@ModelAttribute 
+ 메소드에서 사용시 : 1. @RequestMapping 어노테이션이 붙은 메소드가 실행되기전에 항상 먼저 실행
+                 2. 해당 메소드에서 리턴하는 값을 Model 객체에 자동으로 설정
+                   
+ 메소드 인자에서 사용시 : 
+ 	public String methodName(@ModelAttribute("rangers") List<String> rangers){
+ 	}
+ 	
+ 	메소드 인자로 Model 객체를 선언하지 않고도
+ 	모델에 설정된 속성을 메소드 인자에서 받을 수 있다
+ 	
+@SessionAttributes : class레벨에 적용
+                     설정한 속성을 session에 저장하여
+                     @ModelAttribute 어노테이션이 붙은 메소드가 요청시마다
+                     실행되는 것을 방지한다
+                     
+                     
+                     
+                     
+                     
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+           
