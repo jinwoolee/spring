@@ -1,0 +1,39 @@
+복수 파라미터 받기
+동일한 파라미터 명으로 여러개의 값을 보내는 형태
+<form>
+	<input type="text" name="userid" value="brown"/> <br>
+	<input type="text" name="userid" value="sally"/> <br>
+	<input type="submit" value="전송"/>
+</form>
+
+위의 form 태그를 전송하면 userid 라는 파라미터명으로 brown, sally 두개의 값이 전송된다
+
+----------server side-----
+servlet
+	String userid = request.getParameter("userid");			//brown
+	String[] userids = request.getPrameterValues("userid");
+	
+	
+spring framework에서 복수 파라미터 받기
+1. List로 받기 : @RequestParam("userid") List<String> userList
+2. 배열로 받기  : @RequestParam("userid") String[] userArr
+				                        String[] userid
+3. command 객체로 받기 : 필드를 List로 선언하고 필드이름을 파라미터 이름과 동일하게 한다
+
+
+redirect
+jsp/servlet : response.sendRedirect("리다이렉트 주소");
+spring : viewName 앞에 접두어를 붙여서 반환
+          "redirect:리다이렉트할주소"
+          "forward:포워딩주소"		
+				                        
+
+
+
+
+
+
+
+
+
+
