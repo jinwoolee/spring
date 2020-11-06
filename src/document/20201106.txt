@@ -1,0 +1,30 @@
+마이그레이션
+ms-sql server ==> oracle
+servlet ==> spring controller
+
+컨트롤러 메소드 인자 설정시 발생할 수 있는 문제점
+1. primitive type (int, double.....)
+   메소드(int page)
+   ==> page 파라미터가 반드시 존재 해야함
+   
+개발시 고려 사항 : 해당 파라미터가 반드시 전송이 되는가!!!
+ 전송 될 경우 : 별다른 조치 없이 사용
+ 전송 안될 경우 : @RequestParam(name="파리미터명", required=false, defaultValue="")
+                command 객체를 사용
+                ** primitive type의 필드는 객체 생성시 자동으로 초기 값으로 할당이 된다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

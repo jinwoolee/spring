@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.config.db.MybatisUtil;
-import kr.or.ddit.member.Repository.MemberDao;
-import kr.or.ddit.member.Repository.MemberDaoI;
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.repository.MemberDao;
+import kr.or.ddit.member.repository.MemberDaoI;
 
 @Service("memberService")
 public class MemberService implements MemberServiceI {

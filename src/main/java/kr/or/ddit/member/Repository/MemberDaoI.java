@@ -1,4 +1,4 @@
-package kr.or.ddit.member.Repository;
+package kr.or.ddit.member.repository;
 
 import java.util.List;
 

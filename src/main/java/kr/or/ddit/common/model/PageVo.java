@@ -3,6 +3,7 @@ package kr.or.ddit.common.model;
 public class PageVo {
 	private int page;
 	private int pageSize;
+	private String msg;
 	
 	//인자있는 생성자를 선언하게 되면 default 생성자(인자가 없는 생성자)가 생성이 안됨
 	//대다수의 frmaework에서는 인자가 없는 생성자를 요구하는 경우가 많음
@@ -11,6 +12,12 @@ public class PageVo {
 	// ** 인자가 있는 생성자를 만들경우, 기본 생성자를 개발자가 생성
 	// ** 별도의 생성자를 만드지 않을 경우, jdk가 자동으로 기본 생성자를 만들어준다
 	
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
 	public PageVo() {
 		
 	}
