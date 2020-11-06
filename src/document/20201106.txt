@@ -14,8 +14,43 @@ servlet ==> spring controller
                 ** primitive type의 필드는 객체 생성시 자동으로 초기 값으로 할당이 된다
 
 
+스프링 객체 검증
+1. Spring Validator
+   1. 스프링 프레임워크에서 제공하는 Validator interface를 구현
+       . supports : 검증하려고하는 객체가 해당 validator에서 검증할 수 있는지 여부를 반환
+       . validate : 검증 로직을 작성-개발자가 로직을 직접 구현
+       
+   2. Controller 메소드에 검증하려고 하는 커맨드 객체 바로 뒤에 BindingResult 객체를 인자로 선언
+      스프링 프레임워크에서 메소드 인자 구성이 비교적 자유롭지만
+      BindingResult 객체는 검증을 하려고하는 커맨드 객체뒤에 선언이 되어 있어야 한다     
+   
+2. JSR303 유효성 검증
+   1. Command 객체 인자 앞에 @Valid 어노테이션 적용
+   2. Command 객체의 필드에 검증 어노테이션을 적용
+   3. command 객체 뒤에 BindingResult 객체를 인자로 선언
+    객체 검증의 결과가 bindingResult 객체에 담긴다
+    ==> 개발자가 직접 검증과 관련된 메소드를 호출하지 않는다
+    
+    Spring Validator와 비교 ==> 복잡한 검증은 불가능
+    @Max, @Min, @Size, @Pattern(정규식) 등 간단한 형태만 가능
+    
+    복잡한 형태 : 네이버에 비밀번호 변경시 기존에 사용하던 비밀번호를 사용하지 못하게끔 검증
+    
 
+스프링 예외처리
+1. Controller 마다 처리
+   Controller class에 @ExceptionHandler 어노테이션이 적용된 메소드를 생성
+   어노테이션 속성으로 해당 메소드에서 처리할 예외에 대해 선언
+   해당 예외가 발생시 @ExceptionHandler 어노테이션이 적용된 메소드가 호출된다
+    
+2. 공통의 예외처리 클래스로 분리
+   . 예외처리를 할 클래스를 생성, 클래스에 @ControllerAdvice 어노테이션 적용
+   . 해당 클래스의 예외처리 메소드는 @ExceptionHandler 어노테이션을 적용, 처리 가능한
+     예외 타입에 대해 등록
+   . @ControllerAdvice 어노테이션이 적용된 클래스를 스캔할 수 있도록
+      Component-scan 엘레멘트를 수정  
 
+3. 사용자 정의 예외가 발생시 스프링 프레임워크에게 응답코드를 설정하는 방법         
 
 
 

@@ -22,7 +22,7 @@
        <appender-ref ref="STDOUT" />
    </logger> 
    
-   <root level="DEBUG">
-       <appender-ref ref="STDOUT" />
-   </root>
+<!--    <root level="DEBUG"> -->
+<!--        <appender-ref ref="STDOUT" /> -->
+<!--    </root> -->
 </configuration>
