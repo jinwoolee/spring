@@ -42,7 +42,9 @@ public class MemberController {
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("pages", map.get("pages"));
 				
-		return "member/list";
+		//return "member/list";
+		//return "tiles.memberList";
+		return "tiles/member/memberListContent";
 	}
 	
 	@RequestMapping("/member")
@@ -52,12 +54,14 @@ public class MemberController {
 		
 		model.addAttribute("memberVo", memberVo);
 		
-		return "member/member";
+		//return "member/member";
+		return "tiles/member/memberContent";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.GET})
 	public String regist() {
-		return "member/regist";
+		//return "member/regist";
+		return "tiles/member/registContent";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.POST})
@@ -68,7 +72,8 @@ public class MemberController {
 		
 		//검증을 통과하지 못했으므로 사용자 등록 화면으로 이동
 		if(br.hasErrors()) {
-			return "member/regist";
+			//return "member/regist";
+			return "tiles/member/registContent";
 		}
 		
 		String realFilename = profile.getOriginalFilename();
@@ -97,14 +102,16 @@ public class MemberController {
 		}
 		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
 		else {
-			return "member/regist";
+			//return "member/regist";
+			return "tiles/member/registContent";
 		}
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.GET})
 	public String update(String userid, Model model) {
 		model.addAttribute("memberVo", memberService.getMember(userid));
-		return "member/update";
+		//return "member/update";
+		return "tiles/member/updateContent";
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.POST})
@@ -140,7 +147,8 @@ public class MemberController {
 		}
 		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
 		else {
-			return "member/update";
+			//return "member/update";
+			return "tiles/member/updateContent";
 		}
 	}
 }
