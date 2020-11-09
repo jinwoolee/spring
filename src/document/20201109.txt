@@ -4,4 +4,63 @@
 java에서 엑셀 파일을 다룰 수 있는 api : apache-poi
 
 view : Model에 저장된 header, data 속성을 읽어 poi 라이브러리를 이용하여
-       엑셀 파일로 생성, 응답 
+       엑셀 파일로 생성, 응답
+       
+       
+view Resolver
+상황 : 
+	tilesViewResolver order 0
+	beaneViewResolver order 1
+	internalResourceViewResolver order 2
+	
+만약 controller가 tiles/member/list 라는 viewName-문자열 을 리턴하면
+
+   1. viewResolver 우선순위에 따라 tilesViewResolver를 먼저 적용
+      . tiles-definitions 중에 viewName("tiles/member/list")와 동일한
+        definition을 찾음
+          ==> 존재.  ==> 해당 definition으로 응답 생성
+          	
+
+만약 controller가 jsonView 라는 viewName-문자열 을 리턴하면
+	1. viewResolver 우선순위에 따라 tilesViewResolver를 먼저 적용
+      . tiles-definitions 중에 viewName("tiles/member/list")와 동일한
+        definition을 찾음
+          ==> 존재 하지 않음
+    2. 후순위 설정에 따라 beanNameViewResolver가 적용됨
+      . viewName과 동일한 이름의 Spring bean이 존재하면 해당 빈을 view 객체로 사용
+         ==> jsonView (MappingJackson2JsonView) 존재
+             해당 view객체로 응답을 생성       
+
+
+만약 controller가 main/view 라는 viewName-문자열 을 리턴하면
+	1. viewResolver 우선순위에 따라 tilesViewResolver를 먼저 적용
+      . tiles-definitions 중에 viewName("tiles/member/list")와 동일한
+        definition을 찾음
+          ==> 존재 하지 않음
+    2. 후순위 설정에 따라 beanNameViewResolver가 적용됨
+      . viewName과 동일한 이름의 Spring bean이 존재하면 해당 빈을 view 객체로 사용
+         ==> main/view라는 이름의 스프링 빈이 존재하지 않음
+    3. 후순위 설정에 따라 internalResourceViewResolver가 적용됨
+       ==> 해당 리소스가 존재하지 않아도 무조건 응답을 보낸다 ==> 404로 응답이 생성될 수 있음
+           ** 해당 사유로 인해 internalResourceViewResolver는 viewResolver
+              설정에서 가장 후순위로 설정하는 것이 일반적이다 
+
+
+
+
+
+
+
+
+
+
+
+
+          	
+	
+
+	
+	
+	
+	
+	
