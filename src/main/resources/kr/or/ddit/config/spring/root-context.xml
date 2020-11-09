@@ -18,6 +18,7 @@
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basenames">
 			<list>
+				<value>classpath:/kr/or/ddit/message/error</value>
 				<value>classpath:/kr/or/ddit/message/msg</value>
 			</list>
 		</property>
