@@ -8,6 +8,8 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +28,8 @@ import kr.or.ddit.member.service.MemberServiceI;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 	@Resource(name="memberService")
 	private MemberServiceI memberService;
@@ -47,15 +51,56 @@ public class MemberController {
 		return "tiles/member/memberListContent";
 	}
 	
+	@RequestMapping("/listAjaxPage")
+	public String listAjaxPage() {
+		return "tiles/member/listAjaxPage";
+	}
+	
+	//페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성)
+	@RequestMapping("/listAjax")
+	public String listAjax(PageVo pageVo, Model model) {
+		logger.debug("pageVo : {}", pageVo );
+		
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("pages", map.get("pages"));
+		
+		return "jsonView";
+	}
+	
+	//페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성)
+	@RequestMapping("/listAjaxHTML")
+	public String listAjaxHTML(PageVo pageVo, Model model) {
+		logger.debug("pageVo : {}", pageVo );
+		
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("pages", map.get("pages"));
+		
+		//응답을 html ==> jsp로 생성
+		return "member/listAjaxHTML";
+	}
+	
+	
+	
 	@RequestMapping("/member")
 	public String member(String userid, Model model) {
 
-		MemberVo memberVo = memberService.getMember(userid);
-		
-		model.addAttribute("memberVo", memberVo);
+		model.addAttribute("memberVo", memberService.getMember(userid));
 		
 		//return "member/member";
 		return "tiles/member/memberContent";
+	}
+	
+	@RequestMapping("/memberAjaxPage")
+	public String memberAjaxPage() {
+		return "tiles/member/memberAjaxPage";
+	}
+	
+	@RequestMapping("/memberAjax")
+	public String memberAjax(String userid, Model model) {
+		model.addAttribute("memberVo", memberService.getMember(userid));
+		return "jsonView";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.GET})
