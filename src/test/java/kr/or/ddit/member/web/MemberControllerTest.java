@@ -28,14 +28,14 @@ public class MemberControllerTest extends WebTestConfig{
 	
 	@Before
 	public void setupData() {
-		String userid = "ljw";
-		memberService.deleteMember(userid);
+		/*String userid = "ljw";
+		memberService.deleteMember(userid);*/
 	}
 	
 	@Test
 	public void memberListTest() throws Exception {
 		mockMvc.perform(get("/member/list"))
-				.andExpect(view().name("member/list"))
+				.andExpect(view().name("tiles/member/memberListContent"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeExists("memberList"))
 				.andExpect(model().attributeExists("pages"))
@@ -45,7 +45,7 @@ public class MemberControllerTest extends WebTestConfig{
 	@Test
 	public void memberTest() throws Exception {
 		mockMvc.perform(get("/member/member").param("userid", "brown"))
-				.andExpect(view().name("member/member"))
+				.andExpect(view().name("tiles/member/memberContent"))
 				.andExpect(status().isOk())
 				.andExpect(model().attributeExists("memberVo"))
 				.andDo(print());
@@ -54,7 +54,7 @@ public class MemberControllerTest extends WebTestConfig{
 	@Test
 	public void memberRegistViewTest() throws Exception {
 		mockMvc.perform(get("/member/regist"))
-		.andExpect(view().name("member/regist"))
+		.andExpect(view().name("tiles/member/registContent"))
 		.andExpect(status().isOk())
 		.andDo(print());
 	}
@@ -65,7 +65,7 @@ public class MemberControllerTest extends WebTestConfig{
 		MockMultipartFile file = new MockMultipartFile("profile", "sally.png", "image/png", is);
 
 		mockMvc.perform(fileUpload("/member/regist").file(file)
-							.param("userid", "ljw")
+							.param("userid", "ljw_new")
 							.param("pass", "pass1234")
 							.param("usernm", "이진우")
 							.param("alias", "SEM")
@@ -78,10 +78,28 @@ public class MemberControllerTest extends WebTestConfig{
 	}
 	
 	@Test
+	public void memberRegistFailTest() throws Exception {
+		InputStream is = getClass().getResourceAsStream("/kr/or/ddit/upload/sally.png");
+		MockMultipartFile file = new MockMultipartFile("profile", "sally.png", "image/png", is);
+
+		mockMvc.perform(fileUpload("/member/regist").file(file)
+							.param("userid", "ljw")
+							.param("pass", "pass1234")
+							.param("usernm", "이진우")
+							.param("alias", "SEM")
+							.param("addr1", "대전 중구 중앙로 76")
+							.param("addr2", "영민빌딩 404호")
+							.param("zipcode", "34940"))
+		.andExpect(view().name("tiles/member/registContent"))
+		.andExpect(status().isOk())
+		.andDo(print());
+	}
+	
+	@Test
 	public void memberUpdateViewTest() throws Exception {
 		mockMvc.perform(get("/member/update").param("userid", "brown"))
 				.andExpect(status().isOk())
-				.andExpect(view().name("member/update"))
+				.andExpect(view().name("tiles/member/updateContent"))
 				.andExpect(model().attributeExists("memberVo"))
 				.andDo(print());
 	}
@@ -90,11 +108,11 @@ public class MemberControllerTest extends WebTestConfig{
 	public void memberUpdateTest() throws Exception {
 		
 		/***Given***/
-		MemberVo memberVo = new MemberVo("ljw", "pass1234", "이진우", "sem",
+/*		MemberVo memberVo = new MemberVo("ljw", "pass1234", "이진우", "sem",
 						"대전 중구 중앙로 76", "영민빌딩 404호", "34940", 
 						"d:\\profile\\ljw.png", "ljw.png");
 	
-		int insertCnt = memberService.insertMember(memberVo);
+		int insertCnt = memberService.insertMember(memberVo);*/
 
 		/***When***/
 		InputStream is = getClass().getResourceAsStream("/kr/or/ddit/upload/sally.png");
@@ -113,7 +131,7 @@ public class MemberControllerTest extends WebTestConfig{
 				.andExpect(view().name("redirect:/member/member?userid=ljw"));
 		
 		/***Then***/
-		assertEquals(1, insertCnt);
+		//assertEquals(1, insertCnt);
 	}
 
 }

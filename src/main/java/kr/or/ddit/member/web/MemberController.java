@@ -139,17 +139,19 @@ public class MemberController {
 		memberVo.setFilename(filePath);
 		memberVo.setRealFilename(realFilename);
 		
-		int insertCnt = memberService.insertMember(memberVo);
+		int insertCnt = 0;
+		try {
+			insertCnt = memberService.insertMember(memberVo);
+			
+			//1건이 입력되었을 때 : 정상 - memberList 페이지로 이동
+			if(insertCnt == 1) {
+				return "redirect:/member/list";
+			}
+		}catch(Exception e) {
+		}
 		
-		//1건이 입력되었을 때 : 정상 - memberList 페이지로 이동
-		if(insertCnt == 1) {
-			return "redirect:/member/list";
-		}
-		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
-		else {
-			//return "member/regist";
-			return "tiles/member/registContent";
-		}
+		//return "member/regist";
+		return "tiles/member/registContent";
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.GET})

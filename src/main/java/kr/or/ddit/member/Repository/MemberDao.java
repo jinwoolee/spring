@@ -32,26 +32,21 @@ public class MemberDao implements MemberDaoI{
 		// 한건 : selectOne
 		// 여러건 : selectList
 		
-		MemberVo memberVo = sqlSession.selectOne("member.getMember", userId);
-		
-		return memberVo;
+		return sqlSession.selectOne("member.getMember", userId);
 	}
 
 	@Override
 	public List<MemberVo> selectAllMember() {
-	
-		List<MemberVo> memberList = sqlSession.selectList("member.selectAllMember");
-		
-		return memberList;
+		return sqlSession.selectList("member.selectAllMember");
 	}
 
 	@Override
-	public List<MemberVo> selectMemberPageList(SqlSession sqlSession, PageVo pageVo) {
+	public List<MemberVo> selectMemberPageList(PageVo pageVo) {
 		return sqlSession.selectList("member.selectMemberPageList", pageVo);
 	}
 
 	@Override
-	public int selectMemberTotalCnt(SqlSession sqlSession) {
+	public int selectMemberTotalCnt() {
 		return sqlSession.selectOne("member.selectMemberTotalCnt");
 	}
 
@@ -62,30 +57,12 @@ public class MemberDao implements MemberDaoI{
 
 	@Override
 	public int deleteMember(String userid) {
-		
-		int deleteCnt = sqlSession.delete("member.deleteMember", userid);
-		if(deleteCnt == 1) {
-		//	sqlSession.commit();
-		}
-		else {
-			//sqlSession.rollback();
-		}
-		//sqlSession.close();
-		return deleteCnt;
+		return sqlSession.delete("member.deleteMember", userid);
 	}
 
 	@Override
 	public int updateMember(MemberVo memberVo) {
-		//SqlSession sqlSession = MybatisUtil.getSqlSession();
-		int updateCnt = sqlSession.update("member.updateMember", memberVo);
-		if(updateCnt == 1) {
-			//sqlSession.commit();
-		}
-		else {
-			//sqlSession.rollback();
-		}
-		//sqlSession.close();
-		return updateCnt;
+		return sqlSession.update("member.updateMember", memberVo);
 	}
 	
 	
