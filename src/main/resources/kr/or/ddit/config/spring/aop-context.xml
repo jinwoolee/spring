@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- advice -->
+<!-- 	<bean id="profilingAdvice" class="kr.or.ddit.aop.ProfilingAdvice"/> -->
+	
+	<!-- aop -->
+<!-- 	<aop:config> -->
+<!-- 		<aop:pointcut id="target" expression="execution(* kr.or.ddit..service.*.*(..))" /> -->
+<!-- 		<aop:aspect ref="profilingAdvice"> -->
+<!-- 			<aop:before method="beforeMethod" pointcut-ref="target"/> -->
+<!-- 			<aop:around method="aroundMethod" pointcut-ref="target"/> -->
+<!-- 		</aop:aspect> -->
+<!-- 	</aop:config> -->
+
+	<!-- @Asepect를 부여한 클래스에 대한 설정 처리 -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- @ControllerAdvice -->
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+	</context:component-scan>
+
+</beans>
+
+
+
+
+
+
+

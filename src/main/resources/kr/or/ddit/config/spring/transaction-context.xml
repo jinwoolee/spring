@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+<!-- 트랜잭션 적용 : service의 메소드에 적용
+	1. 트랜잭션 메니저 등록 - DataSourceTransactionManager - spring
+	   . dataSource에 대한 정보가 필요
+	     **스프링 빈의 선언 순서는 중요하지 않다 - spring container가 알아서 처리
+	2. advisor 등록 : element 이름은 : advice
+	3. aop 설정 : pointcut     
+ -->		
+	<bean id="transactionManager"
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<tx:advice id="txAdvisor" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- tx:method name : 트랜잭션을 적용할 메소드의 이름, 패턴 적용
+								  select*
+								  get*
+								  insert*
+								  * -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<!-- execution, within - 특정패지키에 담겨있는 클래스를 찾을때, bean-스프링 빈 -->
+		<aop:advisor advice-ref="txAdvisor" pointcut="within(kr.or.ddit..service.*)"/>
+	</aop:config>
+		
+</beans>
+
+
+
+
+
