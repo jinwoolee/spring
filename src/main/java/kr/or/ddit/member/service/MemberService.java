@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.config.db.MybatisUtil;
@@ -17,6 +18,7 @@ import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.repository.MemberDao;
 import kr.or.ddit.member.repository.MemberDaoI;
 
+@Transactional
 @Service("memberService")
 public class MemberService implements MemberServiceI {
 	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
@@ -27,7 +29,7 @@ public class MemberService implements MemberServiceI {
 	public MemberService() {
 		//memberDao = new MemberDao();
 	}
-	
+
 	@Override
 	public MemberVo getMember(String userId) {
 		return memberDao.getMember(userId);

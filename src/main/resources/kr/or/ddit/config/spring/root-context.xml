@@ -5,6 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- 다른 xml 설정 파일을 같이 불러 오기 -->
+<!-- 	<import resource="classpath:kr/or/ddit/config/spring/aop-context.xml"/> -->
+<!-- 	<import resource="classpath:kr/or/ddit/config/spring/dataSource-context.xml"/> -->
+	
+	<!-- java 설정 파일 불러오기 -->
+<!-- 	<bean id="aopConfig" class="kr.or.ddit.config.spring.AopContext"/> -->
+	
+	
+	
+	
 	<!-- kr.or.ddit 패키지 하위의 클래스중 @Service, @Repository 어노테이션이 붙은 
 	     클래스를 스캔하여 스프링 빈으로 생성 -->
 	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
