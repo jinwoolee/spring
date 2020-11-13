@@ -71,6 +71,11 @@
         <appender-ref ref="STDOUT"/>
     </logger>
     
+    <logger name="jdbc.resultsettable" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    
 <!-- 	<root level="debug"> -->
 <!-- 		<appender-ref ref="STDOUT" /> -->
 <!-- 	</root> -->
