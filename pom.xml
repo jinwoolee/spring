@@ -1,0 +1,223 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>kr.or.ddit</groupId>
+  <artifactId>spring_security</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+ 		 <m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+ 		 
+  		<version.java>1.8</version.java>
+		<!-- Test -->
+		<version.junit>4.12</version.junit>
+		<version.hamcrest>1.3</version.hamcrest>
+
+		<!-- Logging -->
+		<version.logback>1.1.2</version.logback>
+
+		<!-- Spring -->
+ 		<version.spring>4.3.29.RELEASE</version.spring>
+		<version.spring.security>4.2.19.RELEASE</version.spring.security> 
+		
+		<!-- servlet -->
+		<version.servlet>3.0.1</version.servlet>
+
+		<!-- jsp -->
+		<version.jsp>2.2</version.jsp>
+		
+		<!-- json -->
+		<version.jackson-databind>2.8.8</version.jackson-databind>
+		
+		<!-- dbcp -->
+		<version.dbcp>2.2.0</version.dbcp>
+		
+		<!-- jstl -->
+		<version.jstl>1.2</version.jstl>
+		
+		<!-- jcl-over-slf4j -->
+		<version.jcl-over-slf4j>1.7.30</version.jcl-over-slf4j>
+		
+		<!-- aspectjweaver -->
+		<version.aspectjweaver>1.8.5</version.aspectjweaver>
+		
+		<!-- mybatis -->
+		<version.mybatis>3.2.8</version.mybatis>
+		
+		<!-- mybatis-spring -->
+		<version.mybatis-spring>1.2.2</version.mybatis-spring>
+		
+		<!-- ojdbc -->
+		<version.ojdbc6>12.1.0.2</version.ojdbc6>
+		
+		<!-- log4jdbc -->
+		<version.log4jdbc>1.16</version.log4jdbc>
+		
+  </properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
+					<encoding>utf-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>oracle</id>
+			<name>ORACLE JDBC Repository</name>
+			<url>http://maven.jahia.org/maven2</url>
+		</repository>
+	</repositories>
+	
+	
+  <dependencies>
+  <!-- security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${version.spring.security}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${version.spring.security}</version>
+		</dependency>
+		
+		<!-- json converter -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${version.jackson-databind}</version>
+		</dependency>
+		
+		<!-- logging -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${version.logback}</version>
+		</dependency>
+
+		<!-- junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
+			<scope>test</scope>
+		</dependency>
+		
+			<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${version.dbcp}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${version.servlet}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>${version.jsp}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${version.jstl}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${version.spring}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${version.jcl-over-slf4j}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${version.aspectjweaver}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			 <artifactId>spring-websocket</artifactId>
+			<version>${version.spring}</version>
+		</dependency>
+
+		<!-- mybatis -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>${version.mybatis}</version>
+		</dependency>
+		
+		<!-- ojdbc -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>${version.ojdbc6}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.bgee.log4jdbc-log4j2</groupId>
+			<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+			<version>${version.log4jdbc}</version>
+		</dependency>
+  </dependencies>
+</project>
