@@ -69,10 +69,10 @@ public class MemberServiceTest extends ModelTestConfig{
 		assertEquals(1, insertCnt);
 	}
 	
-	//@Test
+	@Test
 	public void insertMember_FAIL_Test() {
 		/***Given***/
-		MemberVo memberVo = new MemberVo("ddit", "dditpass", "대덕인재", "개발원", 
+		MemberVo memberVo = new MemberVo("temp", "dditpass", "대덕인재", "개발원", 
 										"", "", "", "", "");
 		/***When***/
 		int insertCnt = memberService.insertMember(memberVo);
