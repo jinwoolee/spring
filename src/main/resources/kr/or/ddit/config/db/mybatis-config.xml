@@ -5,14 +5,15 @@
 <configuration>
 
 	<typeAliases>
-		<typeAlias type="kr.or.ddit.member.model.MemberVo"
-			alias="MemberVo" />
-		<typeAlias type="kr.or.ddit.common.model.PageVo"
-			alias="PageVo" />
+		<typeAlias type="kr.or.ddit.member.model.MemberVo" alias="MemberVo" />
+		<typeAlias type="kr.or.ddit.common.model.PageVo" alias="PageVo" />
+		<typeAlias type="kr.or.ddit.batch.yogurt.model.CycleVo" alias="CycleVo" />
+		<typeAlias type="kr.or.ddit.batch.yogurt.model.DailyVo" alias="DailyVo" />
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="kr/or/ddit/config/db/mapper/member.xml" />
+		<mapper resource="kr/or/ddit/config/db/mapper/yogurt.xml" />
 	</mappers>
 </configuration>
 
