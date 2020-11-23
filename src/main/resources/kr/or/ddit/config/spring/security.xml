@@ -2,9 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:component-scan base-package="kr.or.ddit.**.security" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+	</context:component-scan>
+	
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>	
+	
 	<!-- http : security web 보안 설정 
 	
 		 스프링 컨테이너가 springSecurityFilterChain 이라는 이름으로 스프링 빈을 등록
@@ -17,6 +28,9 @@
 	
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/main" access="hasRole('ROLE_ADMIN')" />
+		<security:form-login login-page="/WEB-INF/views/login.jsp" default-target-url="/main"
+		
+					authentication-success-handler-ref="authenticationSuccessHandlerImpl" />
 	</security:http>
 	
 	
@@ -25,10 +39,8 @@
 		    					   설정된 UserDetailService(interface)를 사용
 		 user-service : 인메모리 방식의 UserDetailService(interface) 설정 -->
 	<security:authentication-manager>
-		<security:authentication-provider>
-			<security:user-service>
-				<security:user name="brown" password="12345" authorities="ROLE_ADMIN"/>
-			</security:user-service>
+		<security:authentication-provider user-service-ref="userService">
+			
 		</security:authentication-provider>
 	</security:authentication-manager>
 
