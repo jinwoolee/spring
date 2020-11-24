@@ -12,10 +12,26 @@
 	
 			기본 로그인 화면 url(스프링에서 화면 제공) : /login (spring security 버전마다 url이 상이) 
 		 	
-		 	/main url로 요청시 ROLE_ADMIN 권한을 획득한 사람만 접속 가능									 			 	 	
+		 	/main url로 요청시 ROLE_ADMIN 권한을 획득한 사람만 접속 가능
+		 	
+		 	auto-config (default:false) : HTTP 기본인증, 폼 로그인 인증, 로그아웃 설정 
+		 	use-expressions (default:true) : access 속성에서 SPEl 사용여부
+		 	
+		 form-login : 커스텀 로그인 페이지 설정
+		 logout : 로그아웃 동작 설정
+		 	logout-url : 로그아웃 처리 url
+		 	logout-success-url : 로그아웃 정상 처리후 이동할 url
+		 	invalidate-session (default:true) : 로그아웃 처리후 세션 제거 여부
+		 	
+		 
+		 intercept-url : 검증할 url과 인가 정보 설정
+		                 위에서 아래로 적용됨 ==> 구체적인것 -> 추상적인것  									 			 	 	
 	-->
 	
-	<security:http auto-config="true" use-expressions="true">
+	<security:http auto-config="true" use-expressions="true" >
+		<security:form-login/>
+		<security:logout />
+		<security:intercept-url pattern="/login" access="hasAnyRole('ROLE_ADMIN', 'ROLE_USER')" />
 		<security:intercept-url pattern="/main" access="hasRole('ROLE_ADMIN')" />
 	</security:http>
 	
