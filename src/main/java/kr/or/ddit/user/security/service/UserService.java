@@ -31,11 +31,17 @@ public class UserService implements UserDetailsService{
 
 		logger.debug("loadUserByUsername");
 		
-		List<GrantedAuthority> roleList = new ArrayList<GrantedAuthority>();
-		roleList.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		 
+		//사용자 정보 조회
 		UserVo userVo = userDao.getUser(username);
-		UserDetail userDetail = new UserDetail(userVo, roleList);
+		
+		//사용자 권한 조회
+		List<String> roleList = userDao.getRoles(username);
+		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
+		for(String role : roleList) {
+			roles.add(new SimpleGrantedAuthority(role));
+		}
+		
+		UserDetail userDetail = new UserDetail(userVo, roles);
 		
 		return userDetail;
 	}

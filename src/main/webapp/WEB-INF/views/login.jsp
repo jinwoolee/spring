@@ -7,8 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	userid : <input type="text" name="userid" value="brown"/> <br> 
-	pass : <input type="password" name="pass" value="brownPass"/> <br>
-	<input type="submit" value="전송">
+	<form action="/login" method="post">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> 
+		userid : <input type="text" name="userid" value="brown"/> <br> 
+		pass : <input type="password" name="pass" value="12345"/> <br>
+		<input type="submit" value="전송">
+	</form>
 </body>
 </html>

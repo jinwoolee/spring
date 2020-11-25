@@ -26,10 +26,11 @@
 		 	/main url로 요청시 ROLE_ADMIN 권한을 획득한 사람만 접속 가능									 			 	 	
 	-->
 	
-	<security:http auto-config="true" use-expressions="true">
+	<security:http auto-config="true" use-expressions="true" >
 		<security:intercept-url pattern="/main" access="hasRole('ROLE_ADMIN')" />
-		<security:form-login login-page="/WEB-INF/views/login.jsp" default-target-url="/main"
-		
+		<security:form-login  login-page="/login" default-target-url="/main"
+							  login-processing-url="/login"
+							  username-parameter="userid" password-parameter="pass"
 					authentication-success-handler-ref="authenticationSuccessHandlerImpl" />
 	</security:http>
 	
@@ -38,10 +39,8 @@
 		 authentication-provider : 인증 정보를 레파지토리(인메모리, db, LDAP)로 부터 조회
 		    					   설정된 UserDetailService(interface)를 사용
 		 user-service : 인메모리 방식의 UserDetailService(interface) 설정 -->
-	<security:authentication-manager>
-		<security:authentication-provider user-service-ref="userService">
-			
-		</security:authentication-provider>
+	<security:authentication-manager >
+		<security:authentication-provider user-service-ref="userService" />
 	</security:authentication-manager>
 
 </beans>
