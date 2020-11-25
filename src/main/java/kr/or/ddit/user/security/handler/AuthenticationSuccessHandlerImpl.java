@@ -34,6 +34,8 @@ public class AuthenticationSuccessHandlerImpl extends SavedRequestAwareAuthentic
 		
 		logger.debug("AuthenticationSuccessHandlerImpl.onAuthenticationSuccess");
 		
+		this.setDefaultTargetUrl("/main");
+		
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 
