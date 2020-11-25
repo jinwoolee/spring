@@ -28,10 +28,14 @@
 	
 	<security:http auto-config="true" use-expressions="true" >
 		<security:intercept-url pattern="/main" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/notAllow" access="hasRole('ROLE_SUPER_ADMIN')" />
 		<security:form-login  login-page="/login" default-target-url="/main"
 							  login-processing-url="/login"
-							  username-parameter="userid" password-parameter="pass"
+							  username-parameter="userid" password-parameter="pass"							  
 					authentication-success-handler-ref="authenticationSuccessHandlerImpl" />
+					
+		<security:access-denied-handler error-page="/WEB-INF/views/error.jsp" />
+		<security:logout delete-cookies="JSESSIONID" logout-success-url="/login" />					
 	</security:http>
 	
 	
@@ -40,7 +44,7 @@
 		    					   설정된 UserDetailService(interface)를 사용
 		 user-service : 인메모리 방식의 UserDetailService(interface) 설정 -->
 	<security:authentication-manager >
-		<security:authentication-provider user-service-ref="userService" />
+		<security:authentication-provider user-service-ref="userService"/>
 	</security:authentication-manager>
 
 </beans>

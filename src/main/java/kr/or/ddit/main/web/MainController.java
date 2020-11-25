@@ -22,7 +22,14 @@ public class MainController {
 	public String root(Principal principal) {
 		logger.debug("MainController.root");
 		logger.debug("{}", principal);
-		return "forward:/login";
+		
+		return "main";
+	}
+	
+	@RequestMapping("/notAllow" )
+	public String notAllow() {
+		logger.debug("MainController.notAllow()");
+		return "notAllow";
 	}
 	
 	@GetMapping("/login" )

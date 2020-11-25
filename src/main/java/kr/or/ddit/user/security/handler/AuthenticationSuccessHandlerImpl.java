@@ -33,6 +33,8 @@ public class AuthenticationSuccessHandlerImpl extends SavedRequestAwareAuthentic
 		session.setAttribute("S_USERVO", userVo);
 		
 		logger.debug("AuthenticationSuccessHandlerImpl.onAuthenticationSuccess");
+		
+		super.onAuthenticationSuccess(request, response, authentication);
 	}
 
 }
