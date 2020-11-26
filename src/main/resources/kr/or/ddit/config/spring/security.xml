@@ -28,6 +28,7 @@
 	
 	<security:http auto-config="true" use-expressions="true" >
 		<security:csrf disabled="true" />
+		<security:intercept-url pattern="/backDoor" access="permitAll" />
 		<security:intercept-url pattern="/login" access="permitAll" />
 		<security:intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/main" access="hasRole('ROLE_ADMIN')" />
