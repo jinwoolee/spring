@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- base-package 속성에 설정된 패키지의 하위 패키지를 포함하여 모든 클래스를 scan
+	     스캔된 클래스중에 @Controller, @Service, @Repository, @Component 어노테이션이
+	     붙은 클래스를 스프링 빈으로 등록 -->
+	<context:component-scan base-package="kr.or.ddit.board"></context:component-scan>
+	
+	<!-- @Resource, @Autowired, @Inject : 해당 어노테이션을 작업해주는 스프링 설정 파일
+	     BeanPostProcessor -->
+	<context:annotation-config/>     
+</beans>

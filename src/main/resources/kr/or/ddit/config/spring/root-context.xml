@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 다른 xml 설정 파일을 같이 불러 오기 -->
+<!-- 	<import resource="classpath:kr/or/ddit/config/spring/aop-context.xml"/> -->
+<!-- 	<import resource="classpath:kr/or/ddit/config/spring/dataSource-context.xml"/> -->
+	
+	<!-- java 설정 파일 불러오기 -->
+<!-- 	<bean id="aopConfig" class="kr.or.ddit.config.spring.AopContext"/> -->
+	
+	
+	
+	
+	<!-- kr.or.ddit 패키지 하위의 클래스중 @Service, @Repository 어노테이션이 붙은 
+	     클래스를 스캔하여 스프링 빈으로 생성 -->
+	<context:component-scan base-package="kr.or.ddit" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>   
+	
+	<!-- messageSource 등록 : bean id는 messageSource로 정해져있다
+		 번들메세지_언어코드_국가코드.properties ==> 번들메세지
+	-->  
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:/kr/or/ddit/message/error</value>
+				<value>classpath:/kr/or/ddit/message/msg</value>
+			</list>
+		</property>
+	</bean>
+
+	
+</beans>
+
+
+
+
+
+
+
+
