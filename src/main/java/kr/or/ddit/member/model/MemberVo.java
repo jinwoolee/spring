@@ -3,12 +3,17 @@ package kr.or.ddit.member.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+@Entity(name="users")
 @XmlRootElement(name = "memberVo")
 public class MemberVo {
+	
+	@Id
 	private String userid;
 	private String pass;
 	

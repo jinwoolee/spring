@@ -12,6 +12,20 @@
 	 -->
 	 <context:property-placeholder location="classpath:kr/or/ddit/config/db/db_dev.properties"/>
 	 
+<!-- 	 <bean id="populatorDataSource" class="org.apache.commons.dbcp2.BasicDataSource"> -->
+<!-- 	 	<property name="url" value="${jdbc.url}"/> -->
+<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
+<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
+<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
+<!-- 	 </bean> -->
+	 
+<!-- 	 <bean id="jpaDataSource" class="org.apache.commons.dbcp2.BasicDataSource"> -->
+<!-- 	 	<property name="url" value="${jdbc.url}"/> -->
+<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
+<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
+<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
+<!-- 	 </bean> -->
+	 
 	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 	 	<property name="url" value="${jdbc.url}"/>
 	 	<property name="driverClassName" value="${jdbc.driver}"/>
@@ -20,13 +34,13 @@
 	 </bean>
 	 
 	 <!-- mybatisUtil 역할 -->
-	 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" >
 		<property name="configLocation" value="classpath:kr/or/ddit/config/db/mybatis-config.xml"/>
 		<property name="dataSource" ref="dataSource"/>	 	
 	 </bean>
 	 
 	 <!-- sqlSession -->
-	 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 	 	<constructor-arg ref="sqlSessionFactoryBean"/>
 	 </bean>
 </beans>
