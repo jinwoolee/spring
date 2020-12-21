@@ -15,7 +15,7 @@ import kr.or.ddit.member.model.MemberVo;
 
 public class MemberJpaServiceTest extends ModelTestConfig{
 
-	@Resource(name="memberService")
+	@Resource(name="memberJpaService")
 	private MemberServiceI memberService;
 	
 	@Test

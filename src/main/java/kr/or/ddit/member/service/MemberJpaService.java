@@ -46,7 +46,8 @@ public class MemberJpaService implements MemberServiceI{
 
 	@Override
 	public int insertMember(MemberVo memberVo) {
-		memberJpa.save(memberVo);
+		MemberVo memberVo1 = memberJpa.save(memberVo);
+		MemberVo memberVo2 = memberJpa.save(memberVo);
 		return 1;
 	}
 

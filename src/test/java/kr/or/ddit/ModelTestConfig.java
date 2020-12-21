@@ -19,6 +19,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = 
 				{"classpath:kr/or/ddit/config/spring/root-context.xml",
+				 "classpath:kr/or/ddit/config/spring/datasource-context_dev.xml",
+				 "classpath:kr/or/ddit/config/spring/transaction-context.xml",
 				 "classpath:kr/or/ddit/config/spring/jpa-context_dev.xml"})
 public class ModelTestConfig {
 	

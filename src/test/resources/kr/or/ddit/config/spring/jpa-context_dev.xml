@@ -11,18 +11,16 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-
- 	 <context:property-placeholder location="classpath:kr/or/ddit/config/db/db_dev.properties"/>
 	 
-	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<jpa:repositories base-package="kr.or.ddit" transaction-manager-ref="jpaTransactionManager" />
+
+	<bean id="jpaDataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 	 	<property name="url" value="${jdbc.url}"/>
 	 	<property name="driverClassName" value="${jdbc.driver}"/>
 	 	<property name="username" value="${jdbc.username}"/>
 	 	<property name="password" value="${jdbc.password}"/>
 	 </bean>
 	 
-	<jpa:repositories base-package="kr.or.ddit" transaction-manager-ref="jpaTransactionManager" />
-
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="packagesToScan" value="kr.or.ddit"/>
         <property name="jpaProperties">
@@ -31,7 +29,7 @@
                 <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
             </props>
         </property>
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="jpaDataSource"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 <!--                 <property name="generateDdl" value="true"/> -->
@@ -46,14 +44,14 @@
     
     
 	
-	<tx:advice id="txAdvisor" transaction-manager="jpaTransactionManager">
+	<tx:advice id="txJpaAdvisor" transaction-manager="jpaTransactionManager">
 		<tx:attributes>
 			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
 	
 	<aop:config>
-		<aop:advisor advice-ref="txAdvisor" pointcut="within(kr.or.ddit..service.*)"/>
+		<aop:advisor advice-ref="txJpaAdvisor" pointcut="within(kr.or.ddit..service.*)"/>
 	</aop:config>
 		
 </beans>

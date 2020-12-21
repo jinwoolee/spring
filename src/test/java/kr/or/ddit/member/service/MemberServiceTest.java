@@ -16,8 +16,7 @@ import kr.or.ddit.member.model.MemberVo;
 
 public class MemberServiceTest extends ModelTestConfig{
 
-	//@Resource(name="memberService")
-	@Autowired
+	@Resource(name="memberService")
 	private MemberServiceI memberService;
 	
 	@Test
