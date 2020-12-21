@@ -30,7 +30,7 @@ public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-	@Resource(name="memberService")
+	//@Resource(name="memberService")
 	private MemberServiceI memberService;
 	
 	@RequestMapping(path = "/list", method = {RequestMethod.GET, RequestMethod.POST})

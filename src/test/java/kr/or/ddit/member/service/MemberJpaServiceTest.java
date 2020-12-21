@@ -8,16 +8,14 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import kr.or.ddit.ModelTestConfig;
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
 
-public class MemberServiceTest extends ModelTestConfig{
+public class MemberJpaServiceTest extends ModelTestConfig{
 
-	//@Resource(name="memberService")
-	@Autowired
+	@Resource(name="memberService")
 	private MemberServiceI memberService;
 	
 	@Test
@@ -56,7 +54,7 @@ public class MemberServiceTest extends ModelTestConfig{
 		
 		/***Then***/
 		assertEquals(5, memberList.size());
-		assertEquals(4, pages);
+		assertEquals(3, pages);
 	}
 	
 	@Test
