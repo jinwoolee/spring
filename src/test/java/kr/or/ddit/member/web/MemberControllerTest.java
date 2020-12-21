@@ -81,6 +81,7 @@ public class MemberControllerTest extends WebTestConfig{
 		.andDo(print());
 	}
 	
+	//id 중복으로 실패(jpa에서는 save 개념으로 실패하지 않는다
 	@Test
 	public void memberRegistFailTest() throws Exception {
 		ClassPathResource cpr = new ClassPathResource("/kr/or/ddit/upload/sally.png");
@@ -96,7 +97,7 @@ public class MemberControllerTest extends WebTestConfig{
 							.param("addr1", "대전 중구 중앙로 76")
 							.param("addr2", "영민빌딩 404호")
 							.param("zipcode", "34940"))
-		.andExpect(view().name("tiles/member/registContent"))
+		.andExpect(view().name("tiles/member/list"))
 		.andExpect(status().isOk())
 		.andDo(print());
 	}

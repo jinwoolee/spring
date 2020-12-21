@@ -54,7 +54,7 @@ public class MemberJpaServiceTest extends ModelTestConfig{
 		
 		/***Then***/
 		assertEquals(5, memberList.size());
-		assertEquals(3, pages);
+		assertEquals(4, pages);
 	}
 	
 	@Test
