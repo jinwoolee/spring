@@ -72,7 +72,7 @@
 		<version.h2>1.4.200</version.h2>
 				
 		<!-- JPA Provider (Hibernate) -->
-		<version.hibernate-entitymanager>5.2.18.Final</version.hibernate-entitymanager>
+		<version.hibernate-entitymanager>5.3.7.Final</version.hibernate-entitymanager>
 		
 		<!-- Spring Data JPA -->
 		<version.spring-data-jpa>1.10.5.RELEASE</version.spring-data-jpa>

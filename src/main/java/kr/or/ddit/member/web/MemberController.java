@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -13,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +26,7 @@ import kr.or.ddit.fileupload.FileUploadUtil;
 import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.model.MemberVoValidator;
 import kr.or.ddit.member.service.MemberServiceI;
+import kr.or.ddit.member.web.model.Vo;
 
 @Controller
 @RequestMapping("/member")
@@ -33,7 +37,7 @@ public class MemberController {
 	/*@Resource(name="memberService")
 	private MemberServiceI memberService;*/
 	
-	@Resource(name="memberJpaService")
+	//@Resource(name="memberJpaService")
 	private MemberServiceI memberService;
 	
 	@RequestMapping(path = "/list", method = {RequestMethod.GET, RequestMethod.POST})
@@ -193,4 +197,22 @@ public class MemberController {
 			return "tiles/member/updateContent";
 		}
 	}
+	
+	@RequestMapping("/uploadView")
+	public String view() {
+		return "uploadView";
+	}
+	
+	@RequestMapping("/upload")
+	public String upload(HttpServletRequest request, Vo vo, MultipartFile file) {
+		logger.debug("size : {}", file.getSize());
+		logger.debug("vo.getList().size() : {}", vo.getList().size());
+		return "uploadView";
+	}
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		dataBinder.setAutoGrowCollectionLimit(20000);
+	}
+
 }
