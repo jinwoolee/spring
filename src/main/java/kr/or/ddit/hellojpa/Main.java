@@ -49,6 +49,9 @@ public class Main {
 			//logger.debug(findTeam.toString());
 			logger.debug("{}", findMember.getTeam());
 			
+			logger.debug("{}", findMember.getTeam().getMemberList());
+			
+			
 			
 			
 			tx.commit();

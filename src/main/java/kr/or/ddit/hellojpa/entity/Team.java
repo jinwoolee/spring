@@ -43,10 +43,10 @@ public class Team {
 		this.memberList = memberList;
 	}
 
-	@Override
-	public String toString() {
-		return "Team [id=" + id + ", name=" + name + ", memberList=" + memberList + "]";
-	}
+//	@Override
+//	public String toString() {
+//		return "Team [id=" + id + ", name=" + name + ", memberList=" + memberList + "]";
+//	}
 
 //	@Override
 //	public String toString() {

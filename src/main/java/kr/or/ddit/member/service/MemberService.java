@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.repository.MemberDaoI;
+import kr.or.ddit.member.repository.MemberJpa;
 
 @Transactional
 @Service("memberService")
@@ -23,13 +24,21 @@ public class MemberService implements MemberServiceI {
 	@Resource(name="memberDao")
 	private MemberDaoI memberDao;
 	
+	@Resource(name="memberJpa")
+	private MemberJpa memberJpa;
+	
 	public MemberService() {
 		//memberDao = new MemberDao();
 	}
 
 	@Override
 	public MemberVo getMember(String userId) {
-		return memberDao.getMember(userId);
+		MemberVo memberVo = memberDao.getMember(userId);
+		
+		logger.debug("mybatis : {}", memberVo);
+		logger.debug("jpa : {}", memberJpa.findOne(userId));
+		
+		return memberVo;
 	}
 
 	@Override
@@ -70,7 +79,26 @@ public class MemberService implements MemberServiceI {
 //		memberDao.insertMember(memberVo);
 //		logger.debug("두번째 insert 시작전");
 		
-		return memberDao.insertMember(memberVo);
+		String usernm = memberVo.getUsernm();
+		
+		logger.debug("before insertMember\n");
+		
+		logger.debug("before first memberJpa.save(memberVo)\n");
+		memberJpa.save(memberVo);
+		memberJpa.flush();
+		logger.debug("after first memberJpa.save(memberVo)\n");
+		
+		
+		logger.debug("before first memberDao.insertMember(memberVo)\n");
+		memberDao.insertMember(memberVo);
+		logger.debug("after first memberDao.insertMember(memberVo)\n");
+		
+		
+		
+		
+		logger.debug("after insertMember\n");
+		
+		return 1; 
 	}
 	
 	@Override

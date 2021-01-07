@@ -19,19 +19,21 @@
 <!-- 	 	<property name="password" value="${jdbc.password}"/> -->
 <!-- 	 </bean> -->
 	 
-<!-- 	 <bean id="jpaDataSource" class="org.apache.commons.dbcp2.BasicDataSource"> -->
-<!-- 	 	<property name="url" value="${jdbc.url}"/> -->
-<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
-<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
-<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
-<!-- 	 </bean> -->
-	 
 	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 	 	<property name="url" value="${jdbc.url}"/>
 	 	<property name="driverClassName" value="${jdbc.driver}"/>
 	 	<property name="username" value="${jdbc.username}"/>
 	 	<property name="password" value="${jdbc.password}"/>
 	 </bean>
+	 
+<!-- 	 <bean id="dataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean"> -->
+<!-- 	 	<property name="uniqueResourceName" value="oracle"/> -->
+<!-- 	 	<property name="url" value="oracle.jdbc.xa.client.OracleXADataSource"/> -->
+<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
+<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
+<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
+<!-- 	 </bean> -->
+	 
 	 
 	 <!-- mybatisUtil 역할 -->
 	 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" >
