@@ -24,8 +24,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 				 "classpath:kr/or/ddit/config/spring/jpa-context_dev.xml"})
 public class ModelTestConfig {
 	
-	@Resource(name="dataSource")
-	private DataSource dataSource; 
+	@Resource(name="dataSourcePop")
+	private DataSource dataSource;
+	
+	@Resource(name="dataSourcePop2")
+	private DataSource dataSource2; 
 	
 	@Ignore
 	@Test
@@ -37,7 +40,9 @@ public class ModelTestConfig {
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 		populator.addScripts(new ClassPathResource("/kr/or/ddit/config/db/initData.sql"));
 		populator.setContinueOnError(false);	//스크립트 실행중 에러 발생시 멈춤
+
 		DatabasePopulatorUtils.execute(populator, dataSource);
+		DatabasePopulatorUtils.execute(populator, dataSource2);
 	}
 }
 

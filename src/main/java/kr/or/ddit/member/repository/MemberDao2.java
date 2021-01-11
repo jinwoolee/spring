@@ -11,9 +11,9 @@ import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
 
 @Repository
-public class MemberDao implements MemberDaoI{
+public class MemberDao2 implements MemberDaoI{
 
-	@Resource(name="sqlSessionTemplate")
+	@Resource(name="sqlSessionTemplate2")
 	private SqlSessionTemplate sqlSession;
 	
 	@Override

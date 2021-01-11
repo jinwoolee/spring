@@ -1,74 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:context="http://www.springframework.org/schema/context"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-	 
-	<jpa:repositories base-package="kr.or.ddit" transaction-manager-ref="jpaTransactionManager" />
+<!-- transaction-manager-ref="transactionManager"  -->
+<!-- 	<jpa:repositories base-package="kr.or.ddit" transaction-manager-ref="transactionManager"/> -->
 
-<!-- 	<bean id="jpaDataSource" class="org.apache.commons.dbcp2.BasicDataSource"> -->
-<!-- 	 	<property name="url" value="${jdbc.url}"/> -->
-<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
-<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
-<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
-<!-- 	 </bean> -->
-	 
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="packagesToScan" value="kr.or.ddit"/>
-        <property name="jpaProperties">
-            <props>
-<!--                 <prop key="hibernate.hbm2ddl.auto">create</prop> -->
-                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-            </props>
-        </property>
-        <property name="dataSource" ref="dataSource"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-<!--                 <property name="generateDdl" value="true"/> -->
-                <property name="showSql" value="true"/>
-            </bean>
-        </property>
-    </bean>
-    
-    <bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
-<!--         <property name="dataSource" ref="dataSource"/> -->
-    </bean>
-    
-    <tx:advice id="txJpaAdvisor" transaction-manager="jpaTransactionManager">
-		<tx:attributes>
-			<tx:method name="*" />
-		</tx:attributes>
-	</tx:advice>
-	
-	<aop:config>
-		<aop:advisor advice-ref="txJpaAdvisor" pointcut="within(kr.or.ddit..service.*)"/>
-	</aop:config>
-    
-    
-    
-<!--     <bean id="chinedTransactionManager" class="org.springframework.data.transaction.ChainedTransactionManager"> -->
-<!--     	<constructor-arg name="transactionManagers"> -->
-<!--     		<list> -->
-<!--     			<ref bean="transactionManager"/> -->
-<!--     			<ref bean="jpaTransactionManager"/> -->
-<!--     		</list> -->
-<!--     	</constructor-arg> -->
-<!--     </bean> -->
-    
-<!--     <tx:advice id="txAdvisor" transaction-manager="chinedTransactionManager"> -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="packagesToScan" value="kr.or.ddit" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> -->
+			</props>
+		</property>
+		<property name="dataSource" ref="dataSource2" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="true"/>
+				<property name="showSql" value="true" />
+			</bean>
+		</property>
+	</bean>
+
+	<tx:annotation-driven />
+
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="userTransaction" ref="atomikosUserTransaction" />
+		<property name="transactionManager" ref="atomikosTransactionManager" />
+	</bean>
+
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+		  init-method="init" destroy-method="close">
+		<property name="forceShutdown">
+			<value>true</value>
+		</property>
+	</bean>
+
+	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+		<property name="transactionTimeout">
+			<value>300</value>
+		</property>
+	</bean>
+
+
+<!-- 	<tx:advice id="txAdvisor" transaction-manager="transactionManager"> -->
 <!-- 		<tx:attributes> -->
-<!-- 			<tx:method name="*" rollback-for="java.sql.SQLIntegrityConstraintViolationException"/> -->
+<!-- 			<tx:method name="*" /> -->
 <!-- 		</tx:attributes> -->
 <!-- 	</tx:advice> -->
-
-		
+	
+<!-- 	<aop:config> -->
+<!-- 		execution, within - 특정패지키에 담겨있는 클래스를 찾을때, bean-스프링 빈 -->
+<!-- 		<aop:advisor advice-ref="txAdvisor" pointcut="within(kr.or.ddit..service.*)"/> -->
+<!-- 	</aop:config> -->
 </beans>

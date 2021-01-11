@@ -67,13 +67,13 @@
 
 		<!-- aspectj -->
 		<version.aspectj>1.9.6</version.aspectj>
-		
+
 		<!-- Database (H2) -->
 		<version.h2>1.4.200</version.h2>
-				
+
 		<!-- JPA Provider (Hibernate) -->
 		<version.hibernate-entitymanager>5.3.7.Final</version.hibernate-entitymanager>
-		
+
 		<!-- Spring Data JPA -->
 		<version.spring-data-jpa>1.10.5.RELEASE</version.spring-data-jpa>
 	</properties>
@@ -154,14 +154,14 @@
 			<artifactId>h2</artifactId>
 			<version>${version.h2}</version>
 		</dependency>
-		
+
 		<!-- JPA Provider (Hibernate) -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${version.hibernate-entitymanager}</version>
 		</dependency>
-		
+
 		<!-- Spring Data JPA -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
@@ -289,7 +289,7 @@
 			<artifactId>spring-batch-infrastructure</artifactId>
 			<version>${version.spring.batch}</version>
 		</dependency>
-		
+
 
 		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
 		<dependency>
@@ -318,5 +318,15 @@
 			<artifactId>aspectjweaver</artifactId>
 			<version>${version.aspectj}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+
+
 	</dependencies>
+
+
 </project>

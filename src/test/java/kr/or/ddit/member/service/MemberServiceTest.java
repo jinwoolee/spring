@@ -61,8 +61,7 @@ public class MemberServiceTest extends ModelTestConfig{
 	@Test
 	public void insertMember_SUCCESS_Test() {
 		/***Given***/
-		MemberVo memberVo = new MemberVo("temp", "dditpass", "대덕인재n", "개발원", 
-										"", "", "", "", "");
+		MemberVo memberVo = new MemberVo("temp", "dditpass", "대덕인재n", "개발원", "", "", "", "", "");
 		/***When***/
 		int insertCnt = memberService.insertMember(memberVo);
 

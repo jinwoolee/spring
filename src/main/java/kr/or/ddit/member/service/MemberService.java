@@ -12,9 +12,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.common.model.PageVo;
+import kr.or.ddit.hellojpa.entity.Member;
+import kr.or.ddit.hellojpa.entity.MemberType;
 import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.repository.MemberDaoI;
 import kr.or.ddit.member.repository.MemberJpa;
+import kr.or.ddit.member.repository.MemberJpa2;
 
 @Transactional
 @Service("memberService")
@@ -24,8 +27,14 @@ public class MemberService implements MemberServiceI {
 	@Resource(name="memberDao")
 	private MemberDaoI memberDao;
 	
-	@Resource(name="memberJpa")
+	@Resource(name="memberDao2")
+	private MemberDaoI memberDao2;
+	
+//	@Resource(name="memberJpa")
 	private MemberJpa memberJpa;
+	
+	//@Resource(name="memberJpa2")
+	private MemberJpa2 memberJpa2;
 	
 	public MemberService() {
 		//memberDao = new MemberDao();
@@ -83,15 +92,43 @@ public class MemberService implements MemberServiceI {
 		
 		logger.debug("before insertMember\n");
 		
-		logger.debug("before first memberJpa.save(memberVo)\n");
-		memberJpa.save(memberVo);
-		memberJpa.flush();
-		logger.debug("after first memberJpa.save(memberVo)\n");
+		
+		//memberJpa.save(memberVo);
+		//memberJpa.flush();
 		
 		
-		logger.debug("before first memberDao.insertMember(memberVo)\n");
+		logger.debug("before memberDao.insertMember(memberVo)\n");
+		memberVo.setUsernm(usernm + "_1");
+		logger.debug("memberVo : {} ", memberVo);
 		memberDao.insertMember(memberVo);
-		logger.debug("after first memberDao.insertMember(memberVo)\n");
+		logger.debug("after memberDao.insertMember(memberVo)\n");
+		
+		if(1==1) {
+			throw new RuntimeException();
+		}
+		
+		logger.debug("before memberDao.insertMember(memberVo)\n");
+		memberVo.setUsernm(usernm + "_2");
+		logger.debug("memberVo : {} ", memberVo);
+		memberDao2.insertMember(memberVo);
+		logger.debug("after memberDao.insertMember(memberVo)\n");
+		
+		
+//		Member member = new Member();
+//		//member.setId(100L);
+//		member.setName("브라운2");
+//		member.setMembeType(MemberType.ADMIN);
+//		
+//		logger.debug("before memberJpa2.save(memberVo)\n");
+//		memberJpa2.save(member);
+//		memberJpa2.flush();
+//		//member.setTeamId(team.getId());
+//		logger.debug("member.getId : {}", member.getId() );		
+//		logger.debug("after memberJpa2.save(memberVo)\n");
+		
+//		logger.debug("before memberDao2.insertMember(memberVo)\n");
+//		memberDao2.insertMember(memberVo);
+//		logger.debug("after  memberDao2.insertMember(memberVo)\n");
 		
 		
 		
@@ -110,7 +147,6 @@ public class MemberService implements MemberServiceI {
 	public int updateMember(MemberVo memberVo) {
 		return memberDao.updateMember(memberVo);
 	}
-
 }
 
 

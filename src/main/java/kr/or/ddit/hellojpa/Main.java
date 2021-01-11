@@ -34,7 +34,7 @@ public class Main {
 			member.setName("브라운");
 			member.setMembeType(MemberType.ADMIN);
 			//member.setTeamId(team.getId());
-			member.setTeam(team);
+			//member.setTeam(team);
 			
 			em.persist(member);
 			
@@ -47,9 +47,9 @@ public class Main {
 			
 			//Team findTeam = em.find(Team.class, findMember.getTeamId());
 			//logger.debug(findTeam.toString());
-			logger.debug("{}", findMember.getTeam());
+			//logger.debug("{}", findMember.getTeam());
 			
-			logger.debug("{}", findMember.getTeam().getMemberList());
+			//logger.debug("{}", findMember.getTeam().getMemberList());
 			
 			
 			

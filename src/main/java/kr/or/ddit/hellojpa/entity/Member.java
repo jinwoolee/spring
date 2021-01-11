@@ -27,9 +27,9 @@ public class Member {
 //	@Column(name="TEAM_ID")
 //	private Long teamId;
 	
-	@ManyToOne
-	@JoinColumn(name = "TEAM_ID")
-	private Team team;
+//	@ManyToOne
+//	@JoinColumn(name = "TEAM_ID")
+//	private Team team;
 	
 	public Long getId() {
 		return id;
@@ -66,18 +66,18 @@ public class Member {
 //		return "Member [id=" + id + ", age=" + age + ", name=" + name + ", membeType=" + membeType + ", teamId="
 //				+ teamId + "]";
 //	}
-	public Team getTeam() {
-		return team;
-	}
-	public void setTeam(Team team) {
-		this.team = team;
-	}
+//	public Team getTeam() {
+//		return team;
+//	}
+//	public void setTeam(Team team) {
+//		this.team = team;
+//	}
 	@Override
 	public String toString() {
-//		return "Member [id=" + id + ", age=" + age + ", name=" + name + ", membeType=" + membeType + "]";
+		return "Member [id=" + id + ", age=" + age + ", name=" + name + ", membeType=" + membeType + "]";
 		
-		return "Member [id=" + id + ", age=" + age + ", name=" + name + ", membeType=" + membeType + ", team=" + team
-				+ "]";
+//		return "Member [id=" + id + ", age=" + age + ", name=" + name + ", membeType=" + membeType + ", team=" + team
+//				+ "]";
 	}
 	
 	

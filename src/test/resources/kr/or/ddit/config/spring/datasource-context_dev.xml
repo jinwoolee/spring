@@ -12,27 +12,55 @@
 	 -->
 	 <context:property-placeholder location="classpath:kr/or/ddit/config/db/db_dev.properties"/>
 	 
-<!-- 	 <bean id="populatorDataSource" class="org.apache.commons.dbcp2.BasicDataSource"> -->
-<!-- 	 	<property name="url" value="${jdbc.url}"/> -->
-<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
-<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
-<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
-<!-- 	 </bean> -->
-	 
-	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	 <bean id="dataSourcePop" class="org.apache.commons.dbcp2.BasicDataSource">
 	 	<property name="url" value="${jdbc.url}"/>
 	 	<property name="driverClassName" value="${jdbc.driver}"/>
 	 	<property name="username" value="${jdbc.username}"/>
 	 	<property name="password" value="${jdbc.password}"/>
 	 </bean>
 	 
-<!-- 	 <bean id="dataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean"> -->
-<!-- 	 	<property name="uniqueResourceName" value="oracle"/> -->
-<!-- 	 	<property name="url" value="oracle.jdbc.xa.client.OracleXADataSource"/> -->
-<!-- 	 	<property name="driverClassName" value="${jdbc.driver}"/> -->
-<!-- 	 	<property name="username" value="${jdbc.username}"/> -->
-<!-- 	 	<property name="password" value="${jdbc.password}"/> -->
-<!-- 	 </bean> -->
+	 <bean id="dataSourcePop2" class="org.apache.commons.dbcp2.BasicDataSource">
+	 	<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1522/xe"/>
+	 	<property name="driverClassName" value="${jdbc.driver}"/>
+	 	<property name="username" value="${jdbc.username}"/>
+	 	<property name="password" value="${jdbc.password}"/>
+	 </bean>
+	 
+	 <bean id="dataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+	 	<property name="uniqueResourceName" value="oracle"/>
+	 	<property name="xaDataSource" ref="oracle_xa"/>
+	 	<property name="poolSize" value="5"/>
+	 </bean>
+	 
+	 <bean id="oracle_xa" class="oracle.jdbc.xa.client.OracleXADataSource"> 
+	 	<property name="URL" value="jdbc:oracle:thin:@localhost:1521/xe"/>
+	 	<property name="user" value="${jdbc.username}"/>
+	 	<property name="password" value="${jdbc.password}"/>
+	 </bean>
+	 
+	 <bean id="dataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+	 	<property name="uniqueResourceName" value="oracle2"/>
+	 	<property name="xaDataSource" ref="oracle_xa2"/>
+	 	<property name="poolSize" value="5"/>
+	 </bean>
+	 
+	 <bean id="oracle_xa2" class="oracle.jdbc.xa.client.OracleXADataSource"> 
+	 	<property name="URL" value="jdbc:oracle:thin:@localhost:1522/xe"/>
+	 	<property name="user" value="${jdbc.username}"/>
+	 	<property name="password" value="${jdbc.password}"/>
+	 </bean>
+	 	
+	 <bean id="h2DataSource" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+	 	<property name="uniqueResourceName" value="h2"/>
+	 	<property name="xaDataSource" ref="h2_xa"/>
+	 	<property name="poolSize" value="5"/>
+	 </bean>
+	 
+	 <bean id="h2_xa" class="org.h2.jdbcx.JdbcDataSource"> 
+	 	<property name="URL" value="jdbc:h2:~/test"/>
+	 	<property name="user" value="sa"/>
+	 	<property name="password" value=""/>
+	 </bean>
 	 
 	 
 	 <!-- mybatisUtil 역할 -->
@@ -44,6 +72,17 @@
 	 <!-- sqlSession -->
 	 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 	 	<constructor-arg ref="sqlSessionFactoryBean"/>
+	 </bean>
+	 
+	  <!-- mybatisUtil 역할 -->
+	 <bean id="sqlSessionFactoryBean2" class="org.mybatis.spring.SqlSessionFactoryBean" >
+		<property name="configLocation" value="classpath:kr/or/ddit/config/db/mybatis-config.xml"/>
+		<property name="dataSource" ref="dataSource2"/>
+	 </bean>
+	 
+	 <!-- sqlSession -->
+	 <bean id="sqlSessionTemplate2" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+	 	<constructor-arg ref="sqlSessionFactoryBean2"/>
 	 </bean>
 </beans>
 
