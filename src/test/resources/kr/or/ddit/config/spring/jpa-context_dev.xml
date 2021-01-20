@@ -7,56 +7,68 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-<!-- transaction-manager-ref="transactionManager"  -->
-<!-- 	<jpa:repositories base-package="kr.or.ddit" transaction-manager-ref="transactionManager"/> -->
+	<jpa:repositories base-package="kr.or.ddit.member.repository.jpa"/>
+	
 
-	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" 
+		  depends-on="springJtaPlatformAdapter">
 		<property name="packagesToScan" value="kr.or.ddit" />
 		<property name="jpaProperties">
 			<props>
+				
 				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				
+				<prop key="hibernate.format_sql">true</prop>
+    			<prop key="hibernate.show_sql">true</prop>
+				
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
-<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> -->
+				<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop> -->
+				
+<!-- 				<prop key="javax.persistence.transactionType">JTA</prop> -->
+				<prop key="hibernate.transaction.jta.platform">kr.or.ddit.jta.SpringJtaPlatformAdapter</prop>
 			</props>
 		</property>
-		<property name="dataSource" ref="dataSource2" />
+<!-- 		<property name="dataSource" ref="dataSource2" /> -->
+		<property name="jtaDataSource" ref="dataSource2"/>
+		
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="generateDdl" value="true"/>
 				<property name="showSql" value="true" />
 			</bean>
 		</property>
+
 	</bean>
 
 	<tx:annotation-driven />
 
+	<bean id="springJtaPlatformAdapter" class="kr.or.ddit.jta.SpringJtaPlatformAdapter">
+        <property name="jtaTransactionManager" ref="transactionManager" />
+    </bean>
+    
 	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
 		<property name="userTransaction" ref="atomikosUserTransaction" />
-		<property name="transactionManager" ref="atomikosTransactionManager" />
+		<property name="transactionManager" ref="atomikosUserTransactionManager" />
 	</bean>
-
-	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+	
+	<bean id="atomikosUserTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
 		  init-method="init" destroy-method="close">
-		<property name="forceShutdown">
-			<value>true</value>
-		</property>
+		<property name="forceShutdown" value="true"/>
 	</bean>
 
 	<bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
-		<property name="transactionTimeout">
-			<value>300</value>
-		</property>
+		<property name="transactionTimeout" value="300"/>
 	</bean>
 
 
-<!-- 	<tx:advice id="txAdvisor" transaction-manager="transactionManager"> -->
-<!-- 		<tx:attributes> -->
-<!-- 			<tx:method name="*" /> -->
-<!-- 		</tx:attributes> -->
-<!-- 	</tx:advice> -->
+	<tx:advice id="txAdvisor" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
 	
-<!-- 	<aop:config> -->
-<!-- 		execution, within - 특정패지키에 담겨있는 클래스를 찾을때, bean-스프링 빈 -->
-<!-- 		<aop:advisor advice-ref="txAdvisor" pointcut="within(kr.or.ddit..service.*)"/> -->
-<!-- 	</aop:config> -->
+<!-- 	execution, within - 특정패지키에 담겨있는 클래스를 찾을때, bean-스프링 빈 -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvisor" pointcut="within(kr.or.ddit..service.*)"/>
+	</aop:config>
 </beans>

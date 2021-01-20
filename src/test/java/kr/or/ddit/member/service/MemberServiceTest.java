@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.ModelTestConfig;
 import kr.or.ddit.common.model.PageVo;
@@ -61,7 +62,7 @@ public class MemberServiceTest extends ModelTestConfig{
 	@Test
 	public void insertMember_SUCCESS_Test() {
 		/***Given***/
-		MemberVo memberVo = new MemberVo("temp", "dditpass", "대덕인재n", "개발원", "", "", "", "", "");
+		MemberVo memberVo = new MemberVo("temp_jpa_my", "dditpass", "대덕인재n", "개발원", "", "", "", "", "");
 		/***When***/
 		int insertCnt = memberService.insertMember(memberVo);
 

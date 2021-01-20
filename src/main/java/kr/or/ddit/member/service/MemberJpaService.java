@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
-import kr.or.ddit.member.repository.MemberJpa;
+import kr.or.ddit.member.repository.jpa.MemberJpa;
 
 //@Service
 public class MemberJpaService implements MemberServiceI{

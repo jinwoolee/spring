@@ -21,6 +21,7 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>   
+
 	
 	<!-- messageSource 등록 : bean id는 messageSource로 정해져있다
 		 번들메세지_언어코드_국가코드.properties ==> 번들메세지

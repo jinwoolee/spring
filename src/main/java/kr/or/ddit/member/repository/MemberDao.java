@@ -6,10 +6,12 @@ import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.member.model.MemberVo;
 
+@Transactional
 @Repository
 public class MemberDao implements MemberDaoI{
 

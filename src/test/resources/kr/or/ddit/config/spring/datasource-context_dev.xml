@@ -32,13 +32,13 @@
 	 	<property name="poolSize" value="5"/>
 	 </bean>
 	 
-	 <bean id="oracle_xa" class="oracle.jdbc.xa.client.OracleXADataSource"> 
+	 <bean id="oracle_xa" class="oracle.jdbc.xa.client.OracleXADataSource" destroy-method="close"> 
 	 	<property name="URL" value="jdbc:oracle:thin:@localhost:1521/xe"/>
 	 	<property name="user" value="${jdbc.username}"/>
 	 	<property name="password" value="${jdbc.password}"/>
 	 </bean>
 	 
-	 <bean id="dataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean">
+	 <bean id="dataSource2" class="com.atomikos.jdbc.AtomikosDataSourceBean" destroy-method="close">
 	 	<property name="uniqueResourceName" value="oracle2"/>
 	 	<property name="xaDataSource" ref="oracle_xa2"/>
 	 	<property name="poolSize" value="5"/>
@@ -66,7 +66,8 @@
 	 <!-- mybatisUtil 역할 -->
 	 <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean" >
 		<property name="configLocation" value="classpath:kr/or/ddit/config/db/mybatis-config.xml"/>
-		<property name="dataSource" ref="dataSource"/>	 	
+		<property name="dataSource" ref="oracle_xa"/>	 	
+<!-- 		<property name="dataSource" ref="dataSource"/> -->
 	 </bean>
 	 
 	 <!-- sqlSession -->

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import kr.or.ddit.ModelTestConfig;
 import kr.or.ddit.member.model.MemberVo;
+import kr.or.ddit.member.repository.jpa.MemberJpa;
 
 public class MemberJpaTest extends ModelTestConfig{
 

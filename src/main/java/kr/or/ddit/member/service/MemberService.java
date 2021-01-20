@@ -8,7 +8,10 @@ import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.common.model.PageVo;
@@ -16,21 +19,21 @@ import kr.or.ddit.hellojpa.entity.Member;
 import kr.or.ddit.hellojpa.entity.MemberType;
 import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.repository.MemberDaoI;
-import kr.or.ddit.member.repository.MemberJpa;
-import kr.or.ddit.member.repository.MemberJpa2;
+import kr.or.ddit.member.repository.jpa.MemberJpa;
+import kr.or.ddit.member.repository.jpa.MemberJpa2;
 
-@Transactional
 @Service("memberService")
 public class MemberService implements MemberServiceI {
 	private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
 	
+	
 	@Resource(name="memberDao")
 	private MemberDaoI memberDao;
 	
-	@Resource(name="memberDao2")
-	private MemberDaoI memberDao2;
+//	@Resource(name="memberDao2")
+//	private MemberDaoI memberDao2;
 	
-//	@Resource(name="memberJpa")
+	@Resource(name="memberJpa")
 	private MemberJpa memberJpa;
 	
 	//@Resource(name="memberJpa2")
@@ -71,6 +74,15 @@ public class MemberService implements MemberServiceI {
 		return map;
 	}
 
+
+	public void setMemberDao(MemberDaoI memberDao) {
+		this.memberDao = memberDao;
+	}
+
+	public void setMemberJpa(MemberJpa memberJpa) {
+		this.memberJpa = memberJpa;
+	}
+
 	@Override
 	public int insertMember(MemberVo memberVo) {
 		
@@ -83,55 +95,28 @@ public class MemberService implements MemberServiceI {
 		//SQL 실행 실패
 		//첫번째 쿼리는 성공했지만 트랜잭션 설정을 service 레벨에 설정을 하였기 때문에
 		//서비스 메소드에서 실행된 모드 쿼리를 rollback 처리한다
-		
-//		logger.debug("두번째 insert 시작전");
-//		memberDao.insertMember(memberVo);
-//		logger.debug("두번째 insert 시작전");
-		
+
 		String usernm = memberVo.getUsernm();
 		
 		logger.debug("before insertMember\n");
 		
 		
-		//memberJpa.save(memberVo);
-		//memberJpa.flush();
+		logger.debug("before memberJpa.save(member)\n");
+		memberVo.setUsernm(usernm + "_jpa");		
+		memberJpa.saveAndFlush(memberVo);
+		logger.debug("after memberJpa.save(member)\n");
+		logger.debug("findOne : {}", memberJpa.findOne("temp"));
 		
-		
+		//예외 강제 발생을 통해 롤백 유무 확인
+//		if(1==1){
+//			throw new RuntimeException();
+//		}
+			
 		logger.debug("before memberDao.insertMember(memberVo)\n");
-		memberVo.setUsernm(usernm + "_1");
+		memberVo.setUsernm(usernm + "_dao");
 		logger.debug("memberVo : {} ", memberVo);
 		memberDao.insertMember(memberVo);
 		logger.debug("after memberDao.insertMember(memberVo)\n");
-		
-		if(1==1) {
-			throw new RuntimeException();
-		}
-		
-		logger.debug("before memberDao.insertMember(memberVo)\n");
-		memberVo.setUsernm(usernm + "_2");
-		logger.debug("memberVo : {} ", memberVo);
-		memberDao2.insertMember(memberVo);
-		logger.debug("after memberDao.insertMember(memberVo)\n");
-		
-		
-//		Member member = new Member();
-//		//member.setId(100L);
-//		member.setName("브라운2");
-//		member.setMembeType(MemberType.ADMIN);
-//		
-//		logger.debug("before memberJpa2.save(memberVo)\n");
-//		memberJpa2.save(member);
-//		memberJpa2.flush();
-//		//member.setTeamId(team.getId());
-//		logger.debug("member.getId : {}", member.getId() );		
-//		logger.debug("after memberJpa2.save(memberVo)\n");
-		
-//		logger.debug("before memberDao2.insertMember(memberVo)\n");
-//		memberDao2.insertMember(memberVo);
-//		logger.debug("after  memberDao2.insertMember(memberVo)\n");
-		
-		
-		
 		
 		logger.debug("after insertMember\n");
 		

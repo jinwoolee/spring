@@ -1,4 +1,4 @@
-package kr.or.ddit.member.repository;
+package kr.or.ddit.member.repository.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
