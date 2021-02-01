@@ -8,16 +8,23 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.ddit.user.service.UserService;
 
-@ContextConfiguration("classpath:/kr/or/ddit/ioc/ioc.xml")
+@ContextConfiguration(locations=
+					{"classpath:/kr/or/ddit/ioc/ioc.xml",
+					 "classpath:/kr/or/ddit/config/spring/datasource-context.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class IocTest {
 	
-	@Resource(name="userService")
+	//@Resource(name="userService")
+	//************************************************
+	// 객체 이름을 변경시 Autowired가 실패하는 부분 추후 확인
+	//************************************************
+	@Autowired
 	private UserService userService;
 	
 	@Resource(name="userService")

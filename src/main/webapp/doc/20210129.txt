@@ -43,6 +43,55 @@ value="5"
 
 
 
+스프링에서 컨트롤러 생성 방법
+** 서블릿의 과정과 유사
+  1. HttpServlet 클래스를 상속받은 클래스를 생성
+  2. url-mapping
+  
+  spring
+  1.@Controller 어노테이션을 적용한 클래스를 생성
+  2.@RequestMapping 어노테이션을 이용하여 class, mehtod에 적용
+
+** 차이점
+ 서블릿의 경우 class 단위로 url-mapping이 이루어짐
+ spring class/method url-mapping이 이루어짐
+
+ servlet : userList, user, userRegist, ueserModify, userDelete : 5개의 서블릿을 생성
+ spring : 한개로 통합 가능
+
+
+
+스프링 컨트롤러 테스트
+servlet 환경에서는 servlet 자체를 테스트하기가 굉장히 어려움
+ servlet 생성/실행하는 주체가 servlet-container
+   HttpServletRequest, HttpSession등 필요한 객체가 많음
+   
+스프링 환경에서는 해당 객체를 쉽게 만들 수 있는 Mock 객체를 제공
+  MockHttpServletRequest, MockHttpServletResponse, MockHttpSession
+  
+  ==> 손이 많이 간다.
+  
+  spring 프레임워크에서 처리될 요청은 Dispatcher Servlet이 받으므로
+  Dispatcher Servlet을 대신하여 테스트 할 수 있는 객체를 제공하는 형식으로 컨트롤러 테스트를 진행
+  
+  DispatcherServlet ==> MockMvc 생성을 위해서 
+  					    WebApplicationContext 객체가 필요
+  					    ==> 스프링 프레임워크에서 ioc 컨테이너 생성시 자동으로 생성
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+     
+ 
+
 
 
 

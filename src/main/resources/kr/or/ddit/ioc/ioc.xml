@@ -28,9 +28,6 @@
 		UserService userService = new UserServiceImpl();
 		userSerivce.setUserDao(userDao); 
 	-->
-	<bean id="userService" class="kr.or.ddit.user.service.UserServiceImpl" >
-		<property name="userDao" ref="userDao"/>
-	</bean> 
 	
 	
 	<!-- 생성자 주입 
@@ -38,6 +35,10 @@
 	<bean id="userServiceCons" class="kr.or.ddit.user.service.UserServiceImpl">
 		<constructor-arg ref="userDao"/>	
 	</bean>
+	
+	<bean id="userService" class="kr.or.ddit.user.service.UserServiceImpl" >
+		<property name="userDao" ref="userDao"/>
+	</bean> 
 	
 	<!--  prototype : 해당 빈을 dl, di할 때마다 매번 새롭게 만든 객체를 반환 -->
 	<bean id="userServicePrototype" class="kr.or.ddit.user.service.UserServiceImpl" 
