@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -20,9 +22,16 @@
     <!-- Custom styles for this template -->
     <link href="${cp }/css/signin.css" rel="stylesheet">
 	
+	
+	
 	<script>
 		//html 문서 로딩이 완료 되고 나서 실행 되는 코드
 		$(function(){
+			
+			<c:if test="${msg != null }">
+				alert("${msg}" + "ra");
+			</c:if>
+			
 			//userid, rememberme 쿠키를 확인하여 존재할 경우 값설정, 체크
 			if(Cookies.get("userid") != undefined){
 				$("#userid").val(Cookies.get("userid"));

@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +21,8 @@ import org.springframework.web.context.WebApplicationContext;
 @WebAppConfiguration		//스프링 환경을 Web기반의 application Context로 생성
 @RunWith(SpringJUnit4ClassRunner.class)
 public class WebTestConfig {
+	
+	private static final Logger logger = LoggerFactory.getLogger(WebTestConfig.class);
 	
 	@Autowired		
 	private WebApplicationContext context;

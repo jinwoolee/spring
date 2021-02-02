@@ -38,9 +38,25 @@ public class HelloControllerTest extends WebTestConfig {
 		
 		UserVo userVo = (UserVo)mav.getModel().get("userVo");
 		assertEquals("ºê¶ó¿î", userVo.getUsernm());
-		
+	}
+	
+	@Test
+	public void pathVariableTest() throws Exception {
+		mockMvc.perform(get("/hello/path/cony").header("User-Agent", "chrome-"))
+				.andExpect(status().isOk())
+				.andExpect(model().attributeExists("subpath"))
+				.andDo(print())
+				.andReturn();
 	}
 }
+
+
+
+
+
+
+
+
 
 
 
