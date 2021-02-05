@@ -20,6 +20,11 @@
 			$("#frm").submit();
 		});
 	})
+	
+	var userVo = ${user};
+	
+	var userid = "${user.userid}";
+	
 </script>
 
 

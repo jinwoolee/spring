@@ -84,6 +84,41 @@ public class UserController {
 		//tiles-definition에 설정한 name
 		return "tiles.user.pagingUser";
 	}
+	
+	//사용자 리스트가 없는 상태의 화면만 응답으로 생성
+	@RequestMapping("pagingUserAjaxView")
+	public String pagingUserAjaxView() {
+		return "tiles.user.pagingUserAjax";
+	}
+	
+	
+	@RequestMapping("pagingUserAjax")
+	public String paigingUserAjax(@RequestParam(defaultValue = "1") int page,
+							  @RequestParam(defaultValue = "5") int pageSize,
+							  Model model) {
+		
+		PageVo pageVo = new PageVo(page, pageSize);
+		
+		model.addAllAttributes(userService.selectPagingUser(pageVo));
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping("pagingUserAjaxHtml")
+	public String paigingUserAjaxHtml(@RequestParam(defaultValue = "1") int page,
+							  @RequestParam(defaultValue = "5") int pageSize,
+							  Model model) {
+		
+		PageVo pageVo = new PageVo(page, pageSize);
+		
+		model.addAllAttributes(userService.selectPagingUser(pageVo));
+		
+		return "user/pagingUserAjaxHtml";
+		
+		/*
+		 * pagingUserAjaxHtml ==>  /WEB-INF/views/user/pagingUserAjaxHtml.jsp 
+		 */
+	}
 
 	//@RequestMapping("pagingUser")
 	public String pagingUser(PageVo pageVo) {
@@ -144,7 +179,8 @@ public class UserController {
 	
 	@RequestMapping(path="regist", method=RequestMethod.GET)
 	public String regist() {
-		return "user/userRegist";
+		//return "user/userRegist";
+		return "tiles.user.userRegist";
 	}
 	
 	//bindingResult 객체는 command 객체 바로 뒤에 인자로 기술해야 한다

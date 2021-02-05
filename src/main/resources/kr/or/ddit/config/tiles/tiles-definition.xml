@@ -9,6 +9,7 @@
     <put-attribute name="body" value="" />
   </definition>
   
+  
   <definition name="tiles.*.*" extends="basic.layout">
   	<put-attribute name="body" value="/WEB-INF/views/{1}/{2}Body.jsp" />
   </definition>

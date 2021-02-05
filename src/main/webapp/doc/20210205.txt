@@ -1,0 +1,49 @@
+***
+localhost/hello/hello ==>  화면에 hello 문자만 보이면 됨
+
+1. spring framework를 이용하여
+2. 신규 프로젝트로
+3. 단 pom.xml을 수업시간에 사용한 파일을 통해 복사
+4. spring bean configuration 파일은 신규로 만들기
+
+=============================================
+1. 프로젝트 생성 - maven, grouid, artifactid ....
+2. pom.xml 복사 ??
+3. web.xml 생성 ==> 
+4. spring config
+	. controller scan 설정 (Model은 필요 없는 상황)
+	. viewResolver (jsp, json ==> 두개중에 하나만 설정하면 된다)
+5. web.xml에 스프링 컨테이너 관련 설정
+	. Model ==> X
+	  Controller ==> (O) ==> dispatcherServlet ==> 설정파일 1개만 추가(4번에서 만든 설정파일)
+
+스프링 설정
+========================================================	  
+6. 설정된 사항을 이용하여 개발(business logic)
+7. hello/hello url을 처리하는 Controller ==> @Controller, @RequestMapping
+    .method도 같이 생성
+8. jsp / jsonView(Model)       	  
+
+-----------------------------------------------------------------------------------		
+9. ControllerTest
+
+
+
+ajax ==> json
+ajax ==> xml
+ajax ==> html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
