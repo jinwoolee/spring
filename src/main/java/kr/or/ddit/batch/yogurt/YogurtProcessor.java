@@ -27,18 +27,18 @@ public class YogurtProcessor implements ItemProcessor<CycleVo, List<DailyVo>>{
 	//		              cid-1, pid-100, dt-20210215, cnt-1
 	//		              cid-1, pid-100, dt-20210222, cnt-1
 	
-	// 1ÀÏ~28ÀÏ loop
-	// if(¿äÀÏ == item.¿äÀÏ°ú °°ÀºÁö Ã¼Å©)
-	//  	ÇØ´ç ÀÏÀÚ·Î ÀÏ½ÇÀû µ¥ÀÌÅÍ¸¦ »ı¼º
+	// 1ì¼~28ì¼ loop
+	// if(ìš”ì¼ == item.ìš”ì¼ê³¼ ê°™ì€ì§€ ì²´í¬)
+	//  	í•´ë‹¹ ì¼ìë¡œ ì¼ì‹¤ì  ë°ì´í„°ë¥¼ ìƒì„±
 	//
 	
-	// ÇØ´ç³â¿ùÀÇ ¸¶Áö¸· ³¯Â¥ (date)
-	// ÇØ´ç³â¿ùÀÇ Ã¹¹øÂ° ³¯Â¥- 1ÀÏ (date)
+	// í•´ë‹¹ë…„ì›”ì˜ ë§ˆì§€ë§‰ ë‚ ì§œ (date)
+	// í•´ë‹¹ë…„ì›”ì˜ ì²«ë²ˆì§¸ ë‚ ì§œ- 1ì¼ (date)
 	
 	@Override
 	public List<DailyVo> process(CycleVo item) throws Exception {
 		
-		//ÇöÀç ³¯Â¥ ½Ã°£
+		//í˜„ì¬ ë‚ ì§œ ì‹œê°„
 		Calendar calendar = Calendar.getInstance();
 		
 		calendar.setTime(dt);
@@ -56,7 +56,7 @@ public class YogurtProcessor implements ItemProcessor<CycleVo, List<DailyVo>>{
 		List<DailyVo> dailyVoList = new ArrayList<DailyVo>();
 		while(endDt.compareTo(calendar.getTime()) > 0) {
 			
-			//20210201 == > ÁÖ°£¿äÀÏ
+			//20210201 == > ì£¼ê°„ìš”ì¼
 			if(item.getDay() == calendar.get(Calendar.DAY_OF_WEEK)) {
 				//cid, pid, dt(yyyyMMdd), cnt
 				dailyVoList.add(new DailyVo(item.getCid(), 

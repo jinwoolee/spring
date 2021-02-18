@@ -25,13 +25,13 @@ public class UserServiceTest extends ModelTestConfig {
 
 	@Before
 	public void setup() {
-		// Å×½ºÆ®¿¡¼­ »ç¿ëÇÒ ½Å±Ô »ç¿ëÀÚ Ãß°¡
-		UserVo userVo = new UserVo("testUser", "Å×½ºÆ®»ç¿ëÀÚ", "testUserPass", new Date(), "´ë´ö", "´ëÀü Áß±¸ Áß¾Ó·Î 76", "4Ãş",
+		// í…ŒìŠ¤íŠ¸ì—ì„œ ì‚¬ìš©í•  ì‹ ê·œ ì‚¬ìš©ì ì¶”ê°€
+		UserVo userVo = new UserVo("testUser", "í…ŒìŠ¤íŠ¸ì‚¬ìš©ì", "testUserPass", new Date(), "ëŒ€ë•", "ëŒ€ì „ ì¤‘êµ¬ ì¤‘ì•™ë¡œ 76", "4ì¸µ",
 				"34940", "brown.png", "uuid-generated-filename.png");
 
 		userService.registUser(userVo);
 
-		// ½Å±Ô ÀÔ·Â Å×½ºÆ®¸¦ À§ÇØ Å×½ºÆ® °úÁ¤¿¡¼­ ÀÔ·ÂµÈ µ¥ÀÌÅÍ¸¦ »èÁ¦
+		// ì‹ ê·œ ì…ë ¥ í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ í…ŒìŠ¤íŠ¸ ê³¼ì •ì—ì„œ ì…ë ¥ëœ ë°ì´í„°ë¥¼ ì‚­ì œ
 		userService.deleteUser("ddit_n");
 	}
 
@@ -40,7 +40,7 @@ public class UserServiceTest extends ModelTestConfig {
 		userService.deleteUser("testUser");
 	}
 
-	// ÀüÃ¼ »ç¿ëÀÚ Á¶È¸ Å×½ºÆ®
+	// ì „ì²´ ì‚¬ìš©ì ì¡°íšŒ í…ŒìŠ¤íŠ¸
 	@Test
 	public void selectAllUserTest() {
 		/*** Given ***/
@@ -52,7 +52,7 @@ public class UserServiceTest extends ModelTestConfig {
 		assertEquals(17, userList.size());
 	}
 
-	// »ç¿ëÀÚ ¾ÆÀÌµğ¸¦ ÀÌ¿ëÇÏ¿© Æ¯Á¤ »ç¿ëÀÚ Á¤º¸ Á¶È¸
+	// ì‚¬ìš©ì ì•„ì´ë””ë¥¼ ì´ìš©í•˜ì—¬ íŠ¹ì • ì‚¬ìš©ì ì •ë³´ ì¡°íšŒ
 	@Test
 	public void selectUserTest() {
 		/*** Given ***/
@@ -63,10 +63,10 @@ public class UserServiceTest extends ModelTestConfig {
 
 		/*** Then ***/
 		assertNotNull(user);
-		assertEquals("ºê¶ó¿î", user.getUsernm());
+		assertEquals("ë¸Œë¼ìš´", user.getUsernm());
 	}
 
-	// »ç¿ëÀÚ ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾ÊÀ» ¶§, Æ¯Á¤ »ç¿ëÀÚ Á¶È¸
+	// ì‚¬ìš©ì ì•„ì´ë””ê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ë•Œ, íŠ¹ì • ì‚¬ìš©ì ì¡°íšŒ
 	@Test
 	public void selectUserNotExsistTest() {
 		/*** Given ***/
@@ -79,7 +79,7 @@ public class UserServiceTest extends ModelTestConfig {
 		assertNull(user);
 	}
 
-	// »ç¿ëÀÚ ÆäÀÌÂ¡ Á¶È¸ Å×½ºÆ®
+	// ì‚¬ìš©ì í˜ì´ì§• ì¡°íšŒ í…ŒìŠ¤íŠ¸
 	@Test
 	public void selectPagingUserTest() {
 		/*** Given ***/
@@ -101,7 +101,7 @@ public class UserServiceTest extends ModelTestConfig {
 		/*** Given ***/
 
 		// userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode
-		UserVo userVo = new UserVo("ddit", "´ë´öÀÎÀç", "dditpass", new Date(), "°³¹ß¿ø_m", "´ëÀü½Ã Áß±¸ Áß¾Ó·Î 76", "4Ãş ´ë´öÀÎÀç°³¹ß¿ø",
+		UserVo userVo = new UserVo("ddit", "ëŒ€ë•ì¸ì¬", "dditpass", new Date(), "ê°œë°œì›_m", "ëŒ€ì „ì‹œ ì¤‘êµ¬ ì¤‘ì•™ë¡œ 76", "4ì¸µ ëŒ€ë•ì¸ì¬ê°œë°œì›",
 				"34940", "brown.png", "uuid-generated-filename.png");
 
 		/*** When ***/
@@ -115,7 +115,7 @@ public class UserServiceTest extends ModelTestConfig {
 	public void registUserTest() {
 		/*** Given ***/
 		// userid, usernm, pass, reg_dt, alias, addr1, addr2, zipcode
-		UserVo userVo = new UserVo("ddit_n", "´ë´öÀÎÀç", "dditpass", new Date(), "°³¹ß¿ø_m", "´ëÀü½Ã Áß±¸ Áß¾Ó·Î 76", "4Ãş ´ë´öÀÎÀç°³¹ß¿ø",
+		UserVo userVo = new UserVo("ddit_n", "ëŒ€ë•ì¸ì¬", "dditpass", new Date(), "ê°œë°œì›_m", "ëŒ€ì „ì‹œ ì¤‘êµ¬ ì¤‘ì•™ë¡œ 76", "4ì¸µ ëŒ€ë•ì¸ì¬ê°œë°œì›",
 				"34940", "brown.png", "uuid-generated-filename.png");
 
 		/*** When ***/

@@ -1,23 +1,23 @@
-server side °ËÁõ
+server side ê²€ì¦
 1. spring Validator
-	±¸Çö¹æ¹ı : interface Validator¸¦ ±¸Çö
+	êµ¬í˜„ë°©ë²• : interface Validatorë¥¼ êµ¬í˜„
 	
-2. JSR-303(±Ô¾àÀº °è¼Ó Ãß°¡/¼öÁ¤ µÊ)
-	¾î³ëÅ×ÀÌ¼ÇÀ» ÀÌ¿ë ==> command °´Ã¼¿¡ Àû¿ë
+2. JSR-303(ê·œì•½ì€ ê³„ì† ì¶”ê°€/ìˆ˜ì • ë¨)
+	ì–´ë…¸í…Œì´ì…˜ì„ ì´ìš© ==> command ê°ì²´ì— ì ìš©
 	@NotNull
 	@Min, @Max
 	@Size(min, max)
-	@Pattern(Á¤±Ô½Ä)
+	@Pattern(ì •ê·œì‹)
 	
 	==>
 
-1¹ø : ±¸Ã¼ÀûÀ¸·Î ÀÛ¼º °¡´É, º¹ÀâÇÑ ·ÎÁ÷ °ËÁõ °¡´É
-2¹ø : °£´ÜÇÑ ÇüÅÂ·Î¸¸ °ËÁõ °¡´É	
+1ë²ˆ : êµ¬ì²´ì ìœ¼ë¡œ ì‘ì„± ê°€ëŠ¥, ë³µì¡í•œ ë¡œì§ ê²€ì¦ ê°€ëŠ¥
+2ë²ˆ : ê°„ë‹¨í•œ í˜•íƒœë¡œë§Œ ê²€ì¦ ê°€ëŠ¥	
 
-1.resourceBundle ÆÄÀÏ ÁØºñ(error.properties....)
-2.messageSource ½ºÇÁ¸µ ºó µî·Ï(ReloadableResourceBundleMessageSource)
-3.validator, controller¿¡ validate ¸Ş¼Òµå ½ÇÇà
-4.jsp <form:errors path="Ä¿¸Çµå°´Ã¼.ÇÊµå">  ==> ÇØ´ç ÇÊµå¿¡ ¿¡·¯°¡ ÀÖÀ» ¶§¸¸ ¸Ş¼¼Áö¸¦ Ç¥Çö 
+1.resourceBundle íŒŒì¼ ì¤€ë¹„(error.properties....)
+2.messageSource ìŠ¤í”„ë§ ë¹ˆ ë“±ë¡(ReloadableResourceBundleMessageSource)
+3.validator, controllerì— validate ë©”ì†Œë“œ ì‹¤í–‰
+4.jsp <form:errors path="ì»¤ë§¨ë“œê°ì²´.í•„ë“œ">  ==> í•´ë‹¹ í•„ë“œì— ì—ëŸ¬ê°€ ìˆì„ ë•Œë§Œ ë©”ì„¸ì§€ë¥¼ í‘œí˜„ 
 
 
 spring message
@@ -25,33 +25,33 @@ spring message : <spring:message code="GREETING" arguments="brown"/>
 	
 	
 	
-view Resolver  : controller°¡ ¹İÈ¯ÇÏ´Â view nameÀ» ÀÌ¿ëÇÏ¿© ÇØ´ç ¿äÃ»À» »ı¼ºÇÒ
-                 view°´Ã¼¸¦ ¼±ÅÃ
-º¹¼öÀÇ view resolver µî·ÏÀÌ °¡´É
-view resolverÀÇ ¿ì¼±¼øÀ§¸¦ ¼³Á¤ÇÏ¿© Àû¿ëµÉ ¼ø¼­¸¦ °áÁ¤ÇÒ ¼ö ÀÖ´Ù
+view Resolver  : controllerê°€ ë°˜í™˜í•˜ëŠ” view nameì„ ì´ìš©í•˜ì—¬ í•´ë‹¹ ìš”ì²­ì„ ìƒì„±í• 
+                 viewê°ì²´ë¥¼ ì„ íƒ
+ë³µìˆ˜ì˜ view resolver ë“±ë¡ì´ ê°€ëŠ¥
+view resolverì˜ ìš°ì„ ìˆœìœ„ë¥¼ ì„¤ì •í•˜ì—¬ ì ìš©ë  ìˆœì„œë¥¼ ê²°ì •í•  ìˆ˜ ìˆë‹¤
 
-±âÁ¸ : internalResourceViewResolver
-Ãß°¡ : BeanNameViewResolver
-      ==> ÄÁÆ®·Ñ·¯°¡ ¹İÈ¯ÇÏ´Â view name°ú µ¿ÀÏÇÑ ÀÌ¸§ÀÇ ½ºÇÁ¸µ ºóÀÌ ÀÖÀ¸¸é
-          ÇØ´ç ½ºÇÁ¸µ ºóÀ» view°´Ã¼·Î »ç¿ë
+ê¸°ì¡´ : internalResourceViewResolver
+ì¶”ê°€ : BeanNameViewResolver
+      ==> ì»¨íŠ¸ë¡¤ëŸ¬ê°€ ë°˜í™˜í•˜ëŠ” view nameê³¼ ë™ì¼í•œ ì´ë¦„ì˜ ìŠ¤í”„ë§ ë¹ˆì´ ìˆìœ¼ë©´
+          í•´ë‹¹ ìŠ¤í”„ë§ ë¹ˆì„ viewê°ì²´ë¡œ ì‚¬ìš©
           
-***** internalResourceViewResolver »ç¿ë½Ã ÁÖÀÇÁ¡
-==> prefix, surrfix Á¶ÇÕ¿¡ ÀÇÇØ »ı¼ºµÈ ¹®ÀÚ¿­¿¡ ÇØ´çÇÏ´Â ¸®¼Ò½º(jsp)°¡ ¾ø¾îµµ
-    °ËÁõÀ» ÇÏÁö ¾Ê°í ÀÀ´äÀ¸·Î ³»º¸³½´Ù
-    Áï ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì 404 ¿¡·¯ ¹ß»ı
+***** internalResourceViewResolver ì‚¬ìš©ì‹œ ì£¼ì˜ì 
+==> prefix, surrfix ì¡°í•©ì— ì˜í•´ ìƒì„±ëœ ë¬¸ìì—´ì— í•´ë‹¹í•˜ëŠ” ë¦¬ì†ŒìŠ¤(jsp)ê°€ ì—†ì–´ë„
+    ê²€ì¦ì„ í•˜ì§€ ì•Šê³  ì‘ë‹µìœ¼ë¡œ ë‚´ë³´ë‚¸ë‹¤
+    ì¦‰ íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° 404 ì—ëŸ¬ ë°œìƒ
     
-    ==> ¿ì¼±¼øÀ§¸¦ °¡Àå ÃÖ ÇÏÀ§·Î µĞ´Ù
+    ==> ìš°ì„ ìˆœìœ„ë¥¼ ê°€ì¥ ìµœ í•˜ìœ„ë¡œ ë‘”ë‹¤
     
     
     
 ExcelDownloadView
 
-¿ì¸® È¸»çÀÇ ÀüÃ¼ Á÷¿ø ¸®½ºÆ®	
+ìš°ë¦¬ íšŒì‚¬ì˜ ì „ì²´ ì§ì› ë¦¬ìŠ¤íŠ¸	
  
     
     
     
-Interceptor / filter Â÷ÀÌÁ¡
+Interceptor / filter ì°¨ì´ì 
 
 
 	

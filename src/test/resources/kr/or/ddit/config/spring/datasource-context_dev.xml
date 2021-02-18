@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+<!-- 1. dataSource
+	 2. sqlSessionFactoryBean (SqlSessionFactory)
+	 3.	sqlSessionTemplate -->
+	 
+	 <context:property-placeholder 
+	 		location="classpath:/kr/or/ddit/config/db/dbinfo_dev.properties"/>
+	 
+	 <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	 	<property name="driverClassName" value="${jdbc.driverClassName}"/>
+	 	<property name="url" value="${jdbc.url}"/>
+	 	<property name="username" value="${jdbc.username}"/>
+	 	<property name="password" value="${jdbc.password}"/>
+	 	<property name="initialSize" value="3"/>
+	 </bean>
+
+	<!-- 	Class이름 class이름
+		FactoryBean인터페이스를 구현한 클래스를 스프링 빈으로 등록할 경우
+		FactoryBean 인터페이스의 getObject 메소드가 리턴하는 객체를 스프링 빈으로 등록한다
+
+		sqlSessionFactory 스프링 빈은 SqlSessionFactoryBean 타입이 아니라
+		                            SqlSessionFactory 타입이다   -->
+	 
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="configLocation" value="classpath:/kr/or/ddit/config/mybatis/mybatis-config.xml"/>
+	 	<property name="dataSource" ref="dataSource"/>
+	 </bean>
+	
+	 <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	 	<constructor-arg ref="sqlSessionFactory"/>
+	 </bean>
+
+	<!-- 1. bean 선언 순서 중요하지 않음
+	     2. 다른 설정파일에 선언한 스프링빈도 참조하는게 가능 
+	 -->
+	<bean id="transactionManager" 
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- advice : 공통의 관심사 -->
+	<!-- 선언적 트랜잭션 : 개발자가 별도로 commit, rollback을 호출하지 않음
+	                    상황에 따라서 자동으로 commit, rollback이 됨
+	                    commit : pointcut으로 설정된 메소드가 실행될 때 해당 메소드에서 
+	                             RuntimeException이 발생하지 않고 정상적으로 실행 될 경우
+	                    rollback : RuntimeExcetion이 발생될 때	                             
+	 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- advisor : adivce + pointcut -->
+	<aop:config>
+		<aop:advisor advice-ref="txAdvice" pointcut="execution(* kr.or.ddit..service.*.*(..))"/>
+	</aop:config>
+	
+	
+	
+	
+</beans>
+
+
+
+
+
+
+
+
+
+

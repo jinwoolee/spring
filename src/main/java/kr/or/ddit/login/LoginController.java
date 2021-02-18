@@ -43,7 +43,7 @@ public class LoginController {
 		return "";
 	}
 	
-	//post ¸Ş¼Òµå¸¸ Ã³¸®ÇÏµµ·Ï ¼³Á¤
+	//post ë©”ì†Œë“œë§Œ ì²˜ë¦¬í•˜ë„ë¡ ì„¤ì •
 	@RequestMapping(path="process", method=RequestMethod.POST)
 	public String process(UserVo userVo, HttpSession session, RedirectAttributes ra) {
 		
@@ -56,12 +56,12 @@ public class LoginController {
 			return "main";
 		}
 		else {
-			//³»ºÎÀûÀ¸·Î sessionÀ» »ç¿ëÇÏ¿© ¼Ó¼ºÀ» ÀúÀå
-			//¸®´ÙÀÌ·ºÆ® Ã³¸®°¡ ¿Ï·á µÇ¸é ½ºÇÁ¸µ ÇÁ·¹ÀÓ¿öÅ©¿¡¼­ ÀÚµ¿À¸·Î session¿¡¼­ Á¦°Å
-			ra.addFlashAttribute("msg", "Àß¸øµÈ »ç¿ëÀÚ Á¤º¸ÀÔ´Ï´Ù");
+			//ë‚´ë¶€ì ìœ¼ë¡œ sessionì„ ì‚¬ìš©í•˜ì—¬ ì†ì„±ì„ ì €ì¥
+			//ë¦¬ë‹¤ì´ë ‰íŠ¸ ì²˜ë¦¬ê°€ ì™„ë£Œ ë˜ë©´ ìŠ¤í”„ë§ í”„ë ˆì„ì›Œí¬ì—ì„œ ìë™ìœ¼ë¡œ sessionì—ì„œ ì œê±°
+			ra.addFlashAttribute("msg", "ì˜ëª»ëœ ì‚¬ìš©ì ì •ë³´ì…ë‹ˆë‹¤");
 			
-			//ÀÏ¹İ ¼Ó¼ºÀ» Ãß°¡ÇÑ °æ¿ì : addAttribute
-			//¸®´ÙÀÌ·ºÆ® ÆäÀÌÁöÀÇ ÆÄ¶ó¹ÌÅÍ·Î Àü´ŞµÈ´Ù
+			//ì¼ë°˜ ì†ì„±ì„ ì¶”ê°€í•œ ê²½ìš° : addAttribute
+			//ë¦¬ë‹¤ì´ë ‰íŠ¸ í˜ì´ì§€ì˜ íŒŒë¼ë¯¸í„°ë¡œ ì „ë‹¬ëœë‹¤
 			ra.addAttribute("userid", "brown");
 			
 			return "redirect:/login/view";

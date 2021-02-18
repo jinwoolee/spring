@@ -17,7 +17,7 @@ public class RangerBatchMain {
 				new ClassPathXmlApplicationContext(
 						"classpath:/kr/or/ddit/config/spring/batch-context.xml");
 		
-		//job ½ÇÇà : jobLauncher, job
+		//job ì‹¤í–‰ : jobLauncher, job
 		//JobLauncher jobLauncher = (JobLauncher)context.getBean("jobLauncher");
 		
 		JobLauncher jobLauncher = context.getBean("jobLauncher", JobLauncher.class);

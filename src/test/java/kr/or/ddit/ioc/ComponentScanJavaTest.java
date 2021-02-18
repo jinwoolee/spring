@@ -24,22 +24,22 @@ public class ComponentScanJavaTest {
 	@Resource(name="userService")
 	private UserService userService;
 
-	//@Repository ¾î³ëÅ×ÀÌ¼ÇÀ» Àû¿ëÇÑ userDaoImpl ½ºÇÁ¸µ ºóÀÌ Á¤»óÀûÀ¸·Î ÄÁÅ×ÀÌ³Ê¿¡ µî·Ï µÇ¾ú´ÂÁö È®ÀÎ 
+	//@Repository ì–´ë…¸í…Œì´ì…˜ì„ ì ìš©í•œ userDaoImpl ìŠ¤í”„ë§ ë¹ˆì´ ì •ìƒì ìœ¼ë¡œ ì»¨í…Œì´ë„ˆì— ë“±ë¡ ë˜ì—ˆëŠ”ì§€ í™•ì¸ 
 	@Test
 	public void userDaoImplSpringBeanTest() {
 		assertNotNull(userDao);
 		
 		UserVo userVo = userDao.selectUser("brown");
-		assertEquals("ºê¶ó¿î", userVo.getUsernm());
+		assertEquals("ë¸Œë¼ìš´", userVo.getUsernm());
 	}
 	
-	//userServiceImpl ½ºÇÁ¸µ ºóÀÌ Á¤»óÀûÀ¸·Î ÄÁÅ×ÀÌ³Ê¿¡ µî·Ï µÇ¾ú´ÂÁö È®ÀÎ
+	//userServiceImpl ìŠ¤í”„ë§ ë¹ˆì´ ì •ìƒì ìœ¼ë¡œ ì»¨í…Œì´ë„ˆì— ë“±ë¡ ë˜ì—ˆëŠ”ì§€ í™•ì¸
 	@Test
 	public void userServiceImplSpringBeanTest() {
 		assertNotNull(userService);
 		
 		UserVo userVo = userService.selectUser("brown");
-		assertEquals("ºê¶ó¿î", userVo.getUsernm());
+		assertEquals("ë¸Œë¼ìš´", userVo.getUsernm());
 	}
 }
 

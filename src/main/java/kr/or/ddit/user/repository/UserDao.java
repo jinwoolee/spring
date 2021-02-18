@@ -7,7 +7,7 @@ import kr.or.ddit.user.model.UserVo;
 
 public interface UserDao {
 	
-	//»ç¿ëÀÚ ¾ÆÀÌµğ·Î »ç¿ëÀÚ Á¶È¸
+	//ì‚¬ìš©ì ì•„ì´ë””ë¡œ ì‚¬ìš©ì ì¡°íšŒ
 	UserVo selectUser(String userid);
 	
 	List<UserVo> selectAllUser();

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.view.AbstractView;
 
-//controller¿¡¼­ °³¹ßÀÚ°¡ model °´Ã¼¿¡ realFilename = ½ÇÁ¦ µğ½ºÅ©¿¡ ÀúÀåµÈ °æ·Î¿Í ÆÄÀÏ¸íÀ»,
-//                                 filename = ¾÷·Îµå ´ç½ÃÀÇ ÆÄÀÏ¸íÀ» ¼Ó¼ºÀ» ÀúÀå
+//controllerì—ì„œ ê°œë°œìê°€ model ê°ì²´ì— realFilename = ì‹¤ì œ ë””ìŠ¤í¬ì— ì €ì¥ëœ ê²½ë¡œì™€ íŒŒì¼ëª…ì„,
+//                                 filename = ì—…ë¡œë“œ ë‹¹ì‹œì˜ íŒŒì¼ëª…ì„ ì†ì„±ì„ ì €ì¥
 public class FileDownloadView extends AbstractView{
 
 	@Override

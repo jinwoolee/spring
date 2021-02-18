@@ -18,14 +18,14 @@ public class MvcController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MvcController.class);
 
-	// jsp »ı¼º(Æú´õ¶û, ÆÄÀÏ¸í, ³»¿ëÀº ³ªÁß¿¡ °°ÀÌ)
-	// test ÄÚµå ÀÛ¼º
+	// jsp ìƒì„±(í´ë”ë‘, íŒŒì¼ëª…, ë‚´ìš©ì€ ë‚˜ì¤‘ì— ê°™ì´)
+	// test ì½”ë“œ ì‘ì„±
 	@RequestMapping("fileupload/view")
 	public String fileuploadView() {
 		return "file/view";
 	}
 	
-	// ÆÄ¶ó¹ÌÅÍ´Â : userid, picture
+	// íŒŒë¼ë¯¸í„°ëŠ” : userid, picture
 	@RequestMapping("fileupload/upload")
 	public String fileupload(String userid, MultipartFile picture) {
 		

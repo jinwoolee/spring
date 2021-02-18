@@ -26,9 +26,9 @@ public class RangerBatchTest {
 	
 	@Test
 	public void rangerTaskTest() throws Exception {
-		//batch Å×½ºÆ®½Ã job Å¸ÀÔÀ¸·Î µî·ÏµÈ ½ºÇÁ¸µ ºóÀº ÇÏ³ª¿©¾ß µÈ´Ù
-		//job ÀÌ¸§À» ¸í½ÃÇÏÁö ¾Ê¾Æµµ container¿¡ ÇÏ³ªÀÇ ¹èÄ¡ jobÀÌ µî·ÏµÇ¾î ÀÖ´Ù´Â
-		//°¡Á¤ÀÌ ÀÖ±â ¶§¹®¿¡ º°µµ·Î job ÀÌ¸§À» ¸í½ÃÇÏÁö ¾Ê´Â´Ù
+		//batch í…ŒìŠ¤íŠ¸ì‹œ job íƒ€ì…ìœ¼ë¡œ ë“±ë¡ëœ ìŠ¤í”„ë§ ë¹ˆì€ í•˜ë‚˜ì—¬ì•¼ ëœë‹¤
+		//job ì´ë¦„ì„ ëª…ì‹œí•˜ì§€ ì•Šì•„ë„ containerì— í•˜ë‚˜ì˜ ë°°ì¹˜ jobì´ ë“±ë¡ë˜ì–´ ìˆë‹¤ëŠ”
+		//ê°€ì •ì´ ìˆê¸° ë•Œë¬¸ì— ë³„ë„ë¡œ job ì´ë¦„ì„ ëª…ì‹œí•˜ì§€ ì•ŠëŠ”ë‹¤
 		JobExecution execution =  jobLauncherTestUtils.launchJob();
 		
 		assertEquals(ExitStatus.COMPLETED, execution.getExitStatus());

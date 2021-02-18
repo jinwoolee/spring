@@ -10,7 +10,7 @@ import org.springframework.format.annotation.NumberFormat;
 
 public class UserVo {
 
-	//¾î³ëÅ×ÀÌ¼Ç  == errorcode
+	//ì–´ë…¸í…Œì´ì…˜  == errorcode
 	@Size(min=5)
 	private String userid;
 	

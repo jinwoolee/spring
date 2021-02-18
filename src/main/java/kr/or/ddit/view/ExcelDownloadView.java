@@ -30,7 +30,7 @@ public class ExcelDownloadView extends AbstractView{
 		List<String> header = (List<String>)model.get("header");
 		List<UserVo> data = (List<UserVo>)model.get("data");
 		
-		//excel ÆÄÀÏ »ı¼º
+		//excel íŒŒì¼ ìƒì„±
 		XSSFWorkbook book = new XSSFWorkbook();
 		Sheet sheet = book.createSheet("users");
 		

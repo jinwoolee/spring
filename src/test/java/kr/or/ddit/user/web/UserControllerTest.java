@@ -30,13 +30,13 @@ public class UserControllerTest extends WebTestConfig{
 	@Before
 	public void setup() {
 		super.setup();
-		// Å×½ºÆ®¿¡¼­ »ç¿ëÇÒ ½Å±Ô »ç¿ëÀÚ Ãß°¡
-		UserVo userVo = new UserVo("testUser", "Å×½ºÆ®»ç¿ëÀÚ", "testUserPass", new Date(), "´ë´ö", "´ëÀü Áß±¸ Áß¾Ó·Î 76", "4Ãş",
+		// í…ŒìŠ¤íŠ¸ì—ì„œ ì‚¬ìš©í•  ì‹ ê·œ ì‚¬ìš©ì ì¶”ê°€
+		UserVo userVo = new UserVo("testUser", "í…ŒìŠ¤íŠ¸ì‚¬ìš©ì", "testUserPass", new Date(), "ëŒ€ë•", "ëŒ€ì „ ì¤‘êµ¬ ì¤‘ì•™ë¡œ 76", "4ì¸µ",
 				"34940", "brown.png", "uuid-generated-filename.png");
 
 		userService.registUser(userVo);
 
-		// ½Å±Ô ÀÔ·Â Å×½ºÆ®¸¦ À§ÇØ Å×½ºÆ® °úÁ¤¿¡¼­ ÀÔ·ÂµÈ µ¥ÀÌÅÍ¸¦ »èÁ¦
+		// ì‹ ê·œ ì…ë ¥ í…ŒìŠ¤íŠ¸ë¥¼ ìœ„í•´ í…ŒìŠ¤íŠ¸ ê³¼ì •ì—ì„œ ì…ë ¥ëœ ë°ì´í„°ë¥¼ ì‚­ì œ
 		userService.deleteUser("ddit_n");
 	}
 
@@ -106,13 +106,13 @@ public class UserControllerTest extends WebTestConfig{
 		mockMvc.perform(fileUpload("/user/modify")
 						.file(file)
 						.param("userid", "ddit")
-						.param("usernm", "´ë´ö¼öÁ¤")
-						.param("alias", "¿µ¹Îºôµù")
+						.param("usernm", "ëŒ€ë•ìˆ˜ì •")
+						.param("alias", "ì˜ë¯¼ë¹Œë”©")
 						.param("pass", "ddit_newpass")
-						.param("alais", "¿µ¹Îºôµù")
+						.param("alais", "ì˜ë¯¼ë¹Œë”©")
 						.param("reg_dt", "2021-01-13")
-						.param("addr1", "´ëÀü Áß±¸ Áß¾Ó·Î 76")
-						.param("addr2", "4Ãş")
+						.param("addr1", "ëŒ€ì „ ì¤‘êµ¬ ì¤‘ì•™ë¡œ 76")
+						.param("addr2", "4ì¸µ")
 						.param("zipcode", "34940") )
 			.andExpect(view().name("redirect:/user/user"))
 			.andExpect(status().is3xxRedirection())
@@ -140,13 +140,13 @@ public class UserControllerTest extends WebTestConfig{
 		mockMvc.perform(fileUpload("/user/regist")
 						.file(file)
 						.param("userid", "ddit_n")
-						.param("usernm", "´ë´ö¼öÁ¤")
-						.param("alias", "¿µ¹Îºôµù")
+						.param("usernm", "ëŒ€ë•ìˆ˜ì •")
+						.param("alias", "ì˜ë¯¼ë¹Œë”©")
 						.param("pass", "ddit_newpass")
-						.param("alais", "¿µ¹Îºôµù")
+						.param("alais", "ì˜ë¯¼ë¹Œë”©")
 						.param("reg_dt", "2021-01-13")
-						.param("addr1", "´ëÀü Áß±¸ Áß¾Ó·Î 76")
-						.param("addr2", "4Ãş")
+						.param("addr1", "ëŒ€ì „ ì¤‘êµ¬ ì¤‘ì•™ë¡œ 76")
+						.param("addr2", "4ì¸µ")
 						.param("zipcode", "34940") )
 			.andExpect(view().name("redirect:/user/pagingUser"))
 			.andExpect(status().is3xxRedirection())

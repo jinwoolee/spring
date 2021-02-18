@@ -18,8 +18,8 @@ import kr.or.ddit.user.repository.UserDaoImpl;
 import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.user.service.UserServiceImpl;
 
-//½ºÇÁ¸µ ÇÁ·¹ÀÓ¿öÅ©¿¡°Ô ÇØ´ç ÀÚ¹Ù ÆÄÀÏÀÌ
-//½ºÇÁ¸µ ¼³Á¤ ÆÄÀÏÀÓÀ» ¾Ë·ÁÁØ´Ù
+//ìŠ¤í”„ë§ í”„ë ˆì„ì›Œí¬ì—ê²Œ í•´ë‹¹ ìë°” íŒŒì¼ì´
+//ìŠ¤í”„ë§ ì„¤ì • íŒŒì¼ì„ì„ ì•Œë ¤ì¤€ë‹¤
 @ImportResource("classpath:/kr/or/ddit/config/spring/datasource-context.xml")
 @PropertySource(value = {"classpath:/kr/or/ddit/config/db/dbinfo.properties"})
 @Configuration
@@ -37,10 +37,10 @@ public class IocJavaConfig {
 	@Value("${jdbc.password}")
 	private String password;
 
-	//¸Ş¼Òµå : ½ºÇÁ¸µ ºóÀ¸·Î ¸¸µé °´Ã¼¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå¸¦ »ı¼º
-	//        ¸Ş¼Òµå¿¡ @Bean ¾î³ëÅ×ÀÌ¼ÇÀ» Àû¿ë
-	//		  @Bean ¾î³ëÅ×ÀÌ¼Ç¿¡ º°´Ù¸¥ ¿É¼ÇÀ» Àû¿ëÇÏÁö ¾ÊÀ¸¸é »ı¼ºµÈ ½ºÇÁ¸µ ºóÀÇ ÀÌ¸§Àº
-	//        ¸Ş¼Òµå ÀÌ¸§À¸·Î Àû¿ëµÈ´Ù  (@Bean ¾î³ëÅ×ÀÌ¼ÇÀÇ name ¼Ó¼ºÀ» ÅëÇØ ½ºÇÁ¸µ ºó ÀÌ¸§ ¼³Á¤ °¡´É)
+	//ë©”ì†Œë“œ : ìŠ¤í”„ë§ ë¹ˆìœ¼ë¡œ ë§Œë“¤ ê°ì²´ë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œë¥¼ ìƒì„±
+	//        ë©”ì†Œë“œì— @Bean ì–´ë…¸í…Œì´ì…˜ì„ ì ìš©
+	//		  @Bean ì–´ë…¸í…Œì´ì…˜ì— ë³„ë‹¤ë¥¸ ì˜µì…˜ì„ ì ìš©í•˜ì§€ ì•Šìœ¼ë©´ ìƒì„±ëœ ìŠ¤í”„ë§ ë¹ˆì˜ ì´ë¦„ì€
+	//        ë©”ì†Œë“œ ì´ë¦„ìœ¼ë¡œ ì ìš©ëœë‹¤  (@Bean ì–´ë…¸í…Œì´ì…˜ì˜ name ì†ì„±ì„ í†µí•´ ìŠ¤í”„ë§ ë¹ˆ ì´ë¦„ ì„¤ì • ê°€ëŠ¥)
 	
 	@Bean
 	public UserDao userDao() {
@@ -60,7 +60,7 @@ public class IocJavaConfig {
 		return new UserServiceImpl(userDao());
 	}
 	
-	/*<!--  prototype : ÇØ´ç ºóÀ» dl, diÇÒ ¶§¸¶´Ù ¸Å¹ø »õ·Ó°Ô ¸¸µç °´Ã¼¸¦ ¹İÈ¯ -->
+	/*<!--  prototype : í•´ë‹¹ ë¹ˆì„ dl, dií•  ë•Œë§ˆë‹¤ ë§¤ë²ˆ ìƒˆë¡­ê²Œ ë§Œë“  ê°ì²´ë¥¼ ë°˜í™˜ -->
 	<bean id="userServicePrototype" class="kr.or.ddit.user.service.UserServiceImpl" 
 		  scope="prototype">
 		<property name="userDao" ref="userDao"/>

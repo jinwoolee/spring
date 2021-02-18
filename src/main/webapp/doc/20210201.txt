@@ -1,137 +1,137 @@
-¾ÕÀ¸·Î Å×½ºÆ® ÄÚµå ÀÛ¼º¹æ¹ı
+ì•ìœ¼ë¡œ í…ŒìŠ¤íŠ¸ ì½”ë“œ ì‘ì„±ë°©ë²•
 
-controller ==> 1. WebTestConfig Å¬·¡½º¸¦ »ó¼Ó ¹Ş´Â junit Å¬·¡½º¸¦ »ı¼º
-               2. mockMvc °´Ã¼¸¦ ÀÌ¿ëÇÏ¿© Å×½ºÆ® ÄÚµå ÀÛ¼º
+controller ==> 1. WebTestConfig í´ë˜ìŠ¤ë¥¼ ìƒì† ë°›ëŠ” junit í´ë˜ìŠ¤ë¥¼ ìƒì„±
+               2. mockMvc ê°ì²´ë¥¼ ì´ìš©í•˜ì—¬ í…ŒìŠ¤íŠ¸ ì½”ë“œ ì‘ì„±
 
-service, repository ==> 1. ModelTestConfig Å¬·¡½º¸¦ »ó¼Ó ¹Ş´Â junit Å¬·¡½º¸¦ »ı¼º
-                        2. Å×½ºÆ® ´ë»ó ½ºÇÁ¸µ ºóÀ» ÁÖÀÔ¹Ş¾Æ Å×½ºÆ® ÄÚµå ÀÛ¼º
+service, repository ==> 1. ModelTestConfig í´ë˜ìŠ¤ë¥¼ ìƒì† ë°›ëŠ” junit í´ë˜ìŠ¤ë¥¼ ìƒì„±
+                        2. í…ŒìŠ¤íŠ¸ ëŒ€ìƒ ìŠ¤í”„ë§ ë¹ˆì„ ì£¼ì…ë°›ì•„ í…ŒìŠ¤íŠ¸ ì½”ë“œ ì‘ì„±
                         
 
-½Ç½À
-Login ±â´É ¸¶ÀÌ±×·¹ÀÌ¼Ç (jsp/servlet ==> spring)
-1. ·Î±×ÀÎ È­¸ç ¿äÃ»
-	.jsp À§Ä¡ (webapp/....    ==> webapp/WEB-INF/views)
+ì‹¤ìŠµ
+Login ê¸°ëŠ¥ ë§ˆì´ê·¸ë ˆì´ì…˜ (jsp/servlet ==> spring)
+1. ë¡œê·¸ì¸ í™”ë©° ìš”ì²­
+	.jsp ìœ„ì¹˜ (webapp/....    ==> webapp/WEB-INF/views)
 	          common/header.jsp, left.jsp, common_lib.jsp)
 	          
 	          webapp/login.jsp  		==> webapp/WEB-INF/views/login.jsp
 	          webapp/common/*.jsp	  	==> webapp/WEB-INF/views/common/*.jsp
 
 
-login È­¸é ¿äÃ» Ã³¸® controller -----spring ÀÛ¾÷------
+login í™”ë©´ ìš”ì²­ ì²˜ë¦¬ controller -----spring ì‘ì—…------
 
-1. kr.or.ddit.login.LoginController »ı¼º
-2. @Controller µî·Ï
+1. kr.or.ddit.login.LoginController ìƒì„±
+2. @Controller ë“±ë¡
 
 3. @RequestMapping ==> class? method?
-   ±âÁ¸ : @WebServlet("/loginController")
-   º¯°æ : login/view  ==> localhost/login/view
+   ê¸°ì¡´ : @WebServlet("/loginController")
+   ë³€ê²½ : login/view  ==> localhost/login/view
    
-4. method ±¸Çö (login.jsp forward)
-	ÇØ´ç ¿äÃ»À» Ã³¸®ÇÏ±â À§ÇØ ÆÄ¶ó¹ÌÅÍ°¡ ÇÊ¿äÇÑ°¡?? ==> ÇÊ¿ä ¾øÀ½
+4. method êµ¬í˜„ (login.jsp forward)
+	í•´ë‹¹ ìš”ì²­ì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ íŒŒë¼ë¯¸í„°ê°€ í•„ìš”í•œê°€?? ==> í•„ìš” ì—†ìŒ
 	
-	¿äÃ» À§ÀÓ(servlet)
+	ìš”ì²­ ìœ„ì„(servlet)
 	req.getRequestDispatcher("/login.jsp").forward(req, resp);
 	
-	¿äÃ» À§ÀÓ(spring)
-	 ¸Ş¼Òµå ¹İÈ¯ ¹®ÀÚ¿­(view name)
-	 	/WEB-INF/views/ + ¸Ş¼Òµå ¹İÈ¯ ºä³×ÀÓ + .jsp
+	ìš”ì²­ ìœ„ì„(spring)
+	 ë©”ì†Œë“œ ë°˜í™˜ ë¬¸ìì—´(view name)
+	 	/WEB-INF/views/ + ë©”ì†Œë“œ ë°˜í™˜ ë·°ë„¤ì„ + .jsp
 	 	/WEB-INF/views/login.jsp
 	 	
-5. Å×½ºÆ® ÄÚµå ±¸Çö
+5. í…ŒìŠ¤íŠ¸ ì½”ë“œ êµ¬í˜„
 
 
 
 
-controller Å×½ºÆ® ÄÚµå ±¸Çö½Ã »ç¿ëÇÏ´Â ¸Ş¼Òµå
+controller í…ŒìŠ¤íŠ¸ ì½”ë“œ êµ¬í˜„ì‹œ ì‚¬ìš©í•˜ëŠ” ë©”ì†Œë“œ
 	. perform
 		get(), post(), fileUpload()
-		param("ÆÄ¶ó¹ÌÅÍ¸í", "ÆÄ¶ó¹ÌÅÍ°ª")
+		param("íŒŒë¼ë¯¸í„°ëª…", "íŒŒë¼ë¯¸í„°ê°’")
 		
 	.andExpect
 		status(), model(), view()
 		
-	.andReturn() => MvcResult °´Ã¼¸¦ ¹İÈ¯
+	.andReturn() => MvcResult ê°ì²´ë¥¼ ë°˜í™˜
 					ModelAndView mav = mvcResult.getModelAndView();
 					
-	.andDo() ==> ºÎ°¡ÀûÀÎ ÀÛ¾÷ (°á°ú Ãâ·Â)		 
+	.andDo() ==> ë¶€ê°€ì ì¸ ì‘ì—… (ê²°ê³¼ ì¶œë ¥)		 
 
 
 
---ÆÄ¶ó¹ÌÅÍ°¡ ÀÖ´Â ½ºÇÁ¸µ ÄÁÆ®·Ñ·¯
-LoginController : ·Î±×ÀÎ ¿äÃ» Ã³¸® ¸Ş¼Òµå °³¹ß
+--íŒŒë¼ë¯¸í„°ê°€ ìˆëŠ” ìŠ¤í”„ë§ ì»¨íŠ¸ë¡¤ëŸ¬
+LoginController : ë¡œê·¸ì¸ ìš”ì²­ ì²˜ë¦¬ ë©”ì†Œë“œ ê°œë°œ
 
-1. userVo ÁØºñ(ÀÛ¼º¾ÈÇÑ ÇÊµå Ãß°¡)
+1. userVo ì¤€ë¹„(ì‘ì„±ì•ˆí•œ í•„ë“œ ì¶”ê°€)
 
-2. webapp/main.jsp ==> webapp/WEB-INF/views/main.jsp·Î º¹»ç
+2. webapp/main.jsp ==> webapp/WEB-INF/views/main.jspë¡œ ë³µì‚¬
 
-3. ·Î±×ÀÎ Ã³¸® ·ÎÁ÷ ÀÛ¼º(¸Ş¼Òµå)
-	3-1. ÆÄ¶ó¹ÌÅÍ ÀÛ¾÷
-		±âÁ¸ : request.getParameter("userid")
+3. ë¡œê·¸ì¸ ì²˜ë¦¬ ë¡œì§ ì‘ì„±(ë©”ì†Œë“œ)
+	3-1. íŒŒë¼ë¯¸í„° ì‘ì—…
+		ê¸°ì¡´ : request.getParameter("userid")
 		==> 
-			1. ÆÄ¶ó¹ÌÅÍ°¡ ¸î°³ ¾ø¾î¼­ value object¸¦ »ç¿ëÇÏÁö ¾Ê´Â °æ¿ì
-				½ºÇÁ¸µ ÄÁÆ®·Ñ·¯ ¸Ş¼Òµå¿¡ ÆÄ¶ó¹ÌÅÍ¿Í µ¿ÀÏÇÑ ÀÌ¸§ÀÇ ÀÎÀÚ¸¦ ¼±¾ğ
-				½ºÇÁ¸µ mvc ¸ğµâ¿¡¼­ request °´Ã¼ÀÇ ÆÄ¶ó¹ÌÅÍ¸¦ ¸Ş¼Òµå ÀÎÀÚ·Î ÀÚµ¿ ¹ÙÀÎµù
+			1. íŒŒë¼ë¯¸í„°ê°€ ëª‡ê°œ ì—†ì–´ì„œ value objectë¥¼ ì‚¬ìš©í•˜ì§€ ì•ŠëŠ” ê²½ìš°
+				ìŠ¤í”„ë§ ì»¨íŠ¸ë¡¤ëŸ¬ ë©”ì†Œë“œì— íŒŒë¼ë¯¸í„°ì™€ ë™ì¼í•œ ì´ë¦„ì˜ ì¸ìë¥¼ ì„ ì–¸
+				ìŠ¤í”„ë§ mvc ëª¨ë“ˆì—ì„œ request ê°ì²´ì˜ íŒŒë¼ë¯¸í„°ë¥¼ ë©”ì†Œë“œ ì¸ìë¡œ ìë™ ë°”ì¸ë”©
 				
-			2. ÆÄ¶ó¹ÌÅÍ¸¦ ´ãÀ» value object°¡ ÀÖ´Â °æ¿ì
-				value object¸¦ ½ºÇÁ¸µ ¸Ş¼Òµå ÀÎÀÚ·Î ¼±¾ğ
-				ÆÄ¶ó¹ÌÅÍ ÀÌ¸§°ú value objectÀÇ ÇÊµåÀÇ ÀÌ¸§ÀÌ µ¿ÀÏÇÑ °æ¿ì ÀÚµ¿À¸·Î ¹ÙÀÎµù
+			2. íŒŒë¼ë¯¸í„°ë¥¼ ë‹´ì„ value objectê°€ ìˆëŠ” ê²½ìš°
+				value objectë¥¼ ìŠ¤í”„ë§ ë©”ì†Œë“œ ì¸ìë¡œ ì„ ì–¸
+				íŒŒë¼ë¯¸í„° ì´ë¦„ê³¼ value objectì˜ í•„ë“œì˜ ì´ë¦„ì´ ë™ì¼í•œ ê²½ìš° ìë™ìœ¼ë¡œ ë°”ì¸ë”©
 				
 		
-	3-2. ·Î±×ÀÎ ¼º°ø½Ã
-		¼¼¼Ç°´Ã¼¿¡ S_USER ¼Ó¼ºÀ¸·Î »ç¿ëÀÚ Á¤º¸¸¦ vo°´Ã¼¸¦ ÀúÀå
+	3-2. ë¡œê·¸ì¸ ì„±ê³µì‹œ
+		ì„¸ì…˜ê°ì²´ì— S_USER ì†ì„±ìœ¼ë¡œ ì‚¬ìš©ì ì •ë³´ë¥¼ voê°ì²´ë¥¼ ì €ì¥
 		
-		±âÁ¸ : HttpSession session = request.getSession();
+		ê¸°ì¡´ : HttpSession session = request.getSession();
 			  session.setAttribute("S_USER", userVo);
 		==>
-		½ºÇÁ¸µ ÄÁÆ®·Ñ·¯ ¸Ş¼Òµå¿¡ Ãß°¡ÇÒ ¼ö ÀÖ´Â ÀÎÀÚ Å¸ÀÔ
+		ìŠ¤í”„ë§ ì»¨íŠ¸ë¡¤ëŸ¬ ë©”ì†Œë“œì— ì¶”ê°€í•  ìˆ˜ ìˆëŠ” ì¸ì íƒ€ì…
 		servlet api : HttpServletRequest, HttpServletResponse, HttpSession
 					  application ==> getServletContext()
 		
 		
-	3-3. ·Î±×ÀÎ ½ÇÆĞ½Ã
-		login.jsp·Î ¸®´ÙÀÌ·ºÆ®
+	3-3. ë¡œê·¸ì¸ ì‹¤íŒ¨ì‹œ
+		login.jspë¡œ ë¦¬ë‹¤ì´ë ‰íŠ¸
 		
-		±âÁ¸ : response.sednRedirect("/login.jsp");
+		ê¸°ì¡´ : response.sednRedirect("/login.jsp");
 		
-		==> spring ¿¡¼­´Â ÄÁÆ®·Ñ·¯ ¸Ş¼Òµå°¡ viewNameÀ» ¹İÈ¯ÇÏ°Ô µÇ¾îÀÖÀ½
-			redirect¿¡ ´ëÇÑ viewName : "redirect:" + ¸®´ÙÀÌ·ºÆ® ÁÖ¼Ò
+		==> spring ì—ì„œëŠ” ì»¨íŠ¸ë¡¤ëŸ¬ ë©”ì†Œë“œê°€ viewNameì„ ë°˜í™˜í•˜ê²Œ ë˜ì–´ìˆìŒ
+			redirectì— ëŒ€í•œ viewName : "redirect:" + ë¦¬ë‹¤ì´ë ‰íŠ¸ ì£¼ì†Œ
 			
 
 
-½ºÇÁ¸µ ÄÁÆ®·Ñ·¯ ¸Ş¼Òµå ÀÎÀÚ
-1. servlet Api - 3°³
-2. value object - spring Command °´Ã¼ / from °´Ã¼ : form Àü¼ÛÀ» ÅëÇØ º¸³»Áø ÆÄ¶ó¹ÌÅÍ¸¦ ¹Ş´Â °´Ã¼
-				  primitive type, °³º° °´Ã¼(String, Date)
+ìŠ¤í”„ë§ ì»¨íŠ¸ë¡¤ëŸ¬ ë©”ì†Œë“œ ì¸ì
+1. servlet Api - 3ê°œ
+2. value object - spring Command ê°ì²´ / from ê°ì²´ : form ì „ì†¡ì„ í†µí•´ ë³´ë‚´ì§„ íŒŒë¼ë¯¸í„°ë¥¼ ë°›ëŠ” ê°ì²´
+				  primitive type, ê°œë³„ ê°ì²´(String, Date)
 
-2.5 ErrorBindingResult : validation °ËÁõ½Ã ¿¡·¯ ¸Ş¼¼Áö¸¦ ÀúÀå
-				******* ±ÔÄ¢ (¼ø¼­°¡ Á¸ÀçÇÑ´Ù)
-				ÇØ´ç value °´Ã¼ ´ÙÀ½¿¡ ÀÌ¾î¼­ ¸Ş¼Òµå ÀÎÀÚ·Î ¼±¾ğ ÇØ¾ßÇÑ´Ù
-				public String process( UserVo userVo, binding°´Ã¼)  O
-				public String process( UserVo userVo, HttpSession session, binding°´Ã¼)  X
+2.5 ErrorBindingResult : validation ê²€ì¦ì‹œ ì—ëŸ¬ ë©”ì„¸ì§€ë¥¼ ì €ì¥
+				******* ê·œì¹™ (ìˆœì„œê°€ ì¡´ì¬í•œë‹¤)
+				í•´ë‹¹ value ê°ì²´ ë‹¤ìŒì— ì´ì–´ì„œ ë©”ì†Œë“œ ì¸ìë¡œ ì„ ì–¸ í•´ì•¼í•œë‹¤
+				public String process( UserVo userVo, bindingê°ì²´)  O
+				public String process( UserVo userVo, HttpSession session, bindingê°ì²´)  X
 				  
-3. model - ¼Ó¼º ´ãÀ» ¶§(request scope)
+3. model - ì†ì„± ë‹´ì„ ë•Œ(request scope)
 
 4. Reader/Writer, Input/OutputStream
-	servlet¿¡¼­ html ÀÀ´ä »ı¼º : Writer
-	ÆÄÀÏ ´Ù¿î·Îµå ÀÀ´ä : OutputStream
+	servletì—ì„œ html ì‘ë‹µ ìƒì„± : Writer
+	íŒŒì¼ ë‹¤ìš´ë¡œë“œ ì‘ë‹µ : OutputStream
 	
-	»ç¿ëÀÚ ¿äÃ» Á¤º¸(ÆÄÀÏ ¾÷·Îµå) : InputStream
+	ì‚¬ìš©ì ìš”ì²­ ì •ë³´(íŒŒì¼ ì—…ë¡œë“œ) : InputStream
 
-5. RedirectAttributes : ¸®´ÙÀÌ·ºÆ® ÆäÀÌÁö¿¡ 1È¸¼º ¼Ó¼º Àü´Ş
-			request.setAttribute("msg", "¿¡·¯¹ß»ı");
-			response.sendRedirect("¸®´ÙÀÌ·ºÆ®.jsp");
+5. RedirectAttributes : ë¦¬ë‹¤ì´ë ‰íŠ¸ í˜ì´ì§€ì— 1íšŒì„± ì†ì„± ì „ë‹¬
+			request.setAttribute("msg", "ì—ëŸ¬ë°œìƒ");
+			response.sendRedirect("ë¦¬ë‹¤ì´ë ‰íŠ¸.jsp");
 			
-			¸®´ÙÀÌ·ºÆ®.jsp¿¡¼­ msg ¼Ó¼º Á¶È¸ ??
+			ë¦¬ë‹¤ì´ë ‰íŠ¸.jspì—ì„œ msg ì†ì„± ì¡°íšŒ ??
 
-½ºÇÁ¸µ ÄÁÆ®·Ñ·¯ ¸Ş¼Òµå ¹İÈ¯ Å¸ÀÔ
+ìŠ¤í”„ë§ ì»¨íŠ¸ë¡¤ëŸ¬ ë©”ì†Œë“œ ë°˜í™˜ íƒ€ì…
 1. String : viewName
-2. ModelAndView : ¸ğµ¨°ú ºä °´Ã¼°¡ ÇÕÃÄÁø °´Ã¼
-3. View °´Ã¼		
-4. void : response, outputStreamÀ» ÅëÇØ °³¹ßÀÚ°¡ Á÷Á¢ ÀÀ´ä »ı¼ºÇÑ °æ¿ì
-		--> ÆÄÀÏ´Ù¿î·Îµå 
+2. ModelAndView : ëª¨ë¸ê³¼ ë·° ê°ì²´ê°€ í•©ì³ì§„ ê°ì²´
+3. View ê°ì²´		
+4. void : response, outputStreamì„ í†µí•´ ê°œë°œìê°€ ì§ì ‘ ì‘ë‹µ ìƒì„±í•œ ê²½ìš°
+		--> íŒŒì¼ë‹¤ìš´ë¡œë“œ 
 		
 		
-½ºÇÁ¸µ ÄÁÆ®·Ñ·¯¿¡¼­ »ç¿ë °¡´ÉÇÑ ¾î³ëÅ×ÀÌ¼Ç
+ìŠ¤í”„ë§ ì»¨íŠ¸ë¡¤ëŸ¬ì—ì„œ ì‚¬ìš© ê°€ëŠ¥í•œ ì–´ë…¸í…Œì´ì…˜
 
 @RequestMapping
 @RequestMapping("url")  ==> path @RequestMapping(path="url")
@@ -140,19 +140,19 @@ LoginController : ·Î±×ÀÎ ¿äÃ» Ã³¸® ¸Ş¼Òµå °³¹ß
 
 
 
-2. HTTP ¸Ş¼Òµå Á¦ÇÑ : method
+2. HTTP ë©”ì†Œë“œ ì œí•œ : method
 
 
-3. ÆÄ¶ó¹ÌÅÍ Á¦ÇÑ : params
-	Æ¯Á¤ ÆÄ¶ó¹ÌÅÍÀÇ °ªÀÌ Á¤ÇØÁø °ª°ú ÀÏÄ¡ ÇÒ¶§¸¸ ÇØ´ç ¿äÃ»À» Ã³¸®
+3. íŒŒë¼ë¯¸í„° ì œí•œ : params
+	íŠ¹ì • íŒŒë¼ë¯¸í„°ì˜ ê°’ì´ ì •í•´ì§„ ê°’ê³¼ ì¼ì¹˜ í• ë•Œë§Œ í•´ë‹¹ ìš”ì²­ì„ ì²˜ë¦¬
 	params = {"userid=brown"}
 
 AJAX : 	
-4. ¿äÃ» content-type Á¦ÇÑ : consumes
-		comsumes="application/json"   ==> ¿äÃ»À» json ¹®ÀÚ¿­·Î º¸³ÂÀ» ¶§¸¸ Ã³¸®
-5. ÀÀ´ä Çã¿ë content-type, ACCEPT Á¦ÇÑ : ÀÀ´äÀ¸·Î json ¿äÃ»ÀÏ ¶§¸¸ Ã³¸®
+4. ìš”ì²­ content-type ì œí•œ : consumes
+		comsumes="application/json"   ==> ìš”ì²­ì„ json ë¬¸ìì—´ë¡œ ë³´ëƒˆì„ ë•Œë§Œ ì²˜ë¦¬
+5. ì‘ë‹µ í—ˆìš© content-type, ACCEPT ì œí•œ : ì‘ë‹µìœ¼ë¡œ json ìš”ì²­ì¼ ë•Œë§Œ ì²˜ë¦¬
         produces="application/json"
-6. Æ¯Á¤ Çì´õ Á¦ÇÑ :
+6. íŠ¹ì • í—¤ë” ì œí•œ :
 		headers="Content-Type=text/plain"
 		        
 		
@@ -164,38 +164,38 @@ AJAX :
 
 
 		
-Spring - mybatis ¿¬µ¿		
+Spring - mybatis ì—°ë™		
 
-¿¹Àü
+ì˜ˆì „
 	MybatisUtil, getSqlSession()
 	
 spring
-	sqlSession °´Ã¼¿¡ ÇØ´çÇÏ´Â sqlSessionTemplate °´Ã¼¸¦ dao°´Ã¼¿¡ ÁÖÀÔ¹Ş¾Æ¼­ »ç¿ë
-	sqlSessionTemplate ==> SqlSessionFactoryBean ==> 1.¼³Á¤ÆÄÀÏ(¸ÅÆÛÆÄÀÏ), 2.Datasource
+	sqlSession ê°ì²´ì— í•´ë‹¹í•˜ëŠ” sqlSessionTemplate ê°ì²´ë¥¼ daoê°ì²´ì— ì£¼ì…ë°›ì•„ì„œ ì‚¬ìš©
+	sqlSessionTemplate ==> SqlSessionFactoryBean ==> 1.ì„¤ì •íŒŒì¼(ë§¤í¼íŒŒì¼), 2.Datasource
 	
 
-7±³½Ã¾È¿¡ ¿Ï¼º(16:20)
+7êµì‹œì•ˆì— ì™„ì„±(16:20)
 userServiceImpl, userDaoImpl
- . ¸ğµç ¸Ş¼Òµå ¸¶ÀÌ±×·¹ÀÌ¼Ç
- . ¸ğµç ¸Ş¼Òµå Å×½ºÆ® ÄÚµå ÀÛ¼º		
+ . ëª¨ë“  ë©”ì†Œë“œ ë§ˆì´ê·¸ë ˆì´ì…˜
+ . ëª¨ë“  ë©”ì†Œë“œ í…ŒìŠ¤íŠ¸ ì½”ë“œ ì‘ì„±		
  
-src/test/java ¼Ò½ºÆú´õ ¼±ÅÃÈÄ ÀüÃ¼ Å×½ºÆ® ½ÇÇà
- . ¿¡·¯ ¹ß»ıÇÏ´Â Å×½ºÆ® ÄÚµå ¼³Á¤ ¼öÁ¤ÇÏ¿© ÀüÃ¼°¡ Á¤»óÀûÀ¸·Î ½ÇÇà µÇµµ·Ï º¯°æ
- **** ¼ö¾÷½Ã°£¿¡ ¹è¿î ³»¿ëÀ¸·Î Ã³¸® ºÒ°¡ÇÑ Å×½ºÆ®
- 		1. java ¼³Á¤À¸·Î ÀÌ·ç¾îÁø Å×½ºÆ® ÄÚµå
+src/test/java ì†ŒìŠ¤í´ë” ì„ íƒí›„ ì „ì²´ í…ŒìŠ¤íŠ¸ ì‹¤í–‰
+ . ì—ëŸ¬ ë°œìƒí•˜ëŠ” í…ŒìŠ¤íŠ¸ ì½”ë“œ ì„¤ì • ìˆ˜ì •í•˜ì—¬ ì „ì²´ê°€ ì •ìƒì ìœ¼ë¡œ ì‹¤í–‰ ë˜ë„ë¡ ë³€ê²½
+ **** ìˆ˜ì—…ì‹œê°„ì— ë°°ìš´ ë‚´ìš©ìœ¼ë¡œ ì²˜ë¦¬ ë¶ˆê°€í•œ í…ŒìŠ¤íŠ¸
+ 		1. java ì„¤ì •ìœ¼ë¡œ ì´ë£¨ì–´ì§„ í…ŒìŠ¤íŠ¸ ì½”ë“œ
  		2. WebTestConfig, ModelTestConfig
 
 		
 		
-»ç¿ëÀÚ ÀüÃ¼ ¸®½ºÆ® °³¹ß URL : user/allUser
-1. spring controller »ı¼º : kr.or.ddit.user.web.UserController.allUser()
+ì‚¬ìš©ì ì „ì²´ ë¦¬ìŠ¤íŠ¸ ê°œë°œ URL : user/allUser
+1. spring controller ìƒì„± : kr.or.ddit.user.web.UserController.allUser()
 
-2. ÇÊ¿äÇÑ ½ºÇÁ¸µ ºó : userService
-	** Á¶È¸ÇÑ »ç¿ëÀÚ ¸®½ºÆ® Á¤º¸ model °´Ã¼¿¡ ´ã±â (userList)
+2. í•„ìš”í•œ ìŠ¤í”„ë§ ë¹ˆ : userService
+	** ì¡°íšŒí•œ ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ ì •ë³´ model ê°ì²´ì— ë‹´ê¸° (userList)
 	
 3. webapp/user/allUser.jsp ==> webapp/WEB-INF/views/user/allUser.jsp
 
-*. UserControllerTest »ı¼º, allUser ¸Ş¼Òµå Å×½ºÆ®
+*. UserControllerTest ìƒì„±, allUser ë©”ì†Œë“œ í…ŒìŠ¤íŠ¸
 
 
 

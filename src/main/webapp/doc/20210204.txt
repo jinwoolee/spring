@@ -1,27 +1,27 @@
 viewName : "ajax/ajaxView"
 
 1. tilesViewResolver
-	==> viewName°ú µ¿ÀÏÇÑ ÀÌ¸§ÀÇ tiles definitionÀÌ ÀÖ´ÂÁö °Ë»ç
-		ÀÖÀ¸¸é »ç¿ë
-		¾øÀ¸¸é?
+	==> viewNameê³¼ ë™ì¼í•œ ì´ë¦„ì˜ tiles definitionì´ ìžˆëŠ”ì§€ ê²€ì‚¬
+		ìžˆìœ¼ë©´ ì‚¬ìš©
+		ì—†ìœ¼ë©´?
 2. beanNameViewResolver
-	==> viewName°ú µ¿ÀÏÇÑ ÀÌ¸§ÀÇ ½ºÇÁ¸µ ºóÀ» Ã£°í, °Ë»öÀÌµÇ¸é ÇØ´ç ½ºÇÁ¸µ ºóÀ» view°´Ã¼·Î »ç¿ë
-		ÀÖÀ¸¸é view °´Ã¼·Î »ç¿ë
-		¾øÀ¸¸é?
+	==> viewNameê³¼ ë™ì¼í•œ ì´ë¦„ì˜ ìŠ¤í”„ë§ ë¹ˆì„ ì°¾ê³ , ê²€ìƒ‰ì´ë˜ë©´ í•´ë‹¹ ìŠ¤í”„ë§ ë¹ˆì„ viewê°ì²´ë¡œ ì‚¬ìš©
+		ìžˆìœ¼ë©´ view ê°ì²´ë¡œ ì‚¬ìš©
+		ì—†ìœ¼ë©´?
 3. internalResourceViewResolver
-	==> view name¿¡ ÇØ´çÇÏ´Â ¸®¼Ò½ºÀÇ Á¸Àç À¯¹«¿Í °ü°è¾øÀÌ forward
+	==> view nameì— í•´ë‹¹í•˜ëŠ” ë¦¬ì†ŒìŠ¤ì˜ ì¡´ìž¬ ìœ ë¬´ì™€ ê´€ê³„ì—†ì´ forward
 	
 	
 
-******* 2±³½Ã(09:00~10:50) ±îÁö ½Ãµµ *****
+******* 2êµì‹œ(09:00~10:50) ê¹Œì§€ ì‹œë„ *****
 API
 
-Áß°£ÇÁ·ÎÁ§Æ® => ½ºÇÁ¸µÀ¸·Î ¹Ù²Ù±â
-1. login, main È­¸é °øÅë
+ì¤‘ê°„í”„ë¡œì íŠ¸ => ìŠ¤í”„ë§ìœ¼ë¡œ ë°”ê¾¸ê¸°
+1. login, main í™”ë©´ ê³µí†µ
 
-2. º»ÀÎÀÌ ¸¸µç ¸Þ´º ¾Æ¹«°Ç ÇÏ³ª 
-   ¸Þ´º°¡ ¸ÞÀÎÈ­¸é ¸µÅ©¸¦ ÅëÇØ Á¢¼Ó ÇÒ ¼ö ÀÖ°Ô²û
-   (¸¸¾à º»ÀÎÀÌ ¸¸µç ±â´ÉÀÌ ¸ÞÀÎ ¸Þ´º¿¡ ¾øÀ» °æ¿ì °­Á¦·Î Ãß°¡)	
+2. ë³¸ì¸ì´ ë§Œë“  ë©”ë‰´ ì•„ë¬´ê±´ í•˜ë‚˜ 
+   ë©”ë‰´ê°€ ë©”ì¸í™”ë©´ ë§í¬ë¥¼ í†µí•´ ì ‘ì† í•  ìˆ˜ ìžˆê²Œë”
+   (ë§Œì•½ ë³¸ì¸ì´ ë§Œë“  ê¸°ëŠ¥ì´ ë©”ì¸ ë©”ë‰´ì— ì—†ì„ ê²½ìš° ê°•ì œë¡œ ì¶”ê°€)	
 	
 
 

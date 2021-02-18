@@ -28,7 +28,7 @@ public class RangerReader implements ItemReader<String>{
 	
 	@Override
 	public String read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
-		//´õÀÌ»ó ÀĞÀ» µ¥ÀÌÅÍ°¡ ¾ø´Ù°í ¾Ë·ÁÁÖ´Â ¹æ¹ı : null
+		//ë”ì´ìƒ ì½ì„ ë°ì´í„°ê°€ ì—†ë‹¤ê³  ì•Œë ¤ì£¼ëŠ” ë°©ë²• : null
 		if(rangers.size() > index) {
 			
 			String ranger = rangers.get(index++);

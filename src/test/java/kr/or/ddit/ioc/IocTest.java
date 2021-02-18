@@ -22,7 +22,7 @@ public class IocTest {
 	
 	//@Resource(name="userService")
 	//************************************************
-	// °´Ã¼ ÀÌ¸§À» º¯°æ½Ã Autowired°¡ ½ÇÆĞÇÏ´Â ºÎºĞ ÃßÈÄ È®ÀÎ
+	// ê°ì²´ ì´ë¦„ì„ ë³€ê²½ì‹œ Autowiredê°€ ì‹¤íŒ¨í•˜ëŠ” ë¶€ë¶„ ì¶”í›„ í™•ì¸
 	//************************************************
 	@Autowired
 	private UserService userService;
@@ -42,7 +42,7 @@ public class IocTest {
 	@Resource(name="dbConfig")
 	private DbConfig dbConfig;
 
-	// userServiceCons ½ºÇÁ¸µ ºóÀÌ Á¤»óÀûÀ¸·Î »ı¼º µÇ¾ú´ÂÁö Å×½ºÆ®
+	// userServiceCons ìŠ¤í”„ë§ ë¹ˆì´ ì •ìƒì ìœ¼ë¡œ ìƒì„± ë˜ì—ˆëŠ”ì§€ í…ŒìŠ¤íŠ¸
 	@Test
 	public void userServiceConsTest() {
 		/***Given***/
@@ -56,21 +56,21 @@ public class IocTest {
 	@Test
 	public void beanScopeTest() {
 		
-		//µğÀÚÀÎ ÆĞÅÏÀÇ signleton °³³äÀ¸·Î º¸¸é µÎ°³ÀÇ °´Ã¼´Â ÇÑ Å¬·¡½º·Î ºÎÅÍ ³ª¿ÔÀ¸¹Ç·Î µ¿ÀÏ ÇØ¾ßÇÔ
-		//ÇÏÁö¸¸ ½ºÇÁ¸µÀÇ singleon °³³äÀº bean ¿¤·¹¸àÆ®¸¦ ±âÁØÀ¸·Î ÇÏ³ªÀÇ °´Ã¼°¡ »ı¼ºµÈ´Ù
+		//ë””ìì¸ íŒ¨í„´ì˜ signleton ê°œë…ìœ¼ë¡œ ë³´ë©´ ë‘ê°œì˜ ê°ì²´ëŠ” í•œ í´ë˜ìŠ¤ë¡œ ë¶€í„° ë‚˜ì™”ìœ¼ë¯€ë¡œ ë™ì¼ í•´ì•¼í•¨
+		//í•˜ì§€ë§Œ ìŠ¤í”„ë§ì˜ singleon ê°œë…ì€ bean ì—˜ë ˆë©˜íŠ¸ë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•˜ë‚˜ì˜ ê°ì²´ê°€ ìƒì„±ëœë‹¤
 		assertNotEquals(userService, userServiceCons);		
 	}
 	
 	@Test
 	public void beanScopeTest2() {
 		
-		//µ¿ÀÏÇÑ ½ºÇÁ¸µ ºóÀ» ÁÖÀÔ¹Ş¾ÒÀ¸¹Ç·Î userService, userService2´Â °°Àº °´Ã¼´Ù
+		//ë™ì¼í•œ ìŠ¤í”„ë§ ë¹ˆì„ ì£¼ì…ë°›ì•˜ìœ¼ë¯€ë¡œ userService, userService2ëŠ” ê°™ì€ ê°ì²´ë‹¤
 		assertEquals(userService, userService2);
 	}
 	
 	@Test
 	public void beanScopePrototypeTest() {
-		//µ¿ÀÏÇÑ userServicePrototype ºóÀ» ÁÖÀÔ (scope : prototype)
+		//ë™ì¼í•œ userServicePrototype ë¹ˆì„ ì£¼ì… (scope : prototype)
 		assertNotEquals(userServicePrototype, userServicePrototype2);
 	}
 	

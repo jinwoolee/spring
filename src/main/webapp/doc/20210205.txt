@@ -1,27 +1,27 @@
 ***
-localhost/hello/hello ==>  È­¸é¿¡ hello ¹®ÀÚ¸¸ º¸ÀÌ¸é µÊ
+localhost/hello/hello ==>  í™”ë©´ì— hello ë¬¸ìë§Œ ë³´ì´ë©´ ë¨
 
-1. spring framework¸¦ ÀÌ¿ëÇÏ¿©
-2. ½Å±Ô ÇÁ·ÎÁ§Æ®·Î
-3. ´Ü pom.xmlÀ» ¼ö¾÷½Ã°£¿¡ »ç¿ëÇÑ ÆÄÀÏÀ» ÅëÇØ º¹»ç
-4. spring bean configuration ÆÄÀÏÀº ½Å±Ô·Î ¸¸µé±â
+1. spring frameworkë¥¼ ì´ìš©í•˜ì—¬
+2. ì‹ ê·œ í”„ë¡œì íŠ¸ë¡œ
+3. ë‹¨ pom.xmlì„ ìˆ˜ì—…ì‹œê°„ì— ì‚¬ìš©í•œ íŒŒì¼ì„ í†µí•´ ë³µì‚¬
+4. spring bean configuration íŒŒì¼ì€ ì‹ ê·œë¡œ ë§Œë“¤ê¸°
 
 =============================================
-1. ÇÁ·ÎÁ§Æ® »ı¼º - maven, grouid, artifactid ....
-2. pom.xml º¹»ç ??
-3. web.xml »ı¼º ==> 
+1. í”„ë¡œì íŠ¸ ìƒì„± - maven, grouid, artifactid ....
+2. pom.xml ë³µì‚¬ ??
+3. web.xml ìƒì„± ==> 
 4. spring config
-	. controller scan ¼³Á¤ (ModelÀº ÇÊ¿ä ¾ø´Â »óÈ²)
-	. viewResolver (jsp, json ==> µÎ°³Áß¿¡ ÇÏ³ª¸¸ ¼³Á¤ÇÏ¸é µÈ´Ù)
-5. web.xml¿¡ ½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê °ü·Ã ¼³Á¤
+	. controller scan ì„¤ì • (Modelì€ í•„ìš” ì—†ëŠ” ìƒí™©)
+	. viewResolver (jsp, json ==> ë‘ê°œì¤‘ì— í•˜ë‚˜ë§Œ ì„¤ì •í•˜ë©´ ëœë‹¤)
+5. web.xmlì— ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆ ê´€ë ¨ ì„¤ì •
 	. Model ==> X
-	  Controller ==> (O) ==> dispatcherServlet ==> ¼³Á¤ÆÄÀÏ 1°³¸¸ Ãß°¡(4¹ø¿¡¼­ ¸¸µç ¼³Á¤ÆÄÀÏ)
+	  Controller ==> (O) ==> dispatcherServlet ==> ì„¤ì •íŒŒì¼ 1ê°œë§Œ ì¶”ê°€(4ë²ˆì—ì„œ ë§Œë“  ì„¤ì •íŒŒì¼)
 
-½ºÇÁ¸µ ¼³Á¤
+ìŠ¤í”„ë§ ì„¤ì •
 ========================================================	  
-6. ¼³Á¤µÈ »çÇ×À» ÀÌ¿ëÇÏ¿© °³¹ß(business logic)
-7. hello/hello urlÀ» Ã³¸®ÇÏ´Â Controller ==> @Controller, @RequestMapping
-    .methodµµ °°ÀÌ »ı¼º
+6. ì„¤ì •ëœ ì‚¬í•­ì„ ì´ìš©í•˜ì—¬ ê°œë°œ(business logic)
+7. hello/hello urlì„ ì²˜ë¦¬í•˜ëŠ” Controller ==> @Controller, @RequestMapping
+    .methodë„ ê°™ì´ ìƒì„±
 8. jsp / jsonView(Model)       	  
 
 -----------------------------------------------------------------------------------		

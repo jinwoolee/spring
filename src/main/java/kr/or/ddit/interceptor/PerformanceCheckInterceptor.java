@@ -16,11 +16,11 @@ public class PerformanceCheckInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		//½ÃÀÛ½Ã°£À» ±â·Ï
+		//ì‹œì‘ì‹œê°„ì„ ê¸°ë¡
 		long startTime = System.nanoTime();
 		request.setAttribute("startTime", startTime);
 		
-		//¿äÃ»À» ´ÙÀ½ interceptor or controller¿¡°Ô À§ÀÓÇÒÁö ¿©ºÎ¸¦ ¹İÈ¯
+		//ìš”ì²­ì„ ë‹¤ìŒ interceptor or controllerì—ê²Œ ìœ„ì„í• ì§€ ì—¬ë¶€ë¥¼ ë°˜í™˜
 		return true;
 	}
 	
@@ -28,7 +28,7 @@ public class PerformanceCheckInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		
-		//controller ¸Ş¼Òµå°¡ ½ÇÇàµÈ ÀÌÈÄ ½ÇÇàµÇ´Â ¿µ¿ª
+		//controller ë©”ì†Œë“œê°€ ì‹¤í–‰ëœ ì´í›„ ì‹¤í–‰ë˜ëŠ” ì˜ì—­
 		long endTime = System.nanoTime();
 		long startTime = (long)request.getAttribute("startTime");
 		

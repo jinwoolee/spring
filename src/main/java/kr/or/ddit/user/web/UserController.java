@@ -81,11 +81,11 @@ public class UserController {
 		
 		model.addAllAttributes(userService.selectPagingUser(pageVo));
 		
-		//tiles-definition¿¡ ¼³Á¤ÇÑ name
+		//tiles-definitionì— ì„¤ì •í•œ name
 		return "tiles.user.pagingUser";
 	}
 	
-	//»ç¿ëÀÚ ¸®½ºÆ®°¡ ¾ø´Â »óÅÂÀÇ È­¸é¸¸ ÀÀ´äÀ¸·Î »ı¼º
+	//ì‚¬ìš©ì ë¦¬ìŠ¤íŠ¸ê°€ ì—†ëŠ” ìƒíƒœì˜ í™”ë©´ë§Œ ì‘ë‹µìœ¼ë¡œ ìƒì„±
 	@RequestMapping("pagingUserAjaxView")
 	public String pagingUserAjaxView() {
 		return "tiles.user.pagingUserAjax";
@@ -166,12 +166,12 @@ public class UserController {
 			}
 		}
 		
-		//»ç¿ëÀÚ ¼öÁ¤ÀÌ Á¤»óÀûÀ¸·Î µÈ °æ¿ì	==> ÇØ´ç »ç¿ëÀÚÀÇ »ó¼¼Á¶È¸ ÆäÀÌÁö·Î ÀÌµ¿
+		//ì‚¬ìš©ì ìˆ˜ì •ì´ ì •ìƒì ìœ¼ë¡œ ëœ ê²½ìš°	==> í•´ë‹¹ ì‚¬ìš©ìì˜ ìƒì„¸ì¡°íšŒ í˜ì´ì§€ë¡œ ì´ë™
 		if(updateCnt == 1) {
 			ra.addAttribute("userid", userVo.getUserid());
 			return "redirect:/user/user";
 		}
-		//»ç¿ëÀÚ ¼öÁ¤ÀÌ ºñÁ¤»óÀûÀ¸·Î µÈ °æ¿ì ==> ÇØ´ç »ç¿ëÀÚÀÇ Á¤º¸ ¼öÁ¤ ÆäÀÌÁö·Î ÀÌµ¿
+		//ì‚¬ìš©ì ìˆ˜ì •ì´ ë¹„ì •ìƒì ìœ¼ë¡œ ëœ ê²½ìš° ==> í•´ë‹¹ ì‚¬ìš©ìì˜ ì •ë³´ ìˆ˜ì • í˜ì´ì§€ë¡œ ì´ë™
 		else {
 			return modify(userVo.getUserid(), model);
 		}
@@ -183,7 +183,7 @@ public class UserController {
 		return "tiles.user.userRegist";
 	}
 	
-	//bindingResult °´Ã¼´Â command °´Ã¼ ¹Ù·Î µÚ¿¡ ÀÎÀÚ·Î ±â¼úÇØ¾ß ÇÑ´Ù
+	//bindingResult ê°ì²´ëŠ” command ê°ì²´ ë°”ë¡œ ë’¤ì— ì¸ìë¡œ ê¸°ìˆ í•´ì•¼ í•œë‹¤
 	@RequestMapping(path="regist", method=RequestMethod.POST)
 	public String regist(@Valid UserVo userVo, BindingResult result, MultipartFile profile, Model model) {
 		
@@ -214,11 +214,11 @@ public class UserController {
 		
 		insertCnt = userService.registUser(userVo);
 		
-		//»ç¿ëÀÚ µî·ÏÀÌ Á¤»óÀûÀ¸·Î µÈ °æ¿ì	==> »ç¿ëÀÚ ÆäÀÌÂ¡ ¸®½ºÆ®·Î ÀÌµ¿(1ÆäÀÌÁö)
+		//ì‚¬ìš©ì ë“±ë¡ì´ ì •ìƒì ìœ¼ë¡œ ëœ ê²½ìš°	==> ì‚¬ìš©ì í˜ì´ì§• ë¦¬ìŠ¤íŠ¸ë¡œ ì´ë™(1í˜ì´ì§€)
 		if(insertCnt == 1) {
 			return "redirect:/user/pagingUser";
 		}
-		//»ç¿ëÀÚ ¼öÁ¤ÀÌ ºñÁ¤»óÀûÀ¸·Î µÈ °æ¿ì ==> »ç¿ëÀÚ µî·Ï ÆäÀÌÁö·Î ÀÌµ¿(»ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ °ª ¼³Á¤)
+		//ì‚¬ìš©ì ìˆ˜ì •ì´ ë¹„ì •ìƒì ìœ¼ë¡œ ëœ ê²½ìš° ==> ì‚¬ìš©ì ë“±ë¡ í˜ì´ì§€ë¡œ ì´ë™(ì‚¬ìš©ìê°€ ì…ë ¥í•œ ê°’ ì„¤ì •)
 		else {
 			return "user/userRegist";
 		}
@@ -246,9 +246,9 @@ public class UserController {
 	@RequestMapping("excelDownload")
 	public String excelDownload(Model model) {
 		List<String> header = new ArrayList<String>();
-		header.add("»ç¿ëÀÚ ¾ÆÀÌµğ");
-		header.add("»ç¿ëÀÚ ÀÌ¸§");
-		header.add("»ç¿ëÀÚ º°¸í");
+		header.add("ì‚¬ìš©ì ì•„ì´ë””");
+		header.add("ì‚¬ìš©ì ì´ë¦„");
+		header.add("ì‚¬ìš©ì ë³„ëª…");
 		
 		model.addAttribute("header", header);
 		model.addAttribute("data", userService.selectAllUser());
@@ -261,9 +261,9 @@ public class UserController {
 	public void profile(HttpServletResponse resp, String userid, HttpServletRequest req) {
 		resp.setContentType("image");
 		
-		// userid ÆÄ¶ó¹ÌÅÍ¸¦ ÀÌ¿ëÇÏ¿©
-		// userService °´Ã¼¸¦ ÅëÇØ »ç¿ëÀÚÀÇ »çÁø ÆÄÀÏ ÀÌ¸§À» È¹µæ
-		// ÆÄÀÏ ÀÔÃâ·ÂÀ» ÅëÇØ »çÁøÀ» ÀĞ¾îµé¿© resp°´Ã¼ÀÇ outputStreamÀ¸·Î ÀÀ´ä »ı¼º
+		// userid íŒŒë¼ë¯¸í„°ë¥¼ ì´ìš©í•˜ì—¬
+		// userService ê°ì²´ë¥¼ í†µí•´ ì‚¬ìš©ìì˜ ì‚¬ì§„ íŒŒì¼ ì´ë¦„ì„ íšë“
+		// íŒŒì¼ ì…ì¶œë ¥ì„ í†µí•´ ì‚¬ì§„ì„ ì½ì–´ë“¤ì—¬ respê°ì²´ì˜ outputStreamìœ¼ë¡œ ì‘ë‹µ ìƒì„±
 		
 		UserVo userVo= userService.selectUser(userid);
 		
@@ -313,9 +313,9 @@ public class UserController {
 		
 		resp.setHeader("Content-Disposition", "attachment; filename=" + filename);
 		
-		// userid ÆÄ¶ó¹ÌÅÍ¸¦ ÀÌ¿ëÇÏ¿©
-		// userService °´Ã¼¸¦ ÅëÇØ »ç¿ëÀÚÀÇ »çÁø ÆÄÀÏ ÀÌ¸§À» È¹µæ
-		// ÆÄÀÏ ÀÔÃâ·ÂÀ» ÅëÇØ »çÁøÀ» ÀĞ¾îµé¿© resp°´Ã¼ÀÇ outputStreamÀ¸·Î ÀÀ´ä »ı¼º
+		// userid íŒŒë¼ë¯¸í„°ë¥¼ ì´ìš©í•˜ì—¬
+		// userService ê°ì²´ë¥¼ í†µí•´ ì‚¬ìš©ìì˜ ì‚¬ì§„ íŒŒì¼ ì´ë¦„ì„ íšë“
+		// íŒŒì¼ ì…ì¶œë ¥ì„ í†µí•´ ì‚¬ì§„ì„ ì½ì–´ë“¤ì—¬ respê°ì²´ì˜ outputStreamìœ¼ë¡œ ì‘ë‹µ ìƒì„±
 		
 		logger.debug("path : {} ", path);
 		

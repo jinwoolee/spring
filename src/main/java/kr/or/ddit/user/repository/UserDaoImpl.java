@@ -11,8 +11,8 @@ import kr.or.ddit.common.model.PageVo;
 import kr.or.ddit.user.model.UserVo;
 
 // <bean id="" class=""
-// @Repository¿¡¼­ º°´Ù¸¥ ¼³Á¤À» ÇÏÁö ¾ÊÀ¸¸é ½ºÇÁ¸µ ºó ÀÌ¸§À¸·Î class ÀÌ¸§¿¡¼­ Ã¹±ÛÀÚ¸¦ ¼Ò¹®ÀÚ·Î ÇÑ
-// ¹®ÀÚ¿­ÀÌ ½ºÇÁ¸µ ºóÀÇ ÀÌ¸§À¸·Î ¼³Á¤µÈ´Ù
+// @Repositoryì—ì„œ ë³„ë‹¤ë¥¸ ì„¤ì •ì„ í•˜ì§€ ì•Šìœ¼ë©´ ìŠ¤í”„ë§ ë¹ˆ ì´ë¦„ìœ¼ë¡œ class ì´ë¦„ì—ì„œ ì²«ê¸€ìžë¥¼ ì†Œë¬¸ìžë¡œ í•œ
+// ë¬¸ìžì—´ì´ ìŠ¤í”„ë§ ë¹ˆì˜ ì´ë¦„ìœ¼ë¡œ ì„¤ì •ëœë‹¤
 // UserDaoImpl ==> userDaoImpl
 
 //  UserDao  / UserDaoImpl ==> @Resource(name="userDaoImpl")
